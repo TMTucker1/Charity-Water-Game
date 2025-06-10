@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "name": "Water Bottle",
+        "description": "A reusable water bottle to stay hydrated.",
+        "type": "collectible",
+        "value": 5
+    },
+    {
+        "id": 2,
+        "name": "Water Filter",
+        "description": "A portable water filter for clean drinking water.",
+        "type": "collectible",
+        "value": 10
+    },
+    {
+        "id": 3,
+        "name": "Rain Catcher",
+        "description": "A device to collect rainwater for irrigation.",
+        "type": "collectible",
+        "value": 15
+    },
+    {
+        "id": 4,
+        "name": "Water Purification Tablets",
+        "description": "Tablets to purify water for safe consumption.",
+        "type": "collectible",
+        "value": 8
+    },
+    {
+        "id": 5,
+        "name": "Hydration Pack",
+        "description": "A backpack with a built-in water reservoir.",
+        "type": "collectible",
+        "value": 20
+    }
+]

@@ -1,0 +1,97 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #e0f7fa;
+    color: #004d40;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    padding: 10px;
+}
+
+h1 {
+    font-size: 2.5em;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.map {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    background-image: url('../assets/map-images/campus-map.png');
+    background-size: cover;
+}
+
+.zone {
+    position: absolute;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.zone:hover {
+    transform: scale(1.05);
+}
+
+.button {
+    background-color: #00796b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.button:hover {
+    background-color: #004d40;
+}
+
+.reward-store {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inventory {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.inventory-item {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #004d40;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+.hud {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.cwp-counter {
+    font-weight: bold;
+    color: #00796b;
+}
