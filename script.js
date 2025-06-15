@@ -43,11 +43,16 @@ const missions = [
 let currentMission = 0;
 let points = 0;
 
-// Map logic
+// Show only the map at first, reveal other sections after first mission is started
 const buildings = document.querySelectorAll('.building');
 buildings.forEach(b => b.addEventListener('click', function() {
   const idx = parseInt(this.dataset.mission);
-  if (idx === currentMission) startMission(idx);
+  if (idx === currentMission) {
+    // Show mission and store sections after first click
+    document.getElementById('mission-section').style.display = '';
+    document.getElementById('store-section').style.display = '';
+    startMission(idx);
+  }
 }));
 
 function startMission(idx) {

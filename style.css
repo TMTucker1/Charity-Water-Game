@@ -373,31 +373,268 @@ section {
 /* Make map the main focus on game screen */
 #game-screen main {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 2rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 80vh;
 }
 
 #map-section {
-  order: 1;
+  flex: none;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  background: #f9f6e3;
+  border: 4px solid #bfa76f;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(80,60,20,0.18);
+  padding: 2rem 1.5rem;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#mission-section, #store-section {
-  flex: 1 1 220px;
-  max-width: 320px;
-  min-width: 180px;
-  margin-top: 2rem;
+#map-section h3 {
+  text-align: center;
+  font-family: 'Pirata One', 'Papyrus', cursive, serif;
+  font-size: 2rem;
+  color: #bfa76f;
+  margin-bottom: 1.2rem;
+  letter-spacing: 2px;
+  text-shadow: 1px 2px 8px #fff8, 2px 2px 0 #bfa76f44;
 }
 
-@media (max-width: 900px) {
-  #game-screen main {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
+#map {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 340px;
+  gap: 0;
+  background: transparent;
+  width: 100%;
+}
+
+.building {
+  background: #fffbe6;
+  color: #6b4f1d;
+  padding: 1rem 2.2rem;
+  border-radius: 50%;
+  margin: 0.5rem 0;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: 'Pirata One', 'Papyrus', cursive, serif;
+  font-size: 1.2rem;
+  border: 3px solid #bfa76f;
+  box-shadow: 0 2px 8px #bfa76f33;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  position: relative;
+  z-index: 2;
+}
+.building.active {
+  background: #ffe066;
+  color: #a67c00;
+  border: 3px solid #a67c00;
+  box-shadow: 0 0 16px #ffe06688;
+}
+.building.completed {
+  background: #d4e157;
+  color: #4e5d06;
+  border: 3px solid #8bc34a;
+}
+
+.path {
+  width: 6px;
+  height: 48px;
+  background: repeating-linear-gradient(
+    to top,
+    #bfa76f 0 10px,
+    #f9f6e3 10px 20px
+  );
+  border-radius: 3px;
+  margin: 0.1rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive for mobile */
+@media (max-width: 600px) {
   #map-section {
     max-width: 98vw;
     padding: 1rem 0.5rem;
   }
+  #map-section h3 {
+    font-size: 1.2rem;
+  }
+  .building {
+    font-size: 1rem;
+    padding: 0.7rem 1.2rem;
+  }
+  .path {
+    height: 32px;
+  }
+}
+
+/* style.css */
+#campus-map {
+  display: grid;
+  grid-template-rows: 80px 80px 80px;
+  grid-template-columns: 100px 100px 100px;
+  gap: 0;
+  background: #f7fafc;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px #b0c4d633;
+  padding: 1.5rem;
+  position: relative;
+  min-width: 320px;
+  min-height: 260px;
+  margin: 0 auto;
+}
+
+.street-label {
+  font-size: 0.95rem;
+  color: #7b8fa3;
+  font-weight: 600;
+  letter-spacing: 1px;
+  align-self: center;
+  justify-self: center;
+  opacity: 0.8;
+}
+
+.building {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px #b0c4d622;
+  padding: 0.5rem 0.3rem 0.7rem 0.3rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border 0.2s, box-shadow 0.2s;
+  min-width: 80px;
+  min-height: 60px;
+  position: relative;
+  z-index: 2;
+}
+.building.active, .building:hover {
+  border: 2px solid #1AABFF;
+  box-shadow: 0 0 12px #1AABFF33;
+}
+.building.completed {
+  border: 2px solid #8bc34a;
+  background: #eafbe6;
+}
+.building-label {
+  margin-top: 0.4em;
+  font-size: 1rem;
+  color: #3a4a5d;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* Flat vector icons for buildings */
+.icon {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 0.2em;
+  border-radius: 8px;
+  background: #e0e7ef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dorm-icon { background: #b3e5fc; border: 2px solid #0288d1; }
+.cafeteria-icon { background: #ffe082; border: 2px solid #ffb300; }
+.gym-icon { background: #c8e6c9; border: 2px solid #388e3c; }
+.library-icon { background: #d1c4e9; border: 2px solid #7e57c2; }
+.science-icon { background: #ffccbc; border: 2px solid #e64a19; }
+.student-center-icon { background: #f8bbd0; border: 2px solid #c2185b; }
+
+/* Simple SVGs for each icon (optional, can be replaced with inline SVGs for more detail) */
+.dorm-icon::before {
+  content: "";
+  display: block;
+  width: 22px; height: 18px;
+  background: #0288d1;
+  border-radius: 3px 3px 6px 6px;
+  margin: 7px auto 0 auto;
+  box-shadow: 0 2px 0 #b3e5fc;
+}
+.cafeteria-icon::before {
+  content: "";
+  display: block;
+  width: 18px; height: 18px;
+  background: #ffb300;
+  border-radius: 50%;
+  margin: 7px auto 0 auto;
+  box-shadow: 0 2px 0 #ffe082;
+}
+.gym-icon::before {
+  content: "";
+  display: block;
+  width: 22px; height: 10px;
+  background: #388e3c;
+  border-radius: 8px 8px 12px 12px;
+  margin: 13px auto 0 auto;
+  box-shadow: 0 2px 0 #c8e6c9;
+}
+.library-icon::before {
+  content: "";
+  display: block;
+  width: 22px; height: 16px;
+  background: #7e57c2;
+  border-radius: 2px 2px 8px 8px;
+  margin: 9px auto 0 auto;
+  box-shadow: 0 2px 0 #d1c4e9;
+}
+.science-icon::before {
+  content: "";
+  display: block;
+  width: 20px; height: 20px;
+  background: #e64a19;
+  border-radius: 50% 50% 60% 60% / 60% 60% 100% 100%;
+  margin: 7px auto 0 auto;
+  box-shadow: 0 2px 0 #ffccbc;
+}
+.student-center-icon::before {
+  content: "";
+  display: block;
+  width: 22px; height: 14px;
+  background: #c2185b;
+  border-radius: 8px 8px 10px 10px;
+  margin: 11px auto 0 auto;
+  box-shadow: 0 2px 0 #f8bbd0;
+}
+
+/* Walking paths */
+.path {
+  background: #b0bec5;
+  border-radius: 3px;
+  z-index: 1;
+}
+.path[style*="grid-row: 3;"] { height: 6px; width: 100%; grid-row: 3; grid-column: 1 / span 3; align-self: center; }
+.path[style*="grid-row: 2;"] { height: 6px; width: 100%; grid-row: 2; grid-column: 2 / span 2; align-self: center; }
+.path[style*="grid-row: 1;"] { height: 6px; width: 100%; grid-row: 1; grid-column: 2 / span 2; align-self: center; }
+.path.vertical {
+  width: 6px; height: 100%;
+  align-self: stretch;
+  justify-self: center;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  #campus-map {
+    grid-template-rows: 60px 60px 60px;
+    grid-template-columns: 70px 70px 70px;
+    min-width: 220px;
+    min-height: 180px;
+    padding: 0.5rem;
+  }
+  .building-label { font-size: 0.85rem; }
+  .icon { width: 26px; height: 26px; }
 }
