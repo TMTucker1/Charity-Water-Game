@@ -9,17 +9,24 @@
 <body>
   <!-- Splash Screen -->
   <div id="splash-screen">
-    <div class="splash-content">
+    <div class="rain"></div>
+    <div class="puddles"></div>
+    <h1 class="splash-title">Water Warrior</h1>
+    <h2 class="splash-subtitle">
+      A <span class="cw-highlight">Charity:Water</span> Adventure
+    </h2>
+    <div class="splash-content" id="splash-content">
       
-        <h1 class="splash-title">Water Warrior</h1>
-        <h2 class="splash-subtitle">
-          Supporting <span class="cw-highlight">Charity:Water</span> 
-        </h2>
-      <div class="fun-fact">
-        <h3>Did you know?</h3>
-        <p>785 million people in the world don't have clean water. That's 1 in 10 people on the planet.</p>
-      </div>
       <button id="enter-button" title="Enter the game">ENTER GAME</button>
+    </div>
+  </div>
+
+  <!-- Fun Fact Modal -->
+  <div id="fun-fact-modal" class="hidden">
+    <div class="fun-fact-modal-content">
+      <h3>Did you know?</h3>
+      <p>785 million people in the world don't have clean water. That's 1 in 10 people on the planet.</p>
+      <div id="fun-fact-timer" style="margin-top:1em;color:#1AABFF;font-weight:bold;"></div>
     </div>
   </div>
 

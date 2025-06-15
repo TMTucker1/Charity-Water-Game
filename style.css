@@ -50,7 +50,7 @@ body {
   margin-bottom: 0.5rem;
   font-size: 1.2rem;
   font-weight: bold;
-  text-shadow: 1px 2px 8px rgba(0,0,0,0.10);
+  text-shadow: 1px 4px 8px rgba(0,0,0,0.10);
   padding: 0.3em 0.7em;
   border-radius: 6px;
   display: inline-block;
@@ -225,4 +225,40 @@ section {
   font-weight: bold;
   font-family: fantasy;
   text-decoration: underline;
+}
+#fun-fact-modal {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+#fun-fact-modal.hidden {
+  display: none;
+}
+.fun-fact-modal-content {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.18);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  text-align: center;
+  max-width: 340px;
+}
+.fun-fact-modal-content h3 {
+  color: #1AABFF;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-shadow: 2px 3px 8px rgba(0,0,0,0.15);
+  background: #e0f7fa;
+  padding: 0.3em 0.7em;
+  border-radius: 6px;
+  display: inline-block;
+  letter-spacing: 1px;
+  opacity: 1 !important;
+}
+.fun-fact-modal-content p {
+  color: #000;
+  margin: 1em 0 1.5em 0;
 }

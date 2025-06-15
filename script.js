@@ -1,7 +1,22 @@
 // Splash screen logic
 document.getElementById('enter-button').onclick = function() {
-  document.getElementById('splash-screen').classList.add('hidden');
-  document.getElementById('game-screen').classList.remove('hidden');
+  document.getElementById('fun-fact-modal').classList.remove('hidden');
+  document.getElementById('splash-content').style.visibility = 'hidden';
+
+  // 30 second countdown
+  let seconds = 15;
+  const timer = document.getElementById('fun-fact-timer');
+  timer.textContent = `Continuing in ${seconds} seconds...`;
+  const interval = setInterval(() => {
+    seconds--;
+    timer.textContent = `Continuing in ${seconds} seconds...`;
+    if (seconds <= 0) {
+      clearInterval(interval);
+      document.getElementById('splash-screen').classList.add('hidden');
+      document.getElementById('fun-fact-modal').classList.add('hidden');
+      document.getElementById('game-screen').classList.remove('hidden');
+    }
+  }, 1000);
 };
 
 // Game state
