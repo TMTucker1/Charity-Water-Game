@@ -64,6 +64,7 @@ body {
   cursor: pointer;
   font-weight: bold;
   transition: background 0.2s;
+  position: center;
 }
 #enter-button:hover { background: #ffffff; color:black}
 
@@ -191,28 +192,50 @@ section {
 }
 
 @media (max-width: 600px) {
-  .splash-title {
-    font-size: 1.6rem;
-    top: 4%;
+  #splash-screen,
+  #fun-fact-modal {
+    padding: 0;
+    min-width: 100vw;
+    min-height: 100vh;
   }
+
+  .splash-title,
   .splash-subtitle {
+    font-size: 1.1rem;
+    padding: 0 0.5em;
+    width: 100vw;
+    box-sizing: border-box;
+  }
+
+  .splash-content,
+  .fun-fact-modal-content {
+    max-width: 98vw;
+    padding: 1em 0.5em;
     font-size: 1rem;
-    top: 8.5%;
   }
-  .splash-content {
-    max-width: 95vw;
-    padding: 1rem;
-  }
+
   .logo {
-    max-width: 120px;
+    max-width: 90vw;
+    height: auto;
   }
-  .fun-fact {
-    font-size: 0.95rem;
-    padding: 0.7rem;
-  }
-  #enter-button {
+
+  .fun-fact-modal-content h3 {
     font-size: 1rem;
-    padding: 0.7rem 1.2rem;
+    padding: 0.2em 0.4em;
+  }
+
+  .fun-fact-modal-content p {
+    font-size: 0.95rem;
+  }
+
+  #fun-fact-timer {
+    font-size: 0.95rem;
+  }
+
+  #enter-button,
+  #continue-button {
+    font-size: 1rem;
+    padding: 0.6rem 1rem;
   }
 }
 
