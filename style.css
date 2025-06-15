@@ -1,0 +1,176 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #eaf6fb;
+  margin: 0;
+  color: #222;
+}
+.hidden { display: none !important; }
+
+/* Splash Screen */
+#splash-screen {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: #1AABFF;
+  background-image: url('../assets/images/charity-water-splash.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+
+.splash-content {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+  padding: 2rem;
+  text-align: center;
+  max-width: 350px;
+}
+.logo { max-width: 180px; margin-bottom: 1rem; }
+.fun-fact {
+  background: transparent;
+  color: #222;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1.2rem 0;
+  border-left: 5px solid #1AABFF;
+}
+#enter-button {
+  background: #1AABFF;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+#enter-button:hover { background: #0077b6; }
+
+/* Game Layout */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1AABFF;
+  color: #fff;
+  padding: 1rem;
+}
+main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin: 2rem 0;
+}
+section {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 1.2rem;
+  min-width: 250px;
+  max-width: 350px;
+  flex: 1 1 300px;
+}
+#map {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.building {
+  background: #e0e0e0;
+  color: #222;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  margin: 0.2rem 0;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s, color 0.2s;
+  border: 2px solid transparent;
+}
+.building.active {
+  background: #1AABFF;
+  color: #fff;
+  border: 2px solid #0077b6;
+}
+.building.completed {
+  background: #b2f7ef;
+  color: #222;
+  border: 2px solid #1AABFF;
+}
+.path {
+  width: 4px;
+  height: 24px;
+  background: #1AABFF;
+  border-radius: 2px;
+}
+#mission-content {
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#store-items {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+.store-item {
+  background: #1AABFF;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+.store-item:disabled {
+  background: #ccc;
+  color: #888;
+  cursor: not-allowed;
+}
+#store-message {
+  color: #0077b6;
+  min-height: 1.2em;
+}
+@media (max-width: 900px) {
+  main { flex-direction: column; align-items: center; }
+  section { max-width: 95vw; }
+}
+
+/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+.splash-title {
+  position: absolute;
+  top: 7%;
+  
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 2.8rem;
+  color: #3d2ff8;
+  letter-spacing: 2px;
+  text-shadow: 2px 4px 12px rgba(0,0,0,0.25);
+  z-index: 2;
+}
+
+.splash-subtitle {
+  position: absolute;
+  top: 19%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1.4rem;
+  color: #000102;
+  letter-spacing: 1px;
+  text-shadow: 1px 2px 8px rgba(0,0,0,0.18);
+  z-index: 2;
+}

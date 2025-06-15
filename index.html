@@ -1,34 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Water Warrior - Charity:Water Game</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/splash.css">
+  <meta charset="UTF-8">
+  <title>Water Warrior</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Splash Screen -->
-    <div id="splash-screen">
-        <div class="splash-content">
-            <img src="assets/images/charity-water-logo.png" alt="Charity:Water Logo" class="logo">
-            <h1>Water Warrior</h1>
-            <div class="fun-fact">
-                <h3>Did you know?</h3>
-                <p>785 million people in the world don't have clean water. That's 1 in 10 people on the planet.</p>
-            </div>
-            <button id="enter-button">ENTER GAME</button>
+  <!-- Splash Screen -->
+  <div id="splash-screen">
+    <div class="splash-content">
+      <img src="assets/images/splash-page-water.jpg" style="max-width:200px;">
+        <h1 class="splash-title">Water Warrior</h1>
+        <h2 class="splash-subtitle">Supporting <i>><strong>Charity:Water</strong><i>'s Mision</i></h2>
+      <div class="fun-fact">
+        <h3>Did you know?</h3>
+        <p>785 million people in the world don't have clean water. That's 1 in 10 people on the planet.</p>
+      </div>
+      <button id="enter-button">ENTER GAME</button>
+    </div>
+  </div>
+
+  <!-- Game Screen -->
+  <div id="game-screen" class="hidden">
+    <header>
+      <h2>Water Warrior Adventure</h2>
+      <div id="points">Points: 0</div>
+    </header>
+    <main>
+      <section id="map-section">
+        <h3>Campus Map</h3>
+        <div id="map">
+          <div class="building active" data-mission="0">Dorm Rooms</div>
+          <div class="path"></div>
+          <div class="building" data-mission="1">Library</div>
+          <div class="path"></div>
+          <div class="building" data-mission="2">Science Hall</div>
+          <div class="path"></div>
+          <div class="building" data-mission="3">Student Center</div>
         </div>
-    </div>
-
-    <!-- Game Screen (Initially Hidden) -->
-    <div id="game-screen" class="hidden">
-        <!-- Game content will be here -->
-        <h1>Water Warrior Game</h1>
-        <p>Game loading...</p>
-    </div>
-
-    <script src="js/splash.js"></script>
-    <script src="js/game.js"></script>
+      </section>
+      <section id="mission-section">
+        <div id="mission-content">
+          <p>Click the next building to start your mission!</p>
+        </div>
+      </section>
+      <section id="store-section">
+        <h3>Store</h3>
+        <div id="store-items">
+          <button class="store-item" data-cost="5">Water Bottle (5 pts)</button>
+          <button class="store-item" data-cost="10">T-Shirt (10 pts)</button>
+        </div>
+        <div id="store-message"></div>
+      </section>
+    </main>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
