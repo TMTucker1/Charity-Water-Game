@@ -280,3 +280,124 @@ section {
   color: #000;
   margin: 1em 0 1.5em 0;
 }
+
+/* Campus Map as Treasure Map */
+#map-section {
+  flex: 2 1 400px;
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+  background: #f9f6e3;
+  border: 4px solid #bfa76f;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(80,60,20,0.18);
+  padding: 2rem 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+#map-section h3 {
+  text-align: center;
+  font-family: 'Treasure Map Deadhand', 'Papyrus', cursive, serif;
+  font-size: 2.1rem;
+  color: #bfa76f;
+  margin-bottom: 1.2rem;
+  letter-spacing: 2px;
+  text-shadow: 1px 2px 8px #fff8, 2px 2px 0 #bfa76f44;
+}
+
+#map {
+  position: relative;
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: transparent;
+}
+
+.building {
+  background: #fffbe6;
+  color: #6b4f1d;
+  padding: 1rem 2.2rem;
+  border-radius: 50%;
+  margin: 0.5rem 0;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: 'Treasure Map Deadhand', 'Papyrus', cursive, serif;
+  font-size: 1.2rem;
+  border: 3px solid #bfa76f;
+  box-shadow: 0 2px 8px #bfa76f33;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  position: relative;
+  z-index: 2;
+}
+.building.active {
+  background: #ffe066;
+  color: #a67c00;
+  border: 3px solid #a67c00;
+  box-shadow: 0 0 16px #ffe06688;
+}
+.building.completed {
+  background: #d4e157;
+  color: #4e5d06;
+  border: 3px solid #8bc34a;
+}
+
+.path {
+  width: 6px;
+  height: 48px;
+  background: repeating-linear-gradient(
+    to bottom,
+    #bfa76f 0 10px,
+    #f9f6e3 10px 20px
+  );
+  border-radius: 3px;
+  margin: 0.1rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Optional: Add a treasure X at the last building */
+.building:last-child::after {
+  content: "✖";
+  color: #d32f2f;
+  font-size: 2rem;
+  position: absolute;
+  right: -1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Make map the main focus on game screen */
+#game-screen main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+#map-section {
+  order: 1;
+}
+
+#mission-section, #store-section {
+  flex: 1 1 220px;
+  max-width: 320px;
+  min-width: 180px;
+  margin-top: 2rem;
+}
+
+@media (max-width: 900px) {
+  #game-screen main {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  #map-section {
+    max-width: 98vw;
+    padding: 1rem 0.5rem;
+  }
+}
