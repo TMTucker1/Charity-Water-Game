@@ -1,0 +1,72 @@
+body {
+    background-color: #e0f7fa;
+    font-family: 'Arial', sans-serif;
+}
+
+.map {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    margin: 20px;
+}
+
+.building {
+    background-color: #4db6ac;
+    border: 2px solid #00796b;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s;
+}
+
+.building:hover {
+    transform: scale(1.05);
+}
+
+.path {
+    background-color: #b2dfdb;
+    border-radius: 5px;
+    height: 20px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.dorm-rooms {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.library {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.cafeteria {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.classroom {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.gym {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.lab {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.park {
+    grid-column: 2;
+    grid-row: 3;
+}
