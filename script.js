@@ -187,3 +187,15 @@ if (document.getElementById('splash-screen')) {
   createRain();
   createPuddles();
 }
+
+document.getElementById('dorm-building').onclick = function() {
+  document.getElementById('store-modal').classList.remove('hidden');
+};
+document.getElementById('dorm-building').onkeydown = function(e) {
+  if (e.key === "Enter" || e.key === " ") {
+    document.getElementById('store-modal').classList.remove('hidden');
+  }
+};
+document.getElementById('close-store').onclick = function() {
+  document.getElementById('store-modal').classList.add('hidden');
+};

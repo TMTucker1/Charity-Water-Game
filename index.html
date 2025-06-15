@@ -41,9 +41,16 @@
         <h3>Campus Map</h3>
         <div id="campus-map">
           <!-- Buildings -->
-          <div class="building dorm active" data-mission="0">
-            <div class="icon dorm-icon"></div>
-            <span class="building-label">Dorm Rooms</span>
+          <div class="building dorm active" data-mission="0" id="dorm-building" tabindex="0" title="Dorm Rooms">
+            <div class="dorm-visual">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/484/484167.png"
+                alt="Dorm Rooms Icon"
+                class="icon dorm-icon"
+                style="width:48px;height:48px;"
+              />
+              <span class="building-label dorm-label">Dorm Rooms</span>
+            </div>
           </div>
           <div class="building cafeteria" data-mission="1">
             <div class="icon cafeteria-icon"></div>
@@ -81,6 +88,20 @@
       </section>
     </main>
   </div>
+
+  <!-- Rewards Store Modal -->
+  <div id="store-modal" class="hidden">
+    <div class="store-modal-content">
+      <h3>Rewards Store</h3>
+      <ul>
+        <li>Water Bottle – 5 points</li>
+        <li>T-Shirt – 10 points</li>
+        <li>Sticker Pack – 2 points</li>
+      </ul>
+      <button id="close-store" title="Close Rewards Store">Close</button>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
