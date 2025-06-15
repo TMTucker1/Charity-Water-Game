@@ -189,9 +189,9 @@ body {
   margin: 1em 0 1.5em 0;
 }
 
-/* Campus Map as Treasure Map */
+/* Campus Map as Treasure Map 
 .game-screen h1 {
-  color: #2299dd; /* Charity Water blue */
+  color: #2299dd; /* Charity Water blue *
   display: flex;
   justify-content: center;
   align-items: center;
@@ -200,7 +200,7 @@ body {
   margin-top: 32px;
 }
 .game-screen h2 {
-  color: #48b7f7; /* Charity Water blue */
+  color: #48b7f7; /* Charity Water blue *
   display: flex;
   font-size: 24px;
   justify-content: center;
@@ -208,4 +208,4 @@ body {
   text-align: center;
   width: 100%;
   margin-top: 32px;
-}
+}*/

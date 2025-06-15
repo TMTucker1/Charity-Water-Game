@@ -159,29 +159,6 @@ document.querySelectorAll('.store-item').forEach(btn => {
   };
 });
 
-// Rain and puddle animation for splash screen
-function createRain() {
-  const rain = document.querySelector('.rain');
-  for (let i = 0; i < 40; i++) {
-    const drop = document.createElement('div');
-    drop.className = 'raindrop';
-    drop.style.left = Math.random() * 100 + 'vw';
-    drop.style.animationDelay = (Math.random() * 1.2) + 's';
-    drop.style.height = (12 + Math.random() * 16) + 'px';
-    rain.appendChild(drop);
-  }
-}
-function createPuddles() {
-  const puddles = document.querySelector('.puddles');
-  for (let i = 0; i < 6; i++) {
-    const puddle = document.createElement('div');
-    puddle.className = 'puddle';
-    puddle.style.left = (10 + Math.random() * 80) + 'vw';
-    puddle.style.width = (40 + Math.random() * 40) + 'px';
-    puddle.style.height = (10 + Math.random() * 10) + 'px';
-    puddle.style.animationDelay = (Math.random() * 2) + 's';
-    puddles.appendChild(puddle);
-  }
 }
 if (document.getElementById('splash-screen')) {
   createRain();
