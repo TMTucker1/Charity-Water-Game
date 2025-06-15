@@ -199,3 +199,8 @@ document.getElementById('dorm-building').onkeydown = function(e) {
 document.getElementById('close-store').onclick = function() {
   document.getElementById('store-modal').classList.add('hidden');
 };
+
+function updatePoints(points) {
+  document.getElementById('user-points').textContent = 'Points: ' + points;
+}
+// Example usage: updatePoints(10);

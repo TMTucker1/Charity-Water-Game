@@ -6,13 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <!-- Add Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 </head>
 <body>
   <!-- Splash Screen -->
   <div id="splash-screen">
-    <div class="rain"></div>
-    <div class="puddles"></div>
     <h1 class="splash-title">Water Warrior</h1>
     <h2 class="splash-subtitle">
       A <span class="cw-highlight">Charity:Water</span> Adventure
@@ -31,66 +30,13 @@
       <div id="fun-fact-timer" style="margin-top:1em;color:#1AABFF;font-weight:bold;"></div>
     </div>
   </div>
-
+ <div id="points">Points: 0</div>
   <!-- Game Screen -->
   <div id="game-screen" class="hidden">
-    <header>
-      <h2>Water Warrior Adventure</h2>
-      <div id="points">Points: 0</div>
-    </header>
-    <main>
-      <section id="map-section" class="container my-4">
-        <h3 class="text-center mb-4">Campus Map</h3>
-        <div id="campus-map" class="row justify-content-center align-items-center g-4">
-          <!-- Dorm Room Building -->
-          <div class="col-12 col-md-2 d-flex flex-column align-items-center">
-            <button id="dorm-building" class="btn btn-outline-info rounded-4 p-3 mb-2" tabindex="0" title="Dorm Rooms" style="background:#b3e5fc;">
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/484/484167.png"
-                alt="Dorm Rooms Icon"
-                class="mb-2"
-                style="width:48px;height:48px;"
-              />
-              <div class="fw-bold text-info">Dorm Rooms</div>
-            </button>
-          </div>
-          <!-- Cafeteria -->
-          <div class="col-12 col-md-2 d-flex flex-column align-items-center">
-            <div class="bg-warning-subtle border border-warning rounded-4 p-3 mb-2">
-              <div class="mb-2" style="width:36px;height:36px;background:#ffe082;border-radius:8px;border:2px solid #ffb300;"></div>
-              <div class="fw-semibold text-warning">Cafeteria</div>
-            </div>
-          </div>
-          <!-- Gym -->
-          <div class="col-12 col-md-2 d-flex flex-column align-items-center">
-            <div class="bg-success-subtle border border-success rounded-4 p-3 mb-2">
-              <div class="mb-2" style="width:36px;height:36px;background:#c8e6c9;border-radius:8px;border:2px solid #388e3c;"></div>
-              <div class="fw-semibold text-success">Gym</div>
-            </div>
-          </div>
-          <!-- Library -->
-          <div class="col-12 col-md-2 d-flex flex-column align-items-center">
-            <div class="bg-primary-subtle border border-primary rounded-4 p-3 mb-2">
-              <div class="mb-2" style="width:36px;height:36px;background:#d1c4e9;border-radius:8px;border:2px solid #7e57c2;"></div>
-              <div class="fw-semibold text-primary">Library</div>
-            </div>
-          </div>
-          <!-- Science Hall -->
-          <div class="col-12 col-md-2 d-flex flex-column align-items-center">
-            <div class="bg-danger-subtle border border-danger rounded-4 p-3 mb-2">
-              <div class="mb-2" style="width:36px;height:36px;background:#ffccbc;border-radius:8px;border:2px solid #e64a19;"></div>
-              <div class="fw-semibold text-danger">Science Hall</div>
-            </div>
-          </div>
-          <!-- Student Center -->
-          <div class="col-12 col-md-2 d-flex flex-column align-items-center">
-            <div class="bg-pink border border-danger rounded-4 p-3 mb-2">
-              <div class="mb-2" style="width:36px;height:36px;background:#f8bbd0;border-radius:8px;border:2px solid #c2185b;"></div>
-              <div class="fw-semibold text-danger">Student Center</div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <div class="game-screen">
+      <h1>The Water Warrior Adventure</h1>
+      <h2 id="user-points" class="text-center">Points: 0</h2>
+      
       <!-- Hide mission and store sections initially -->
       <section id="mission-section" style="display:none;">
         <div id="mission-content"></div>
@@ -100,7 +46,90 @@
         <div id="store-items"></div>
         <div id="store-message"></div>
       </section>
-    </main>
+      <section id="campus-map-section" class="container my-5">
+        <h3 class="text-center mb-4">Campus Map</h3>
+        <!-- Row 1 -->
+        <div class="row g-3">
+          <div class="col-12 col-sm-6 col-md-3">
+            <!-- Library -->
+            <div class="card shadow rounded bg-light text-center h-100">
+              <div class="card-body">
+                <i class="bi bi-book-half display-4 text-primary"></i>
+                <div class="mt-2 fw-bold">Library</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">
+            <!-- Dormitory -->
+            <div class="card shadow rounded bg-light text-center h-100">
+              <div class="card-body">
+                <i class="bi bi-house-door display-4 text-info"></i>
+                <div class="mt-2 fw-bold">Dormitory</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">
+            <!-- Lecture Hall -->
+            <div class="card shadow rounded bg-light text-center h-100">
+              <div class="card-body">
+                <i class="bi bi-easel display-4 text-warning"></i>
+                <div class="mt-2 fw-bold">Lecture Hall</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">
+            <!-- Cafeteria -->
+            <div class="card shadow rounded bg-light text-center h-100">
+              <div class="card-body">
+                <i class="bi bi-cup-straw display-4 text-success"></i>
+                <div class="mt-2 fw-bold">Cafeteria</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Horizontal "street" -->
+        <div class="my-3 w-100" style="height:8px; background:#e9ecef; border-radius:4px;"></div>
+        <!-- Row 2 -->
+        <div class="row g-3">
+          <div class="col-12 col-sm-6 col-md-3">
+            <!-- Gym -->
+            <div class="card shadow rounded bg-light text-center h-100">
+              <div class="card-body">
+                <i class="bi bi-bicycle display-4 text-danger"></i>
+                <div class="mt-2 fw-bold">Gym</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">
+            <!-- Student Center -->
+            <div class="card shadow rounded bg-light text-center h-100">
+              <div class="card-body">
+                <i class="bi bi-people display-4 text-secondary"></i>
+                <div class="mt-2 fw-bold">Student Center</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">
+            <!-- Science Lab -->
+            <div class="card shadow rounded bg-light text-center h-100">
+              <div class="card-body">
+                <i class="bi bi-flask display-4 text-info"></i>
+                <div class="mt-2 fw-bold">Science Lab</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">
+            <!-- Admin Office -->
+            <div class="card shadow rounded bg-light text-center h-100">
+              <div class="card-body">
+                <i class="bi bi-building display-4 text-dark"></i>
+                <div class="mt-2 fw-bold">Admin Office</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
 
   <!-- Rewards Store Modal (Bootstrap Modal) -->
