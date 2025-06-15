@@ -5,6 +5,8 @@
   <title>Water Warrior</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <!-- Add Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
   <!-- Splash Screen -->
@@ -37,44 +39,56 @@
       <div id="points">Points: 0</div>
     </header>
     <main>
-      <section id="map-section">
-        <h3>Campus Map</h3>
-        <div id="campus-map">
-          <!-- Buildings -->
-          <div class="building dorm active" data-mission="0" id="dorm-building" tabindex="0" title="Dorm Rooms">
-            <div class="dorm-visual">
+      <section id="map-section" class="container my-4">
+        <h3 class="text-center mb-4">Campus Map</h3>
+        <div id="campus-map" class="row justify-content-center align-items-center g-4">
+          <!-- Dorm Room Building -->
+          <div class="col-12 col-md-2 d-flex flex-column align-items-center">
+            <button id="dorm-building" class="btn btn-outline-info rounded-4 p-3 mb-2" tabindex="0" title="Dorm Rooms" style="background:#b3e5fc;">
               <img
                 src="https://cdn-icons-png.flaticon.com/512/484/484167.png"
                 alt="Dorm Rooms Icon"
-                class="icon dorm-icon"
+                class="mb-2"
                 style="width:48px;height:48px;"
               />
-              <span class="building-label dorm-label">Dorm Rooms</span>
+              <div class="fw-bold text-info">Dorm Rooms</div>
+            </button>
+          </div>
+          <!-- Cafeteria -->
+          <div class="col-12 col-md-2 d-flex flex-column align-items-center">
+            <div class="bg-warning-subtle border border-warning rounded-4 p-3 mb-2">
+              <div class="mb-2" style="width:36px;height:36px;background:#ffe082;border-radius:8px;border:2px solid #ffb300;"></div>
+              <div class="fw-semibold text-warning">Cafeteria</div>
             </div>
           </div>
-          <div class="building cafeteria" data-mission="1">
-            <div class="icon cafeteria-icon"></div>
-            <span class="building-label">Cafeteria</span>
+          <!-- Gym -->
+          <div class="col-12 col-md-2 d-flex flex-column align-items-center">
+            <div class="bg-success-subtle border border-success rounded-4 p-3 mb-2">
+              <div class="mb-2" style="width:36px;height:36px;background:#c8e6c9;border-radius:8px;border:2px solid #388e3c;"></div>
+              <div class="fw-semibold text-success">Gym</div>
+            </div>
           </div>
-          <div class="building gym" data-mission="2">
-            <div class="icon gym-icon"></div>
-            <span class="building-label">Gym</span>
+          <!-- Library -->
+          <div class="col-12 col-md-2 d-flex flex-column align-items-center">
+            <div class="bg-primary-subtle border border-primary rounded-4 p-3 mb-2">
+              <div class="mb-2" style="width:36px;height:36px;background:#d1c4e9;border-radius:8px;border:2px solid #7e57c2;"></div>
+              <div class="fw-semibold text-primary">Library</div>
+            </div>
           </div>
-          <div class="building library" data-mission="3">
-            <div class="icon library-icon"></div>
-            <span class="building-label">Library</span>
+          <!-- Science Hall -->
+          <div class="col-12 col-md-2 d-flex flex-column align-items-center">
+            <div class="bg-danger-subtle border border-danger rounded-4 p-3 mb-2">
+              <div class="mb-2" style="width:36px;height:36px;background:#ffccbc;border-radius:8px;border:2px solid #e64a19;"></div>
+              <div class="fw-semibold text-danger">Science Hall</div>
+            </div>
           </div>
-          <div class="building science" data-mission="4">
-            <div class="icon science-icon"></div>
-            <span class="building-label">Science Hall</span>
+          <!-- Student Center -->
+          <div class="col-12 col-md-2 d-flex flex-column align-items-center">
+            <div class="bg-pink border border-danger rounded-4 p-3 mb-2">
+              <div class="mb-2" style="width:36px;height:36px;background:#f8bbd0;border-radius:8px;border:2px solid #c2185b;"></div>
+              <div class="fw-semibold text-danger">Student Center</div>
+            </div>
           </div>
-          <div class="building student-center" data-mission="5">
-            <div class="icon student-center-icon"></div>
-            <span class="building-label">Student Center</span>
-          </div>
-          <!-- Paths -->
-          <div class="path-horizontal"></div>
-          <div class="path-vertical"></div>
         </div>
       </section>
       <!-- Hide mission and store sections initially -->
@@ -89,19 +103,40 @@
     </main>
   </div>
 
-  <!-- Rewards Store Modal -->
-  <div id="store-modal" class="hidden">
-    <div class="store-modal-content">
-      <h3>Rewards Store</h3>
-      <ul>
-        <li>Water Bottle – 5 points</li>
-        <li>T-Shirt – 10 points</li>
-        <li>Sticker Pack – 2 points</li>
-      </ul>
-      <button id="close-store" title="Close Rewards Store">Close</button>
+  <!-- Rewards Store Modal (Bootstrap Modal) -->
+  <div class="modal fade" id="storeModal" tabindex="-1" aria-labelledby="storeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title fs-5" id="storeModalLabel">Rewards Store</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" title="Close Rewards Store"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="list-group">
+            <li class="list-group-item">Water Bottle – 5 points</li>
+            <li class="list-group-item">T-Shirt – 10 points</li>
+            <li class="list-group-item">Sticker Pack – 2 points</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 
   <script src="script.js"></script>
+  <!-- Add Bootstrap JS at the end of body -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Show Bootstrap modal when Dorm Room is clicked
+    document.getElementById('dorm-building').addEventListener('click', function() {
+      var storeModal = new bootstrap.Modal(document.getElementById('storeModal'));
+      storeModal.show();
+    });
+    document.getElementById('dorm-building').addEventListener('keydown', function(e) {
+      if (e.key === "Enter" || e.key === " ") {
+        var storeModal = new bootstrap.Modal(document.getElementById('storeModal'));
+        storeModal.show();
+      }
+    });
+  </script>
 </body>
 </html>
