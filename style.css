@@ -174,3 +174,29 @@ section {
   text-shadow: 1px 2px 8px rgba(0,0,0,0.18);
   z-index: 2;
 }
+
+@media (max-width: 600px) {
+  .splash-title {
+    font-size: 1.6rem;
+    top: 4%;
+  }
+  .splash-subtitle {
+    font-size: 1rem;
+    top: 8.5%;
+  }
+  .splash-content {
+    max-width: 95vw;
+    padding: 1rem;
+  }
+  .logo {
+    max-width: 120px;
+  }
+  .fun-fact {
+    font-size: 0.95rem;
+    padding: 0.7rem;
+  }
+  #enter-button {
+    font-size: 1rem;
+    padding: 0.7rem 1.2rem;
+  }
+}
