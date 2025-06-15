@@ -1,7 +1,21 @@
+// script.js
+
+const funFacts = [
+  "785 million people in the world don't have clean water. That's 1 in 10 people on the planet.",
+  "Women and girls spend an estimated 200 million hours every day collecting water.",
+  "Access to clean water can improve health, education, and economic outcomes for entire communities.",
+  "Every $1 invested in clean water can yield $4–$12 in economic returns.",
+  "Diseases from dirty water kill more people every year than all forms of violence, including war."
+];
+
 // Splash screen logic
 document.getElementById('enter-button').onclick = function() {
   document.getElementById('fun-fact-modal').classList.remove('hidden');
   document.getElementById('splash-content').style.visibility = 'hidden';
+
+  // Pick a random fun fact
+  const fact = funFacts[Math.floor(Math.random() * funFacts.length)];
+  document.querySelector('#fun-fact-modal p').textContent = fact;
 
   // 30 second countdown
   let seconds = 15;
