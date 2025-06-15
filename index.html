@@ -40,41 +40,34 @@
       <section id="map-section">
         <h3>Campus Map</h3>
         <div id="campus-map">
-          <!-- Streets -->
-          <div class="street-label" style="grid-row: 1; grid-column: 2;">Knowledge Street</div>
-          <div class="street-label" style="grid-row: 2; grid-column: 1;">Learning Lane</div>
-          <div class="street-label" style="grid-row: 3; grid-column: 2;">Discovery Road</div>
           <!-- Buildings -->
-          <div class="building dorm" data-mission="0" style="grid-row: 3; grid-column: 1;">
+          <div class="building dorm active" data-mission="0">
             <div class="icon dorm-icon"></div>
             <span class="building-label">Dorm Rooms</span>
           </div>
-          <div class="building cafeteria" data-mission="1" style="grid-row: 3; grid-column: 2;">
+          <div class="building cafeteria" data-mission="1">
             <div class="icon cafeteria-icon"></div>
             <span class="building-label">Cafeteria</span>
           </div>
-          <div class="building gym" data-mission="2" style="grid-row: 3; grid-column: 3;">
+          <div class="building gym" data-mission="2">
             <div class="icon gym-icon"></div>
             <span class="building-label">Gym</span>
           </div>
-          <div class="building library" data-mission="3" style="grid-row: 2; grid-column: 2;">
+          <div class="building library" data-mission="3">
             <div class="icon library-icon"></div>
             <span class="building-label">Library</span>
           </div>
-          <div class="building science" data-mission="4" style="grid-row: 1; grid-column: 2;">
+          <div class="building science" data-mission="4">
             <div class="icon science-icon"></div>
             <span class="building-label">Science Hall</span>
           </div>
-          <div class="building student-center" data-mission="5" style="grid-row: 2; grid-column: 3;">
+          <div class="building student-center" data-mission="5">
             <div class="icon student-center-icon"></div>
             <span class="building-label">Student Center</span>
           </div>
-          <!-- Walking Paths (simple lines) -->
-          <div class="path" style="grid-row: 3; grid-column: 1 / span 3;"></div>
-          <div class="path vertical" style="grid-row: 2 / span 2; grid-column: 2;"></div>
-          <div class="path vertical" style="grid-row: 2 / span 2; grid-column: 3;"></div>
-          <div class="path" style="grid-row: 2; grid-column: 2 / span 2;"></div>
-          <div class="path" style="grid-row: 1; grid-column: 2 / span 2;"></div>
+          <!-- Paths -->
+          <div class="path-horizontal"></div>
+          <div class="path-vertical"></div>
         </div>
       </section>
       <!-- Hide mission and store sections initially -->

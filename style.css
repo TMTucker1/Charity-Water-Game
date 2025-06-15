@@ -480,161 +480,78 @@ section {
 /* style.css */
 #campus-map {
   display: grid;
-  grid-template-rows: 80px 80px 80px;
-  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 60px 120px 60px 120px 60px 120px 60px;
+  grid-template-columns: 60px 160px 60px 160px 60px 160px 60px;
   gap: 0;
   background: #f7fafc;
   border-radius: 18px;
   box-shadow: 0 2px 12px #b0c4d633;
-  padding: 1.5rem;
+  padding: 2.5rem;
   position: relative;
-  min-width: 320px;
-  min-height: 260px;
+  min-width: 700px;
+  min-height: 700px;
   margin: 0 auto;
 }
 
+/* Place buildings in their own grid cells with empty rows/columns as streets */
+.building {
+  grid-row-gap: 0;
+  grid-column-gap: 0;
+  z-index: 2;
+}
+
+/* Example: Place buildings with more space between them */
+.dorm      { grid-row: 6; grid-column: 2; }
+.cafeteria { grid-row: 6; grid-column: 4; }
+.gym       { grid-row: 6; grid-column: 6; }
+.library   { grid-row: 4; grid-column: 4; }
+.science   { grid-row: 2; grid-column: 4; }
+.student-center { grid-row: 2; grid-column: 6; }
+
+/* Street labels */
 .street-label {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: #7b8fa3;
   font-weight: 600;
   letter-spacing: 1px;
   align-self: center;
   justify-self: center;
   opacity: 0.8;
-}
-
-.building {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  background: #fff;
-  border-radius: 14px;
-  box-shadow: 0 2px 8px #b0c4d622;
-  padding: 0.5rem 0.3rem 0.7rem 0.3rem;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: border 0.2s, box-shadow 0.2s;
-  min-width: 80px;
-  min-height: 60px;
-  position: relative;
-  z-index: 2;
-}
-.building.active, .building:hover {
-  border: 2px solid #1AABFF;
-  box-shadow: 0 0 12px #1AABFF33;
-}
-.building.completed {
-  border: 2px solid #8bc34a;
-  background: #eafbe6;
-}
-.building-label {
-  margin-top: 0.4em;
-  font-size: 1rem;
-  color: #3a4a5d;
-  font-weight: 600;
-  text-align: center;
-  letter-spacing: 0.5px;
-}
-
-/* Flat vector icons for buildings */
-.icon {
-  width: 36px;
-  height: 36px;
-  margin-bottom: 0.2em;
-  border-radius: 8px;
-  background: #e0e7ef;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.dorm-icon { background: #b3e5fc; border: 2px solid #0288d1; }
-.cafeteria-icon { background: #ffe082; border: 2px solid #ffb300; }
-.gym-icon { background: #c8e6c9; border: 2px solid #388e3c; }
-.library-icon { background: #d1c4e9; border: 2px solid #7e57c2; }
-.science-icon { background: #ffccbc; border: 2px solid #e64a19; }
-.student-center-icon { background: #f8bbd0; border: 2px solid #c2185b; }
-
-/* Simple SVGs for each icon (optional, can be replaced with inline SVGs for more detail) */
-.dorm-icon::before {
-  content: "";
-  display: block;
-  width: 22px; height: 18px;
-  background: #0288d1;
-  border-radius: 3px 3px 6px 6px;
-  margin: 7px auto 0 auto;
-  box-shadow: 0 2px 0 #b3e5fc;
-}
-.cafeteria-icon::before {
-  content: "";
-  display: block;
-  width: 18px; height: 18px;
-  background: #ffb300;
-  border-radius: 50%;
-  margin: 7px auto 0 auto;
-  box-shadow: 0 2px 0 #ffe082;
-}
-.gym-icon::before {
-  content: "";
-  display: block;
-  width: 22px; height: 10px;
-  background: #388e3c;
-  border-radius: 8px 8px 12px 12px;
-  margin: 13px auto 0 auto;
-  box-shadow: 0 2px 0 #c8e6c9;
-}
-.library-icon::before {
-  content: "";
-  display: block;
-  width: 22px; height: 16px;
-  background: #7e57c2;
-  border-radius: 2px 2px 8px 8px;
-  margin: 9px auto 0 auto;
-  box-shadow: 0 2px 0 #d1c4e9;
-}
-.science-icon::before {
-  content: "";
-  display: block;
-  width: 20px; height: 20px;
-  background: #e64a19;
-  border-radius: 50% 50% 60% 60% / 60% 60% 100% 100%;
-  margin: 7px auto 0 auto;
-  box-shadow: 0 2px 0 #ffccbc;
-}
-.student-center-icon::before {
-  content: "";
-  display: block;
-  width: 22px; height: 14px;
-  background: #c2185b;
-  border-radius: 8px 8px 10px 10px;
-  margin: 11px auto 0 auto;
-  box-shadow: 0 2px 0 #f8bbd0;
-}
-
-/* Walking paths */
-.path {
-  background: #b0bec5;
-  border-radius: 3px;
   z-index: 1;
 }
-.path[style*="grid-row: 3;"] { height: 6px; width: 100%; grid-row: 3; grid-column: 1 / span 3; align-self: center; }
-.path[style*="grid-row: 2;"] { height: 6px; width: 100%; grid-row: 2; grid-column: 2 / span 2; align-self: center; }
-.path[style*="grid-row: 1;"] { height: 6px; width: 100%; grid-row: 1; grid-column: 2 / span 2; align-self: center; }
-.path.vertical {
-  width: 6px; height: 100%;
-  align-self: stretch;
+
+/* Example street names */
+.street-label.knowledge { grid-row: 1; grid-column: 2 / 7; }
+.street-label.learning  { grid-row: 3; grid-column: 2 / 7; }
+.street-label.discovery { grid-row: 5; grid-column: 2 / 7; }
+
+/* Paths (horizontal and vertical) */
+.path-horizontal {
+  grid-row: 6;
+  grid-column: 2 / 7;
+  height: 8px;
+  background: #b0bec5;
+  border-radius: 4px;
+  align-self: center;
+  z-index: 1;
+}
+.path-vertical {
+  grid-row: 2 / 7;
+  grid-column: 4;
+  width: 8px;
+  background: #b0bec5;
+  border-radius: 4px;
   justify-self: center;
+  z-index: 1;
 }
 
 /* Responsive */
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   #campus-map {
-    grid-template-rows: 60px 60px 60px;
-    grid-template-columns: 70px 70px 70px;
-    min-width: 220px;
-    min-height: 180px;
+    grid-template-rows: 30px 60px 30px 60px 30px 60px 30px;
+    grid-template-columns: 30px 80px 30px 80px 30px 80px 30px;
+    min-width: 350px;
+    min-height: 350px;
     padding: 0.5rem;
   }
-  .building-label { font-size: 0.85rem; }
-  .icon { width: 26px; height: 26px; }
 }
