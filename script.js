@@ -2,7 +2,7 @@
 
 const funFacts = [
   "785 million people in the world don't have clean water. That's 1 in 10 people on the planet.",
-  "Women and girls spend an estimated 200 million hours every day collecting water.",
+  "Women and girls spend anestimated 200 million hours every day collecting water.",
   "Access to clean water can improve health, education, and economic outcomes for entire communities.",
   "Every $1 invested in clean water can yield $4–$12 in economic returns.",
   "Diseases from dirty water kill more people every year than all forms of violence, including war."
@@ -101,12 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <p class="text-sm">Test your water knowledge</p>
                     <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Start Mission</button>
                   </div>
-                  <div class="bg-yellow-100 p-4 rounded-lg cursor-pointer hover:bg-yellow-200 transition-colors" onclick="launchMission(2)">
-                    <h3 class="font-bold">Water Wisdom Labs - Logic</h3>
-                    <p class="text-sm">Solve water-related logic challenges</p>
-                    <button class="mt-2 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Start Mission</button>
-                  </div>
-                  <div class="bg-purple-100 p-4 rounded-lg cursor-pointer hover:bg-purple-200 transition-colors" onclick="launchMission(3)">
+                  <div class="bg-purple-100 p-4 rounded-lg cursor-pointer hover:bg-purple-200 transition-colors" onclick="launchMission(2)">
                     <h3 class="font-bold">Ripple Recall - Memory Match</h3>
                     <p class="text-sm">Memory matching with water themes</p>
                     <button class="mt-2 bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">Start Mission</button>
@@ -117,34 +112,6 @@ document.addEventListener('DOMContentLoaded', function() {
           `;
           break;
           
-        case 'Inventory':
-          area.innerHTML = `
-            <div style="background: rgba(255,255,255,0.95); border-radius: 1rem; padding: 2rem; z-index: 1; position: relative; max-width: 800px;">
-              <h2 class="text-3xl font-bold mb-6 text-purple-600">Inventory</h2>
-              <div class="text-left space-y-4">
-                <p class="text-lg">Your Items:</p>
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
-                  <div class="bg-gray-100 p-4 rounded-lg text-center">
-                    <div class="text-2xl mb-2">🪣</div>
-                    <p class="text-sm">Water Bucket</p>
-                    <p class="text-xs text-gray-600">Qty: 0</p>
-                  </div>
-                  <div class="bg-gray-100 p-4 rounded-lg text-center">
-                    <div class="text-2xl mb-2">🚰</div>
-                    <p class="text-sm">Water Filter</p>
-                    <p class="text-xs text-gray-600">Qty: 0</p>
-                  </div>
-                  <div class="bg-gray-100 p-4 rounded-lg text-center">
-                    <div class="text-2xl mb-2">💧</div>
-                    <p class="text-sm">Clean Water</p>
-                    <p class="text-xs text-gray-600">Qty: 0</p>
-                  </div>
-                </div>
-                <p class="text-sm text-gray-600 mt-4">Complete missions and visit the store to acquire items!</p>
-              </div>
-            </div>
-          `;
-          break;
           
         case 'Rewards':
           area.innerHTML = `
@@ -287,12 +254,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <p class="text-sm">Test your water knowledge</p>
                     <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Start Mission</button>
                   </div>
-                  <div class="bg-yellow-100 p-4 rounded-lg cursor-pointer hover:bg-yellow-200 transition-colors" onclick="launchMission(2)">
-                    <h3 class="font-bold">Water Wisdom Labs - Logic</h3>
-                    <p class="text-sm">Solve water-related logic challenges</p>
-                    <button class="mt-2 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Start Mission</button>
-                  </div>
-                  <div class="bg-purple-100 p-4 rounded-lg cursor-pointer hover:bg-purple-200 transition-colors" onclick="launchMission(3)">
+                  <div class="bg-purple-100 p-4 rounded-lg cursor-pointer hover:bg-purple-200 transition-colors" onclick="launchMission(2)">
                     <h3 class="font-bold">Ripple Recall - Memory Match</h3>
                     <p class="text-sm">Memory matching with water themes</p>
                     <button class="mt-2 bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">Start Mission</button>
@@ -303,35 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
           `;
           break;
           
-        case 'Inventory':
-          area.innerHTML = `
-            <div style="background: rgba(255,255,255,0.95); border-radius: 1rem; padding: 2rem; z-index: 1; position: relative; max-width: 800px;">
-              <h2 class="text-3xl font-bold mb-6 text-purple-600">Inventory</h2>
-              <div class="text-left space-y-4">
-                <p class="text-lg">Your Items:</p>
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
-                  <div class="bg-gray-100 p-4 rounded-lg text-center">
-                    <div class="text-2xl mb-2">🪣</div>
-                    <p class="text-sm">Water Bucket</p>
-                    <p class="text-xs text-gray-600">Qty: 0</p>
-                  </div>
-                  <div class="bg-gray-100 p-4 rounded-lg text-center">
-                    <div class="text-2xl mb-2">🚰</div>
-                    <p class="text-sm">Water Filter</p>
-                    <p class="text-xs text-gray-600">Qty: 0</p>
-                  </div>
-                  <div class="bg-gray-100 p-4 rounded-lg text-center">
-                    <div class="text-2xl mb-2">💧</div>
-                    <p class="text-sm">Clean Water</p>
-                    <p class="text-xs text-gray-600">Qty: 0</p>
-                  </div>
-                </div>
-                <p class="text-sm text-gray-600 mt-4">Complete missions and visit the store to acquire items!</p>
-              </div>
-            </div>
-          `;
-          break;
-          
+      
         case 'Rewards':
           area.innerHTML = `
             <div style="background: rgba(255,255,255,0.95); border-radius: 1rem; padding: 2rem; z-index: 1; position: relative; max-width: 800px;">
@@ -416,7 +350,6 @@ document.addEventListener('DOMContentLoaded', function() {
 const missions = [
   { name: "Hydration Hall", type: "Collect", path: "1Hydration-Hall-Collect" },
   { name: "Aqua Archives", type: "Trivia", path: "aqua-archives" },
-  { name: "Water Wisdom Labs", type: "Logic", path: "water-wisdom-labs" },
   { name: "Ripple Recall", type: "Memory Match", path: "ripple-recall" }
 ];
 let currentMission = 0;
@@ -440,19 +373,6 @@ function startMission(idx) {
   else if (mission.type === "trivia") showTrivia();
   else if (mission.type === "whack") showWhack();
   else document.getElementById('mission-content').innerHTML = "<p>Welcome! Click the next building to start your mission.</p>";
-}
-
-// Mission 1: Logic Puzzle
-function showLogicPuzzle() {
-  document.getElementById('mission-content').innerHTML = `
-    <div>
-      <p><b>Logic Puzzle:</b> You have 3 jugs: 8L, 5L, and 3L. The 8L jug is full, others empty. Can you measure exactly 4L?</p>
-      <button id="logic-yes">Yes</button>
-      <button id="logic-no">No</button>
-    </div>
-  `;
-  document.getElementById('logic-yes').onclick = () => finishMission(true, "Correct! You can measure 4L.");
-  document.getElementById('logic-no').onclick = () => finishMission(false, "Actually, you can measure 4L!");
 }
 
 // Mission 2: Trivia
