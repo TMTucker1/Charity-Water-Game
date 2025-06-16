@@ -90,20 +90,27 @@ document.addEventListener('DOMContentLoaded', function() {
               <h2 class="text-3xl font-bold mb-6 text-green-600">Missions</h2>
               <div class="text-left space-y-4">
                 <p class="text-lg">Available Missions:</p>
-                <h3 class="font-bold">Aqua Archives - Trivia Questions</h3>
-                  <p class="text-sm">Solve water-related trivia questions.</p>
-                </div>
-                <div class="bg-green-100 p-4 rounded-lg">
-                  <h3 class="font-bold">Water Wisdom Labs - Logic Puzzle</h3>
-                  <p class="text-sm">A place for solving water logic puzzles.</p>
-                </div>
-                <div class="bg-yellow-100 p-4 rounded-lg">
-                  <h3 class="font-bold">Ripple Recall - Memory Match</h3>
-                  <p class="text-sm">Memory-based matching game with water-themed cards.</p>
-                </div>
-                <div class="bg-purple-100 p-4 rounded-lg">
-                  <h3 class="font-bold">Hydration Hall - Collect Jerry Cans</h3>
-                  <p class="text-sm">Collect jerry cans while avoiding obstacles!</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                  <div class="bg-blue-100 p-4 rounded-lg cursor-pointer hover:bg-blue-200 transition-colors" onclick="launchMission(0)">
+                    <h3 class="font-bold">Hydration Hall - Collect</h3>
+                    <p class="text-sm">Collect water drops and learn about hydration</p>
+                    <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Start Mission</button>
+                  </div>
+                  <div class="bg-green-100 p-4 rounded-lg cursor-pointer hover:bg-green-200 transition-colors" onclick="launchMission(1)">
+                    <h3 class="font-bold">Aqua Archives - Trivia</h3>
+                    <p class="text-sm">Test your water knowledge</p>
+                    <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Start Mission</button>
+                  </div>
+                  <div class="bg-yellow-100 p-4 rounded-lg cursor-pointer hover:bg-yellow-200 transition-colors" onclick="launchMission(2)">
+                    <h3 class="font-bold">Water Wisdom Labs - Logic</h3>
+                    <p class="text-sm">Solve water-related logic challenges</p>
+                    <button class="mt-2 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Start Mission</button>
+                  </div>
+                  <div class="bg-purple-100 p-4 rounded-lg cursor-pointer hover:bg-purple-200 transition-colors" onclick="launchMission(3)">
+                    <h3 class="font-bold">Ripple Recall - Memory Match</h3>
+                    <p class="text-sm">Memory matching with water themes</p>
+                    <button class="mt-2 bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">Start Mission</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -221,10 +228,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Game state
 const missions = [
-  { name: "Hydration Hall", type: "Collect" },
-  { name: "Aqua Archives", type: "Trivia" },
-  { name: "Water Wisdom Labs", type: "Logic" },
-  { name: "Ripple Recall", type: "Memory Match" }
+  { name: "Hydration Hall", type: "Collect", path: "1Hydration-Hall-Collect" },
+  { name: "Aqua Archives", type: "Trivia", path: "aqua-archives" },
+  { name: "Water Wisdom Labs", type: "Logic", path: "water-wisdom-labs" },
+  { name: "Ripple Recall", type: "Memory Match", path: "ripple-recall" }
 ];
 let currentMission = 0;
 let points = 0;
@@ -448,21 +455,25 @@ document.querySelectorAll('.menu-item').forEach(btn => {
             <div class="text-left space-y-4">
               <p class="text-lg">Available Missions:</p>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                <div class="bg-blue-100 p-4 rounded-lg">
-                  <h3 class="font-bold">Aqua Archives - Trivia Questions</h3>
-                  <p class="text-sm">Solve water-related trivia questions.</p>
+                <div class="bg-blue-100 p-4 rounded-lg cursor-pointer hover:bg-blue-200 transition-colors" onclick="launchMission(0)">
+                  <h3 class="font-bold">Hydration Hall - Collect</h3>
+                  <p class="text-sm">Collect water drops and learn about hydration</p>
+                  <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Start Mission</button>
                 </div>
-                <div class="bg-green-100 p-4 rounded-lg">
-                  <h3 class="font-bold">Water Wisdom Labs - Logic Puzzle</h3>
-                  <p class="text-sm">A place for solving water logic puzzles.</p>
+                <div class="bg-green-100 p-4 rounded-lg cursor-pointer hover:bg-green-200 transition-colors" onclick="launchMission(1)">
+                  <h3 class="font-bold">Aqua Archives - Trivia</h3>
+                  <p class="text-sm">Test your water knowledge</p>
+                  <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Start Mission</button>
                 </div>
-                <div class="bg-yellow-100 p-4 rounded-lg">
+                <div class="bg-yellow-100 p-4 rounded-lg cursor-pointer hover:bg-yellow-200 transition-colors" onclick="launchMission(2)">
+                  <h3 class="font-bold">Water Wisdom Labs - Logic</h3>
+                  <p class="text-sm">Solve water-related logic challenges</p>
+                  <button class="mt-2 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Start Mission</button>
+                </div>
+                <div class="bg-purple-100 p-4 rounded-lg cursor-pointer hover:bg-purple-200 transition-colors" onclick="launchMission(3)">
                   <h3 class="font-bold">Ripple Recall - Memory Match</h3>
-                  <p class="text-sm">Memory-based matching game with water-themed cards.</p>
-                </div>
-                <div class="bg-purple-100 p-4 rounded-lg">
-                  <h3 class="font-bold">Hydration Hall - Collect Jerry Cans</h3>
-                  <p class="text-sm">Collect jerry cans while avoiding obstacles!</p>
+                  <p class="text-sm">Memory matching with water themes</p>
+                  <button class="mt-2 bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">Start Mission</button>
                 </div>
               </div>
             </div>
@@ -577,3 +588,47 @@ document.querySelectorAll('.menu-item').forEach(btn => {
     }
   };
 });
+
+// Add the launchMission function
+function launchMission(missionIndex) {
+  const mission = missions[missionIndex];
+  
+  if (mission.name === "Hydration Hall" && mission.type === "Collect") {
+    // Load the hydration hall collect game
+    loadHydrationHallCollect();
+  } else {
+    // Handle other missions
+    console.log(`Launching mission: ${mission.name}`);
+    // You can add other mission handlers here
+  }
+}
+
+// Function to load the Hydration Hall Collect game
+function loadHydrationHallCollect() {
+  const gameArea = document.getElementById('gameArea');
+  
+  // Load the content from the correct folder name
+  gameArea.innerHTML = `
+    <div style="width: 100%; height: 100%; position: relative;">
+      <div style="position: absolute; top: 10px; left: 10px; z-index: 100;">
+        <button onclick="returnToMissions()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+          ← Back to Missions
+        </button>
+      </div>
+      <iframe 
+        src="1Hydration-Hall-Collect/index.html" 
+        style="width: 100%; height: 100%; border: none;"
+        title="Hydration Hall Collect Game">
+      </iframe>
+    </div>
+  `;
+}
+
+// Function to return to missions screen
+function returnToMissions() {
+  // Simulate clicking the Missions menu item
+  const missionsButton = document.querySelector('[data-menu="Missions"]');
+  if (missionsButton) {
+    missionsButton.click();
+  }
+}
