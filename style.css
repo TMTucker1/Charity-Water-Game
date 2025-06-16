@@ -1,3 +1,4 @@
+/* General Styles */
 body {
   font-family: Arial, sans-serif;
   background: #eaf6fb;
@@ -10,26 +11,19 @@ body {
 #splash-screen {
   position: fixed;
   top: 0; left: 0; width: 100vw; height: 100vh;
-  background: #1AABFF;
-  background-image: url('../assets/images/charity-water-splash.jpg');
-  background-size: cover;
-  background-position: center;
+  background: #1AABFF url('../assets/images/charity-water-splash.jpg') center/cover;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   overflow: hidden;
 }
-
-
 .splash-content {
   background: transparent;
-  box-sizing: edge;
   box-shadow: 0 25px 20px rgba(0,0,0,0.12);
   padding: 2rem;
   text-align: center;
   max-width: 700px;
-  
 }
 .logo { max-width: 180px; margin-bottom: 1rem; }
 .fun-fact {
@@ -38,7 +32,6 @@ body {
   padding: 1rem;
   border-radius: 8px;
   margin: 1.2rem 0;
- 
 }
 .fun-fact h3 {
   color: #cdff1a;
@@ -51,9 +44,7 @@ body {
   display: inline-block;
   letter-spacing: 1px;
 }
-.fun-fact p {
-  color: #cff02d;
-}
+.fun-fact p { color: #cff02d; }
 #enter-button {
   background: #00a2ff;
   color: #bff248;
@@ -64,94 +55,33 @@ body {
   cursor: pointer;
   font-weight: bold;
   transition: background 0.2s;
-  position: center;
 }
-#enter-button:hover { background: #ffffff; color:black}
+#enter-button:hover { background: #fff; color: black; }
 
-
-/* style.css */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
-
-.splash-title {
+.splash-title, .splash-subtitle {
   position: absolute;
-  top: 7%;
-  
   left: 50%;
   transform: translateX(-50%);
   font-family: 'Montserrat', Arial, sans-serif;
+  z-index: 2;
+}
+.splash-title {
+  top: 7%;
   font-size: 2.8rem;
   color: #3d2ff8;
   letter-spacing: 2px;
   text-shadow: 2px 4px 12px rgba(0,0,0,0.25);
-  z-index: 2;
 }
-
 .splash-subtitle {
-  position: absolute;
   top: 19%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Montserrat', Arial, sans-serif;
   font-size: 1.4rem;
   color: #000102;
   letter-spacing: 1px;
   text-shadow: 1px 2px 8px rgba(0,0,0,0.18);
-  z-index: 2;
 }
 
-@media (max-width: 600px) {
-  #splash-screen,
-  #fun-fact-modal {
-    padding: 0;
-    min-width: 100vw;
-    min-height: 100vh;
-  }
-
-  .splash-title,
-  .splash-subtitle {
-    font-size: 1.1rem;
-    padding: 0 0.5em;
-    width: 100vw;
-    box-sizing: border-box;
-  }
-
-  .splash-content,
-  .fun-fact-modal-content {
-    max-width: 98vw;
-    padding: 1em 0.5em;
-    font-size: 1rem;
-  }
-
-  .logo {
-    max-width: 90vw;
-    height: auto;
-  }
-
-  .fun-fact-modal-content h3 {
-    font-size: 1rem;
-    padding: 0.2em 0.4em;
-  }
-
-  .fun-fact-modal-content p {
-    font-size: 0.95rem;
-  }
-
-  #fun-fact-timer {
-    font-size: 0.95rem;
-  }
-
-  #enter-button,
-  #continue-button {
-    font-size: 1rem;
-    padding: 0.6rem 1rem;
-  }
-}
-
-.cw-highlight {
-  font-weight: bold;
-  font-family: fantasy;
-  text-decoration: underline;
-}
+/* Fun Fact Modal */
 #fun-fact-modal {
   position: fixed;
   top: 0; left: 0; width: 100vw; height: 100vh;
@@ -161,9 +91,7 @@ body {
   align-items: center;
   z-index: 2000;
 }
-#fun-fact-modal.hidden {
-  display: none;
-}
+#fun-fact-modal.hidden { display: none; }
 .fun-fact-modal-content {
   background: #fff;
   border-radius: 12px;
@@ -191,27 +119,16 @@ body {
 
 /* Desert Campus Layout */
 .desert-campus-container {
-  position: relative; /* Crucial for positioning the triangles inside */
+  position: relative;
   width: 100%;
-  max-width: 800px; /* Or your desired size */
-  height: 600px;    /* Or your desired size */
+  max-width: 800px;
+  height: 600px;
   margin: 2rem auto;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.15), 
               inset 0 0 15px rgba(0,0,0,0.05);
-  overflow: hidden; /* Important for clip-path to work as expected */
-  /* REMOVE any existing background-image or background color from this container itself,
-     as the triangles will form the new background. */
-  /* e.g., comment out: background: radial-gradient(...); */
+  overflow: hidden;
 }
-
-/* Remove or comment out any ::before or ::after pseudo-elements on .desert-campus-container
-   that were previously used for background effects if they conflict. */
-/*
-.desert-campus-container::before {
-  ...
-}
-*/
 
 /* Center Campus Area - Green Oasis */
 .campus-center-area {
@@ -233,104 +150,72 @@ body {
   z-index: 5;
 }
 
-/* Walkways */
+/* Walkways (pipeline look suggestion) */
 .walkway {
-  position: absolute; /* Walkways are typically absolutely positioned */
+  position: absolute;
+  z-index: 1;
+  border-radius: 20px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.25);
   background: linear-gradient(to right, 
-    rgba(139, 128, 102, 0.8) 0%, 
-    rgba(205, 192, 176, 0.9) 50%, 
-    rgba(139, 128, 102, 0.8) 100%);
-  z-index: 1; /* Higher than triangles (0) */
+    #b3a88e 0%, #8b8066 50%, #63583e 100%);
 }
-
+.walkway-north, .walkway-south {
+  width: 40px;
+  height: 250px;
+  background: linear-gradient(to right,
+    #b3a88e 0%, #8b8066 50%, #63583e 100%);
+}
+.walkway-east, .walkway-west {
+  width: 50%;
+  height: 40px;
+  background: linear-gradient(to bottom,
+    #b3a88e 0%, #8b8066 50%, #63583e 100%);
+}
 .walkway-north {
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 250px;
+  top: 0; left: 50%; transform: translateX(-50%);
 }
-
-.walkway-east {
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  width: 50%; /* Changed from fixed pixel value to 50% */
-  height: 40px; /* Adjust height as needed */
-  /* Ensure other styles like background and z-index are correct */
-  /* background: linear-gradient(...); */
-  /* z-index: 1; */
-}
-
 .walkway-south {
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 250px;
+  bottom: 0; left: 50%; transform: translateX(-50%);
 }
-
+.walkway-east {
+  top: 50%; right: 0; transform: translateY(-50%);
+}
 .walkway-west {
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  width: 50%; /* Changed from fixed pixel value to 50% */
-  height: 40px; /* Adjust height as needed */
-  /* Ensure other styles like background and z-index are correct */
-  /* background: linear-gradient(...); */
-  /* z-index: 1; */
+  top: 50%; left: 0; transform: translateY(-50%);
 }
 
-.campus-block {
-  position: absolute; /* Already absolute */
-  width: 120px;
-  height: 120px;
-  padding: 16px;
+/* Campus Blocks (shared styles) */
+.campus-block, .center-building, .surrounding-building {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  overflow: hidden;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
               box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
               background-color 0.2s ease;
-  border-width: 10px; /* Your current border thickness */
-  border-style: solid;
-  border-color: transparent; 
-  border-image-source: url('../assets/images/cracked-mud.jpg'); 
-  /* Using two values: <top_bottom_slice> <left_right_slice> */
-  /* Keep 250 for top/bottom, experiment with the second value for left/right */
-  border-image-slice: 250 35; /* Start with 30 for left/right, then try other values */
-  border-image-repeat: stretch; 
-  transform-origin: center center;
   backdrop-filter: blur(2px);
-  overflow: hidden; /* Add this to clip content that goes outside the block's bounds */
-  z-index: 2; /* Higher than walkways (1) and triangles (0) */
 }
-
-.campus-block:hover {
-  box-shadow: 0 12px 30px rgba(139, 69, 19, 0.3);
+.campus-block {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  padding: 16px;
+  z-index: 2;
+  transform-origin: center center;
 }
-
-.campus-block img {
-  max-width: 60%; /* This helps keep the image size relative to the container */
-  height: auto;
+.campus-block .bi {
+  font-size: 48px;
   margin-bottom: 8px;
-  /* Ensure there isn't a 'position: absolute;' here or from a more specific rule
-     that might be taking the image out of the flex flow.
-     If there is, you might need to adjust its positioning context or remove it. */
 }
-
 .campus-block p {
-  font-size: 0.875rem;
-  font-weight: 600;
-  margin: 0;
-  text-align: center;
-  line-height: 1.2;
+  font-size: 14px;
   color: #333;
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+  margin: 0;
 }
 
-/* Center building (Dormitory) - In the oasis */
+/* Center building (Dormitory) */
 .center-building {
   position: relative;
   width: 140px;
@@ -339,26 +224,20 @@ body {
   background: rgba(144, 238, 144, 0.9) !important;
   border: 3px solid rgba(34, 139, 34, 0.6);
 }
-
 .center-building:hover {
   transform: scale(1.05);
   background: rgba(152, 251, 152, 0.95) !important;
 }
-
-.center-building img {
-  width: 50px;
-  height: 50px;
-}
-
 .center-building p {
   font-size: 1rem;
   color: #2d5016;
   font-weight: 700;
 }
 
-/* Surrounding buildings positioned in rocky desert areas */
+/* Surrounding buildings */
 .surrounding-building {
   --circle-radius: 250px;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) 
@@ -367,7 +246,6 @@ body {
              rotate(calc(-1 * var(--rotation)));
   z-index: 2;
 }
-
 .surrounding-building:hover {
   transform: translate(-50%, -50%) 
              rotate(var(--rotation)) 
@@ -375,214 +253,54 @@ body {
              rotate(calc(-1 * var(--rotation)))
              scale(1.05);
 }
+.surrounding-building.bg-blue-100 { background: rgba(135, 206, 235, 0.85) !important; }
+.surrounding-building.bg-yellow-100 { background: rgba(255, 215, 0, 0.85) !important; }
+.surrounding-building.bg-red-100 { background: rgba(250, 128, 114, 0.85) !important; }
+.surrounding-building.bg-purple-100 { background: rgba(221, 160, 221, 0.85) !important; }
 
-/* Desert themed building colors */
-.surrounding-building.bg-blue-100 {
-  background: rgba(135, 206, 235, 0.85) !important;
+/* Triangle background elements */
+.background-triangle {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-repeat: repeat;
+  z-index: 0;
 }
-
-.surrounding-building.bg-yellow-100 {
-  background: rgba(255, 215, 0, 0.85) !important;
-}
-
-.surrounding-building.bg-red-100 {
-  background: rgba(250, 128, 114, 0.85) !important;
-}
-
-.surrounding-building.bg-purple-100 {
-  background: rgba(221, 160, 221, 0.85) !important;
-}
+#triangle-top    { clip-path: polygon(0 0, 100% 0, 50% 50%); }
+#triangle-right  { clip-path: polygon(100% 0, 100% 100%, 50% 50%); }
+#triangle-bottom { clip-path: polygon(100% 100%, 0 100%, 50% 50%); }
+#triangle-left   { clip-path: polygon(0 100%, 0 0, 50% 50%); }
 
 /* Responsive design */
 @media (max-width: 768px) {
-  .desert-campus-container {
-    width: 450px;
-    height: 450px;
-  }
-  
-  .campus-center-area {
-    width: 140px;
-    height: 140px;
-  }
-  
-  .surrounding-building {
-    --circle-radius: 160px;
-  }
-  
-  .walkway-north, .walkway-south {
-    width: 30px;
-    height: 160px;
-  }
-  
-  .walkway-east, .walkway-west {
-    width: 160px;
-    height: 30px;
-  }
-  
-  .campus-block {
-    width: 90px;
-    height: 90px;
-    padding: 12px;
-  }
-  
-  .center-building {
-    width: 110px;
-    height: 110px;
-  }
-  
-  .campus-block img {
-    width: 30px;
-    height: 30px;
-  }
-  
-  .center-building img {
-    width: 35px;
-    height: 35px;
-  }
-  
-  .campus-block p {
-    font-size: 0.75rem;
-  }
-  
-  .center-building p {
-    font-size: 0.875rem;
-  }
+  .desert-campus-container { width: 450px; height: 450px; }
+  .campus-center-area { width: 140px; height: 140px; }
+  .surrounding-building { --circle-radius: 160px; }
+  .walkway-north, .walkway-south { width: 30px; height: 160px; }
+  .walkway-east, .walkway-west { width: 160px; height: 30px; }
+  .campus-block { width: 90px; height: 90px; padding: 12px; }
+  .center-building { width: 110px; height: 110px; }
+  .campus-block .bi { font-size: 30px; }
+  .center-building .bi { font-size: 35px; }
+  .campus-block p { font-size: 0.75rem; }
+  .center-building p { font-size: 0.875rem; }
 }
-
 @media (max-width: 480px) {
-  .desert-campus-container {
-    width: 350px;
-    height: 350px;
-  }
-  
-  .campus-center-area {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .surrounding-building {
-    --circle-radius: 130px;
-  }
-  
-  .walkway-north, .walkway-south {
-    width: 25px;
-    height: 130px;
-  }
-  
-  .walkway-east, .walkway-west {
-    width: 130px;
-    height: 25px;
-  }
-  
-  .campus-block {
-    width: 70px;
-    height: 70px;
-    padding: 8px;
-  }
-  
-  .center-building {
-    width: 90px;
-    height: 90px;
-  }
-  
-  .campus-block img {
-    width: 25px;
-    height: 25px;
-  }
-  
-  .center-building img {
-    width: 30px;
-    height: 30px;
-  }
-  
-  .campus-block p {
-    font-size: 0.625rem;
-  }
-  
-  .center-building p {
-    font-size: 0.75rem;
-  }
+  .desert-campus-container { width: 350px; height: 350px; }
+  .campus-center-area { width: 100px; height: 100px; }
+  .surrounding-building { --circle-radius: 130px; }
+  .walkway-north, .walkway-south { width: 25px; height: 130px; }
+  .walkway-east, .walkway-west { width: 130px; height: 25px; }
+  .campus-block { width: 70px; height: 70px; padding: 8px; }
+  .center-building { width: 90px; height: 90px; }
+  .campus-block .bi { font-size: 25px; }
+  .center-building .bi { font-size: 30px; }
+  .campus-block p { font-size: 0.625rem; }
+  .center-building p { font-size: 0.75rem; }
 }
 
-/* Styles for the new triangle background elements */
-.background-triangle {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* TEMPORARILY use a solid color to test visibility and clipping */
-  background-color: red; /* Or any bright, obvious color */
-  /* background-image: url('../assets/images/cracked-mud.jpg'); */ /* Comment out image for now */
-  background-repeat: repeat;
-  z-index: 0; /* Base layer for the background */
-}
-
-#triangle-top {
-  clip-path: polygon(0 0, 100% 0, 50% 50%);
-  background-color: blue; /* Different color for testing if needed */
-}
-
-#triangle-right {
-  clip-path: polygon(100% 0, 100% 100%, 50% 50%);
-  background-color: green; /* Different color for testing if needed */
-}
-
-#triangle-bottom {
-  clip-path: polygon(100% 100%, 0 100%, 50% 50%);
-  background-color: yellow; /* Different color for testing if needed */
-}
-
-#triangle-left {
-  clip-path: polygon(0 100%, 0 0, 50% 50%);
-  background-color: purple; /* Different color for testing if needed */
-}
-
-/* Ensure the main container is set up correctly */
-.desert-campus-container {
-  position: relative;
-  width: 100%;
-  max-width: 800px;
-  height: 600px;
-  margin: 2rem auto;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15), 
-              inset 0 0 15px rgba(0,0,0,0.05);
-  overflow: hidden;
-  /* Ensure NO other background is set on the container itself */
-}
-
-/*
-  Z-INDEXING FOR OTHER ELEMENTS:
-  These MUST have a z-index higher than 0 to appear above the triangles.
-  They also need a 'position' property (relative, absolute, fixed) for z-index to work.
-*/
-
-.walkway {
-  position: absolute; /* Walkways are typically absolutely positioned */
-  /* ... your existing walkway styles for background, width, height, transform ... */
-  z-index: 1; /* Higher than triangles (0) */
-}
-
-/* Specific walkway positioning (ensure these are correct) */
-.walkway-north { /* top: 0; left: 50%; transform: translateX(-50%); width: 40px; height: 250px; */ }
-.walkway-east { /* top: 50%; right: 0; transform: translateY(-50%); width: 250px; height: 40px; */ }
-.walkway-south { /* bottom: 0; left: 50%; transform: translateX(-50%); width: 40px; height: 250px; */ }
-.walkway-west { /* top: 50%; left: 0; transform: translateY(-50%); width: 250px; height: 40px; */ }
-
-
-.campus-block {
-  position: absolute; /* Already absolute */
-  /* ... your existing campus-block styles ... */
-  z-index: 2; /* Higher than walkways (1) and triangles (0) */
-}
-
-.center-building {
-  /* ... your existing center-building styles ... */
-  z-index: 2; /* Or higher if it needs to be above other campus-blocks */
-}
-
-.surrounding-building {
-  /* ... your existing surrounding-building styles ... */
-  z-index: 2;
+/* Utility */
+.cw-highlight {
+  font-weight: bold;
+  font-family: fantasy;
+  text-decoration: underline;
 }
