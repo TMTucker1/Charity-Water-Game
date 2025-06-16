@@ -77,16 +77,16 @@ h1 img {
 
 .game-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 8px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
   margin: 0 auto;
-  max-width: 450px;
+  max-width: 320px;
   padding: 10px;
 }
 
 .grid-cell {
   background-color: #e8e8e8;
-  border-radius: 6px;
+  border-radius: 8px;
   aspect-ratio: 1;
   display: flex;
   align-items: center;
@@ -95,18 +95,17 @@ h1 img {
   transition: background-color 0.3s;
   position: relative;
   overflow: hidden;
-  min-height: 60px;
-  max-height: 70px;
+  min-height: 70px;
+  max-height: 80px;
 }
 
-.water-can-wrapper {
+.item-wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 45px;
-  height: 45px;
-  /* Ensure the wrapper is properly centered */
+  width: 50px;
+  height: 50px;
 }
 
 .water-can {
@@ -119,15 +118,36 @@ h1 img {
   cursor: pointer;
   border-radius: 50%;
   animation: popUp 0.5s cubic-bezier(0.17, 0.67, 0.34, 2);
-  transform-origin: center; /* Ensure scaling happens from the center */
+  transform-origin: center;
+}
+
+.penalty-circle {
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #F5402C;
+  font-size: 24px;
+  font-weight: bold;
+  animation: popUp 0.5s cubic-bezier(0.17, 0.67, 0.34, 2);
+  transform-origin: center;
+  border: 2px solid #F5402C;
+}
+
+.penalty-circle:hover {
+  background-color: #555;
 }
 
 @keyframes popUp {
   0% {
-    transform: scale(0.5); /* Start scaling from the center */
+    transform: scale(0.5);
   }
   100% {
-    transform: scale(1); /* End scaling at full size */
+    transform: scale(1);
   }
 }
 
