@@ -37,38 +37,42 @@
       <h2 id="user-points" class="text-lg mt-2">Points: 0</h2>
     </div>
 
-    <!-- Campus Map - Circular Layout -->
-    <div class="campus-circle-container">
-      <!-- Center Building - Dormitory -->
-      <div class="campus-block center-building bg-green-100 hover:bg-green-200 rounded-full shadow-lg text-center cursor-pointer" id="dorm-building">
-        <img src="https://img.icons8.com/ios-filled/50/000000/dormitory.png" class="mx-auto mb-2" alt="Dormitory">
-        <p class="font-semibold">Dormitory</p>
+    <!-- Campus Map - Desert Layout -->
+    <div class="desert-campus-container">
+      <!-- Walkways -->
+      <div class="walkway walkway-north"></div>
+      <div class="walkway walkway-east"></div>
+      <div class="walkway walkway-south"></div>
+      <div class="walkway walkway-west"></div>
+      
+      <!-- Center Campus Area -->
+      <div class="campus-center-area">
+        <!-- Center Building - Dormitory -->
+        <div class="campus-block center-building bg-green-100 hover:bg-green-200 rounded-full shadow-lg text-center cursor-pointer" id="dorm-building">
+          <img src="https://img.icons8.com/ios-filled/50/000000/dormitory.png" class="mx-auto mb-2" alt="Dormitory">
+          <p class="font-semibold">Dormitory</p>
+        </div>
       </div>
 
-      <!-- Surrounding Buildings -->
+      <!-- Surrounding Buildings in Rocky Areas -->
       <div class="campus-block surrounding-building bg-blue-100 hover:bg-blue-200 rounded-full shadow-lg text-center cursor-pointer" style="--rotation: 0deg;">
         <img src="https://img.icons8.com/ios-filled/50/000000/university.png" class="mx-auto mb-2" alt="Library">
         <p class="font-semibold">Library</p>
       </div>
 
-      <div class="campus-block surrounding-building bg-yellow-100 hover:bg-yellow-200 rounded-full shadow-lg text-center cursor-pointer" style="--rotation: 72deg;">
+      <div class="campus-block surrounding-building bg-yellow-100 hover:bg-yellow-200 rounded-full shadow-lg text-center cursor-pointer" style="--rotation: 90deg;">
         <img src="https://img.icons8.com/ios-filled/50/000000/classroom.png" class="mx-auto mb-2" alt="Lecture Hall">
         <p class="font-semibold">Lecture Hall</p>
       </div>
 
-      <div class="campus-block surrounding-building bg-red-100 hover:bg-red-200 rounded-full shadow-lg text-center cursor-pointer" style="--rotation: 144deg;">
+      <div class="campus-block surrounding-building bg-red-100 hover:bg-red-200 rounded-full shadow-lg text-center cursor-pointer" style="--rotation: 180deg;">
         <img src="https://img.icons8.com/ios-filled/50/000000/cafeteria.png" class="mx-auto mb-2" alt="Cafeteria">
         <p class="font-semibold">Cafeteria</p>
       </div>
 
-      <div class="campus-block surrounding-building bg-purple-100 hover:bg-purple-200 rounded-full shadow-lg text-center cursor-pointer" style="--rotation: 216deg;">
+      <div class="campus-block surrounding-building bg-purple-100 hover:bg-purple-200 rounded-full shadow-lg text-center cursor-pointer" style="--rotation: 270deg;">
         <img src="https://img.icons8.com/ios-filled/50/000000/gym.png" class="mx-auto mb-2" alt="Gym">
         <p class="font-semibold">Gym</p>
-      </div>
-
-      <div class="campus-block surrounding-building bg-pink-100 hover:bg-pink-200 rounded-full shadow-lg text-center cursor-pointer" style="--rotation: 288deg;">
-        <img src="https://img.icons8.com/ios-filled/50/000000/admin-settings-male.png" class="mx-auto mb-2" alt="Admin Office">
-        <p class="font-semibold">Admin Office</p>
       </div>
     </div>
   </div>

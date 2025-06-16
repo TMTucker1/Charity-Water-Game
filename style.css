@@ -189,15 +189,93 @@ body {
   margin: 1em 0 1.5em 0;
 }
 
-/* Campus Circular Layout */
-.campus-circle-container {
+/* Desert Campus Layout */
+.desert-campus-container {
   position: relative;
   width: 700px;
   height: 700px;
   margin: 2rem auto;
+  background: url('../assets/images/desert.jpg') center/cover;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+/* Add desert overlay for better contrast */
+.desert-campus-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    rgba(218, 165, 32, 0.1) 0%, 
+    rgba(160, 82, 45, 0.1) 50%, 
+    rgba(205, 133, 63, 0.1) 100%);
+  pointer-events: none;
+}
+
+/* Center Campus Area - Green Oasis */
+.campus-center-area {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, 
+    rgba(34, 139, 34, 0.3) 0%, 
+    rgba(50, 205, 50, 0.2) 40%, 
+    rgba(144, 238, 144, 0.1) 70%, 
+    transparent 100%);
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 5;
+}
+
+/* Walkways */
+.walkway {
+  position: absolute;
+  background: linear-gradient(to right, 
+    rgba(139, 128, 102, 0.8) 0%, 
+    rgba(205, 192, 176, 0.9) 50%, 
+    rgba(139, 128, 102, 0.8) 100%);
+  z-index: 2;
+}
+
+.walkway-north {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 250px;
+}
+
+.walkway-east {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 250px;
+  height: 40px;
+}
+
+.walkway-south {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 250px;
+}
+
+.walkway-west {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 250px;
+  height: 40px;
 }
 
 .campus-block {
@@ -212,18 +290,20 @@ body {
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
               box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
               background-color 0.2s ease;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 3px solid rgba(139, 69, 19, 0.4);
   transform-origin: center center;
+  backdrop-filter: blur(2px);
 }
 
 .campus-block:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 30px rgba(139, 69, 19, 0.3);
 }
 
 .campus-block img {
   width: 40px;
   height: 40px;
   margin-bottom: 8px;
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3));
 }
 
 .campus-block p {
@@ -232,21 +312,23 @@ body {
   margin: 0;
   text-align: center;
   line-height: 1.2;
+  color: #333;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
 }
 
-/* Center building (Dormitory) */
+/* Center building (Dormitory) - In the oasis */
 .center-building {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   width: 140px;
   height: 140px;
   z-index: 10;
+  background: rgba(144, 238, 144, 0.9) !important;
+  border: 3px solid rgba(34, 139, 34, 0.6);
 }
 
 .center-building:hover {
-  transform: translate(-50%, -50%) scale(1.05);
+  transform: scale(1.05);
+  background: rgba(152, 251, 152, 0.95) !important;
 }
 
 .center-building img {
@@ -256,9 +338,11 @@ body {
 
 .center-building p {
   font-size: 1rem;
+  color: #2d5016;
+  font-weight: 700;
 }
 
-/* Surrounding buildings positioned in a circle */
+/* Surrounding buildings positioned in rocky desert areas */
 .surrounding-building {
   --circle-radius: 250px;
   top: 50%;
@@ -267,6 +351,7 @@ body {
              rotate(var(--rotation)) 
              translateY(calc(-1 * var(--circle-radius))) 
              rotate(calc(-1 * var(--rotation)));
+  z-index: 8;
 }
 
 .surrounding-building:hover {
@@ -277,15 +362,47 @@ body {
              scale(1.05);
 }
 
+/* Desert themed building colors */
+.surrounding-building.bg-blue-100 {
+  background: rgba(135, 206, 235, 0.85) !important;
+}
+
+.surrounding-building.bg-yellow-100 {
+  background: rgba(255, 215, 0, 0.85) !important;
+}
+
+.surrounding-building.bg-red-100 {
+  background: rgba(250, 128, 114, 0.85) !important;
+}
+
+.surrounding-building.bg-purple-100 {
+  background: rgba(221, 160, 221, 0.85) !important;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
-  .campus-circle-container {
+  .desert-campus-container {
     width: 450px;
     height: 450px;
   }
   
+  .campus-center-area {
+    width: 140px;
+    height: 140px;
+  }
+  
   .surrounding-building {
     --circle-radius: 160px;
+  }
+  
+  .walkway-north, .walkway-south {
+    width: 30px;
+    height: 160px;
+  }
+  
+  .walkway-east, .walkway-west {
+    width: 160px;
+    height: 30px;
   }
   
   .campus-block {
@@ -319,13 +436,28 @@ body {
 }
 
 @media (max-width: 480px) {
-  .campus-circle-container {
+  .desert-campus-container {
     width: 350px;
     height: 350px;
   }
   
+  .campus-center-area {
+    width: 100px;
+    height: 100px;
+  }
+  
   .surrounding-building {
     --circle-radius: 130px;
+  }
+  
+  .walkway-north, .walkway-south {
+    width: 25px;
+    height: 130px;
+  }
+  
+  .walkway-east, .walkway-west {
+    width: 130px;
+    height: 25px;
   }
   
   .campus-block {
