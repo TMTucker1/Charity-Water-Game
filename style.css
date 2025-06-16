@@ -236,29 +236,62 @@ body {
 
 /* Surrounding buildings */
 .surrounding-building {
-  --circle-radius: 250px;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) 
-             rotate(var(--rotation)) 
-             translateY(calc(-1 * var(--circle-radius))) 
-             rotate(calc(-1 * var(--rotation)));
-  z-index: 2;
-  backdrop-filter: blur(4px); /* You can adjust the blur radius */
-  background: rgba(255,255,255,0.15); /* Optional: subtle frosted glass effect */
   width: 120px;
   height: 120px;
   border-radius: 50%;
-}
-.surrounding-building:hover {
-  transform: translate(-50%, -50%) 
-             rotate(var(--rotation)) 
-             translateY(calc(-1 * var(--circle-radius))) 
-             rotate(calc(-1 * var(--rotation)))
-             scale(1.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(6px);
+  background: rgba(255,255,255,0.15);
+  z-index: 2;
 }
 
+/* North (top center) */
+.building-north {
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+/* East (middle right) */
+.building-east {
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+}
+
+/* South (bottom center) */
+.building-south {
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+/* West (middle left) */
+.building-west {
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+}
+
+/* Responsive: keep width/height equal and border-radius: 50% */
+@media (max-width: 768px) {
+  .surrounding-building {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+  }
+}
+@media (max-width: 480px) {
+  .surrounding-building {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+  }
+}
 
 /* Triangle background elements */
 .background-triangle {
