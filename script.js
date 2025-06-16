@@ -159,7 +159,7 @@ document.querySelectorAll('.store-item').forEach(btn => {
   };
 });
 
-}
+
 if (document.getElementById('splash-screen')) {
   createRain();
   createPuddles();
