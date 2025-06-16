@@ -90,23 +90,20 @@ document.addEventListener('DOMContentLoaded', function() {
               <h2 class="text-3xl font-bold mb-6 text-green-600">Missions</h2>
               <div class="text-left space-y-4">
                 <p class="text-lg">Available Missions:</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                  <div class="bg-blue-100 p-4 rounded-lg">
-                    <h3 class="font-bold">Library - Logic Puzzle</h3>
-                    <p class="text-sm">Solve water-related logic challenges</p>
-                  </div>
-                  <div class="bg-green-100 p-4 rounded-lg">
-                    <h3 class="font-bold">Science Hall - Trivia</h3>
-                    <p class="text-sm">Test your water knowledge</p>
-                  </div>
-                  <div class="bg-yellow-100 p-4 rounded-lg">
-                    <h3 class="font-bold">Student Center - Action Game</h3>
-                    <p class="text-sm">Fast-paced water drop challenges</p>
-                  </div>
-                  <div class="bg-purple-100 p-4 rounded-lg">
-                    <h3 class="font-bold">Dorm Rooms - Store</h3>
-                    <p class="text-sm">Purchase helpful items</p>
-                  </div>
+                <h3 class="font-bold">Aqua Archives - Trivia Questions</h3>
+                  <p class="text-sm">Solve water-related trivia questions.</p>
+                </div>
+                <div class="bg-green-100 p-4 rounded-lg">
+                  <h3 class="font-bold">Water Wisdom Labs - Logic Puzzle</h3>
+                  <p class="text-sm">A place for solving water logic puzzles.</p>
+                </div>
+                <div class="bg-yellow-100 p-4 rounded-lg">
+                  <h3 class="font-bold">Ripple Recall - Memory Match</h3>
+                  <p class="text-sm">Memory-based matching game with water-themed cards.</p>
+                </div>
+                <div class="bg-purple-100 p-4 rounded-lg">
+                  <h3 class="font-bold">Hydration Hall - Collect Jerry Cans</h3>
+                  <p class="text-sm">Collect jerry cans while avoiding obstacles!</p>
                 </div>
               </div>
             </div>
@@ -224,10 +221,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Game state
 const missions = [
-  { name: "Dorm Rooms", type: "none" },
-  { name: "Library", type: "logic" },
-  { name: "Science Hall", type: "trivia" },
-  { name: "Student Center", type: "whack" }
+  { name: "Hydration Hall", type: "Collect" },
+  { name: "Aqua Archives", type: "Trivia" },
+  { name: "Water Wisdom Labs", type: "Logic" },
+  { name: "Ripple Recall", type: "Memory Match" }
 ];
 let currentMission = 0;
 let points = 0;
@@ -452,20 +449,20 @@ document.querySelectorAll('.menu-item').forEach(btn => {
               <p class="text-lg">Available Missions:</p>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                 <div class="bg-blue-100 p-4 rounded-lg">
-                  <h3 class="font-bold">Library - Logic Puzzle</h3>
-                  <p class="text-sm">Solve water-related logic challenges</p>
+                  <h3 class="font-bold">Aqua Archives - Trivia Questions</h3>
+                  <p class="text-sm">Solve water-related trivia questions.</p>
                 </div>
                 <div class="bg-green-100 p-4 rounded-lg">
-                  <h3 class="font-bold">Science Hall - Trivia</h3>
-                  <p class="text-sm">Test your water knowledge</p>
+                  <h3 class="font-bold">Water Wisdom Labs - Logic Puzzle</h3>
+                  <p class="text-sm">A place for solving water logic puzzles.</p>
                 </div>
                 <div class="bg-yellow-100 p-4 rounded-lg">
-                  <h3 class="font-bold">Student Center - Action Game</h3>
-                  <p class="text-sm">Fast-paced water drop challenges</p>
+                  <h3 class="font-bold">Ripple Recall - Memory Match</h3>
+                  <p class="text-sm">Memory-based matching game with water-themed cards.</p>
                 </div>
                 <div class="bg-purple-100 p-4 rounded-lg">
-                  <h3 class="font-bold">Dorm Rooms - Store</h3>
-                  <p class="text-sm">Purchase helpful items</p>
+                  <h3 class="font-bold">Hydration Hall - Collect Jerry Cans</h3>
+                  <p class="text-sm">Collect jerry cans while avoiding obstacles!</p>
                 </div>
               </div>
             </div>
