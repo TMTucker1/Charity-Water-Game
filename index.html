@@ -62,8 +62,19 @@
       </button>
     </div>
     <!-- Game area -->
-    <div id="gameArea" class="flex-1 flex items-center justify-center text-4xl font-bold transition-colors duration-300">
-      Welcome to the Game!
+    <div id="gameArea"
+         class="flex-1 flex items-center justify-center text-xl font-semibold p-8 transition-colors duration-300 text-center relative overflow-hidden">
+      <!-- Background image layer -->
+      <div style="position:absolute; inset:0; background: url('assets/images/jerry-cans.jpg') center center / cover no-repeat; opacity:0.75; z-index:0;"></div>
+      <!-- Foreground content -->
+      <div style="background: rgba(255,255,255,0.85); border-radius: 1rem; padding: 2rem; z-index: 1; position: relative;">
+        <h2 class="text-3xl font-bold mb-4">Welcome to Water Warrior!</h2>
+        <p>
+          This game is aimed to raise awareness about the global water crisis in a way that’s interactive, engaging, and accessible.<br><br>
+          By turning learning into gameplay, it empowers players—especially students and young changemakers—to understand the real-world impact of clean water access.<br><br>
+          All facts and stories shared are real life items from Charity:Water's work.
+        </p>
+      </div>
     </div>
   </div>
 
