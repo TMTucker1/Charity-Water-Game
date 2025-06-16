@@ -5,6 +5,35 @@ class WaterCrisisTrivia {
         this.selectedQuestions = [];
         this.isAnswered = false;
         
+        // Additional water crisis facts for "Did You Know?" popup
+        this.didYouKnowFacts = [
+            "The human body is about 60% water, and we can only survive 3-5 days without it.",
+            "It takes 2,700 liters of water to produce a single cotton t-shirt.",
+            "A leaky faucet can waste over 3,000 gallons of water per year.",
+            "Only 0.007% of the planet's water is available to fuel and feed its 6.8 billion people.",
+            "The average distance women in Africa and Asia walk to collect water is 3.7 miles.",
+            "Water-related diseases are responsible for more deaths in children than HIV/AIDS, malaria, and tuberculosis combined.",
+            "Americans use 5 times the amount of water that Europeans use daily.",
+            "A person can live about a month without food, but only about a week without water.",
+            "More people have access to a mobile phone than to a toilet.",
+            "The weight of water that women in Africa and Asia carry on their heads is equivalent to airline luggage limits - 44 pounds.",
+            "Unsafe water kills more children each year than war, malaria, HIV/AIDS and traffic accidents combined.",
+            "Every 20 seconds, a child dies from a water-related disease.",
+            "Agriculture accounts for 70% of global freshwater use.",
+            "By 2025, half of the world's population will be living in water-stressed areas.",
+            "Clean water and sanitation can increase a country's GDP by up to 7%.",
+            "In Madagascar, children under 5 are 3 times more likely to die if they don't have access to improved water sources.",
+            "Treating diarrhea costs $43 billion annually in India alone.",
+            "Girls are twice as likely to be out of school in areas without clean water.",
+            "180 million people drink water that puts them at risk of getting cancer.",
+            "Water scarcity affects 40% of the global population and this figure is rising.",
+            "One flush of a Western toilet uses as much water as most Africans have for an entire day's washing, drinking, cleaning and cooking.",
+            "The UN estimates that each person needs a minimum of 20 liters of clean water a day for basic needs.",
+            "Climate change could displace 200 million people by 2050 due to water scarcity.",
+            "Over 2 billion people live in countries experiencing high water stress.",
+            "Improving water supply and sanitation could prevent 361,000 deaths of children under 5 each year."
+        ];
+        
         this.initializeElements();
         this.bindEvents();
     }
@@ -137,6 +166,130 @@ class WaterCrisisTrivia {
                 Don't give up! Try again to learn more about the global water crisis and how we can help solve it.
             `;
         }
+        
+        // Show "Did You Know?" popup after a short delay
+        setTimeout(() => {
+            this.showDidYouKnowPopup();
+        }, 2000);
+    }
+    
+    // NEW METHOD: Show "Did You Know?" popup
+    showDidYouKnowPopup() {
+        // Get a random fact that wasn't in the quiz
+        const randomFact = this.didYouKnowFacts[Math.floor(Math.random() * this.didYouKnowFacts.length)];
+        
+        // Create popup overlay
+        const overlay = document.createElement('div');
+        overlay.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease-in;
+        `;
+        
+        // Create popup content
+        const popup = document.createElement('div');
+        popup.style.cssText = `
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 500px;
+            margin: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: slideIn 0.4s ease-out;
+            position: relative;
+            border: 3px solid #00d4ff;
+        `;
+        
+        popup.innerHTML = `
+            <div style="text-align: center;">
+                <div style="font-size: 3rem; margin-bottom: 15px;">💡</div>
+                <h2 style="color: #00d4ff; margin-bottom: 20px; font-size: 28px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+                    Did You Know?
+                </h2>
+                <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; margin-bottom: 25px; backdrop-filter: blur(10px);">
+                    <p style="font-size: 18px; line-height: 1.6; margin: 0;">
+                        ${randomFact}
+                    </p>
+                </div>
+                <p style="font-size: 14px; opacity: 0.8; margin-bottom: 20px;">
+                    Keep learning and spreading awareness about the global water crisis!
+                </p>
+                <button id="close-did-you-know" style="
+                    background: linear-gradient(45deg, #00d4ff, #0099cc);
+                    color: white;
+                    border: none;
+                    padding: 12px 30px;
+                    border-radius: 25px;
+                    font-size: 16px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 4px 15px rgba(0,212,255,0.3);
+                ">Got It!</button>
+            </div>
+        `;
+        
+        // Add animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            @keyframes slideIn {
+                from { transform: scale(0.8) translateY(-20px); opacity: 0; }
+                to { transform: scale(1) translateY(0); opacity: 1; }
+            }
+            @keyframes fadeOut {
+                from { opacity: 1; }
+                to { opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        overlay.appendChild(popup);
+        document.body.appendChild(overlay);
+        
+        // Close popup functionality
+        const closeButton = popup.querySelector('#close-did-you-know');
+        closeButton.onclick = function() {
+            overlay.style.animation = 'fadeOut 0.3s ease-out forwards';
+            setTimeout(() => {
+                if (document.body.contains(overlay)) {
+                    document.body.removeChild(overlay);
+                }
+                if (document.head.contains(style)) {
+                    document.head.removeChild(style);
+                }
+            }, 300);
+        };
+        
+        // Add hover effect to button
+        closeButton.addEventListener('mouseover', () => {
+            closeButton.style.transform = 'translateY(-2px)';
+            closeButton.style.boxShadow = '0 6px 20px rgba(0,212,255,0.4)';
+        });
+        
+        closeButton.addEventListener('mouseout', () => {
+            closeButton.style.transform = 'translateY(0)';
+            closeButton.style.boxShadow = '0 4px 15px rgba(0,212,255,0.3)';
+        });
+        
+        // Close on overlay click (but not popup content)
+        overlay.onclick = function(e) {
+            if (e.target === overlay) {
+                closeButton.click();
+            }
+        };
     }
     
     resetGame() {
