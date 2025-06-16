@@ -9,15 +9,13 @@ const funFacts = [
 ];
 
 // Splash screen logic
-document.getElementById('enter-button').onclick = function() {
+document.getElementById('enter-button').onclick = function () {
   document.getElementById('fun-fact-modal').classList.remove('hidden');
   document.getElementById('splash-content').style.visibility = 'hidden';
 
-  // Pick a random fun fact
   const fact = funFacts[Math.floor(Math.random() * funFacts.length)];
   document.querySelector('#fun-fact-modal p').textContent = fact;
 
-  // 30 second countdown
   let seconds = 1;
   const timer = document.getElementById('fun-fact-timer');
   timer.textContent = `Continuing in ${seconds} seconds...`;
@@ -33,7 +31,6 @@ document.getElementById('enter-button').onclick = function() {
   }, 1000);
 };
 
-// Game state
 const missions = [
   { name: "Dorm Rooms", type: "none" },
   { name: "Library", type: "logic" },
@@ -43,14 +40,12 @@ const missions = [
 let currentMission = 0;
 let points = 0;
 
-// Show only the map at first, reveal other sections after first mission is started
 const buildings = document.querySelectorAll('.building');
-buildings.forEach(b => b.addEventListener('click', function() {
+buildings.forEach(b => b.addEventListener('click', function () {
   const idx = parseInt(this.dataset.mission);
   if (idx === currentMission) {
-    // Show mission and store sections after first click
-    document.getElementById('mission-section').style.display = '';
-    document.getElementById('store-section').style.display = '';
+    document.getElementById('mission-section').classList.remove('hidden');
+    document.getElementById('store-section').classList.remove('hidden');
     startMission(idx);
   }
 }));
@@ -63,7 +58,6 @@ function startMission(idx) {
   else document.getElementById('mission-content').innerHTML = "<p>Welcome! Click the next building to start your mission.</p>";
 }
 
-// Mission 1: Logic Puzzle
 function showLogicPuzzle() {
   document.getElementById('mission-content').innerHTML = `
     <div>
@@ -76,7 +70,6 @@ function showLogicPuzzle() {
   document.getElementById('logic-no').onclick = () => finishMission(false, "Actually, you can measure 4L!");
 }
 
-// Mission 2: Trivia
 function showTrivia() {
   document.getElementById('mission-content').innerHTML = `
     <div>
@@ -87,35 +80,29 @@ function showTrivia() {
     </div>
   `;
   document.querySelectorAll('.trivia').forEach(btn => {
-    btn.onclick = (e) => finishMission(
+    btn.onclick = () => finishMission(
       btn.dataset.correct === "true",
       btn.dataset.correct === "true" ? "Correct! 71% is covered by water." : "Oops! The answer is 71%."
     );
   });
 }
 
-// Mission 3: Whack-a-Water-Drop
 function showWhack() {
-  let score = 0, total = 5, time = 0;
+  let score = 0, total = 5;
   document.getElementById('mission-content').innerHTML = `
     <div>
       <p><b>Whack-a-Water-Drop!</b> Click the water drops as fast as you can!</p>
-      <div id="whack-area" style="position:relative;width:200px;height:120px;background:#eaf6fb;border-radius:8px;margin:1rem auto;"></div>
+      <div id="whack-area" class="relative w-52 h-32 bg-blue-100 rounded mx-auto my-4"></div>
       <div id="whack-score">0 / ${total}</div>
     </div>
   `;
   function spawnDrop() {
-    if (score >= total) {
-      finishMission(true, "Great job! You whacked all the drops!");
-      return;
-    }
+    if (score >= total) return finishMission(true, "Great job! You whacked all the drops!");
     const area = document.getElementById('whack-area');
     area.innerHTML = '';
     const drop = document.createElement('div');
-    drop.style.position = 'absolute';
-    drop.style.width = '32px';
-    drop.style.height = '32px';
-    drop.style.background = 'url("https://cdn-icons-png.flaticon.com/512/728/728093.png") no-repeat center/contain';
+    drop.className = 'absolute w-8 h-8 bg-contain bg-center';
+    drop.style.backgroundImage = 'url("https://cdn-icons-png.flaticon.com/512/728/728093.png")';
     drop.style.left = Math.random() * 160 + 'px';
     drop.style.top = Math.random() * 80 + 'px';
     drop.style.cursor = 'pointer';
@@ -130,11 +117,10 @@ function showWhack() {
   spawnDrop();
 }
 
-// Mission finish logic
 function finishMission(success, msg) {
   if (success) {
     points += 5;
-    document.getElementById('points').textContent = `Points: ${points}`;
+    updatePoints(points);
     buildings[currentMission].classList.remove('active');
     buildings[currentMission].classList.add('completed');
     if (currentMission + 1 < buildings.length) {
@@ -145,13 +131,12 @@ function finishMission(success, msg) {
   document.getElementById('mission-content').innerHTML = `<p>${msg}</p>`;
 }
 
-// Store logic
 document.querySelectorAll('.store-item').forEach(btn => {
-  btn.onclick = function() {
+  btn.onclick = function () {
     const cost = parseInt(this.dataset.cost);
     if (points >= cost) {
       points -= cost;
-      document.getElementById('points').textContent = `Points: ${points}`;
+      updatePoints(points);
       document.getElementById('store-message').textContent = `You bought a ${this.textContent.split(' ')[0]}!`;
     } else {
       document.getElementById('store-message').textContent = "Not enough points!";
@@ -159,25 +144,25 @@ document.querySelectorAll('.store-item').forEach(btn => {
   };
 });
 
-
 if (document.getElementById('splash-screen')) {
   createRain();
   createPuddles();
 }
 
-document.getElementById('dorm-building').onclick = function() {
-  document.getElementById('store-modal').classList.remove('hidden');
-};
-document.getElementById('dorm-building').onkeydown = function(e) {
-  if (e.key === "Enter" || e.key === " ") {
+if (document.getElementById('dorm-building')) {
+  document.getElementById('dorm-building').onclick = function () {
     document.getElementById('store-modal').classList.remove('hidden');
-  }
-};
-document.getElementById('close-store').onclick = function() {
-  document.getElementById('store-modal').classList.add('hidden');
-};
-
-function updatePoints(points) {
-  document.getElementById('user-points').textContent = 'Points: ' + points;
+  };
+  document.getElementById('dorm-building').onkeydown = function (e) {
+    if (e.key === "Enter" || e.key === " ") {
+      document.getElementById('store-modal').classList.remove('hidden');
+    }
+  };
 }
-// Example usage: updatePoints(10);
+document.getElementById('close-store')?.addEventListener('click', () => {
+  document.getElementById('store-modal').classList.add('hidden');
+});
+
+function updatePoints(p) {
+  document.getElementById('user-points').textContent = 'Points: ' + p;
+}

@@ -30,140 +30,54 @@
       <div id="fun-fact-timer" style="margin-top:1em;color:#1AABFF;font-weight:bold;"></div>
     </div>
   </div>
-  <!-- Game Screen -->
-  <div id="game-screen" class="hidden">
-    <div class="game-screen">
-      <h1>The Water Warrior Adventure</h1>
-      <h2 id="user-points" class="text-center">Points: 0</h2>
-      
-      <!-- Hide mission and store sections initially 
-      <section id="mission-section" style="display:none;">
-        <div id="mission-content"></div>
-      </section>
-      <section id="store-section" style="display:none;">
-        <h3>Store</h3>
-        <div id="store-items"></div>
-        <div id="store-message"></div>
-      </section>
-      <section id="campus-map-section" class="container my-5">
-        <h3 class="text-center mb-4">Campus Map</h3>
-        <!-- Row 1 --
-        <div class="row g-3">
-          <div class="col-12 col-sm-6 col-md-3">
-            <!-- Library --
-            <div class="card shadow rounded bg-light text-center h-100">
-              <div class="card-body">
-                <i class="bi bi-book-half display-4 text-primary"></i>
-                <div class="mt-2 fw-bold">Library</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-md-3">
-            <!-- Dormitory --
-            <div class="card shadow rounded bg-light text-center h-100">
-              <div class="card-body">
-                <i class="bi bi-house-door display-4 text-info"></i>
-                <div class="mt-2 fw-bold">Dormitory</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-md-3">
-            <!-- Lecture Hall -
-            <div class="card shadow rounded bg-light text-center h-100">
-              <div class="card-body">
-                <i class="bi bi-easel display-4 text-warning"></i>
-                <div class="mt-2 fw-bold">Lecture Hall</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-md-3">
-            <!-- Cafeteria --
-            <div class="card shadow rounded bg-light text-center h-100">
-              <div class="card-body">
-                <i class="bi bi-cup-straw display-4 text-success"></i>
-                <div class="mt-2 fw-bold">Cafeteria</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Horizontal "street" 
-        <div class="my-3 w-100" style="height:8px; background:#e9ecef; border-radius:4px;"></div>
-        <!-- Row 2 --
-        <div class="row g-3">
-          <div class="col-12 col-sm-6 col-md-3">
-            <!-- Gym --
-            <div class="card shadow rounded bg-light text-center h-100">
-              <div class="card-body">
-                <i class="bi bi-bicycle display-4 text-danger"></i>
-                <div class="mt-2 fw-bold">Gym</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-md-3">
-            <!-- Student Center --
-            <div class="card shadow rounded bg-light text-center h-100">
-              <div class="card-body">
-                <i class="bi bi-people display-4 text-secondary"></i>
-                <div class="mt-2 fw-bold">Student Center</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-md-3">
-            <!-- Science Lab --
-            <div class="card shadow rounded bg-light text-center h-100">
-              <div class="card-body">
-                <i class="bi bi-flask display-4 text-info"></i>
-                <div class="mt-2 fw-bold">Science Lab</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-md-3">
-            <!-- Admin Office --
-            <div class="card shadow rounded bg-light text-center h-100">
-              <div class="card-body">
-                <i class="bi bi-building display-4 text-dark"></i>
-                <div class="mt-2 fw-bold">Admin Office</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+   <!-- Game Screen -->
+  <div id="game-screen" class="hidden py-10">
+    <div class="text-center">
+      <h1 class="text-4xl font-bold">The Water Warrior Adventure</h1>
+      <h2 id="user-points" class="text-lg mt-2">Points: 0</h2>
+    </div>
+
+    <!-- Campus Map - Circular Layout -->
+    <div class="campus-circle-container">
+      <!-- Center Building - Dormitory -->
+      <div class="campus-block center-building bg-green-100 hover:bg-green-200 rounded-full shadow-lg text-center cursor-pointer" id="dorm-building">
+        <img src="https://img.icons8.com/ios-filled/50/000000/dormitory.png" class="mx-auto mb-2" alt="Dormitory">
+        <p class="font-semibold">Dormitory</p>
+      </div>
+
+      <!-- Surrounding Buildings -->
+      <div class="campus-block surrounding-building bg-blue-100 hover:bg-blue-200 rounded-full shadow-lg text-center cursor-pointer" style="--rotation: 0deg;">
+        <img src="https://img.icons8.com/ios-filled/50/000000/university.png" class="mx-auto mb-2" alt="Library">
+        <p class="font-semibold">Library</p>
+      </div>
+
+      <div class="campus-block surrounding-building bg-yellow-100 hover:bg-yellow-200 rounded-full shadow-lg text-center cursor-pointer" style="--rotation: 72deg;">
+        <img src="https://img.icons8.com/ios-filled/50/000000/classroom.png" class="mx-auto mb-2" alt="Lecture Hall">
+        <p class="font-semibold">Lecture Hall</p>
+      </div>
+
+      <div class="campus-block surrounding-building bg-red-100 hover:bg-red-200 rounded-full shadow-lg text-center cursor-pointer" style="--rotation: 144deg;">
+        <img src="https://img.icons8.com/ios-filled/50/000000/cafeteria.png" class="mx-auto mb-2" alt="Cafeteria">
+        <p class="font-semibold">Cafeteria</p>
+      </div>
+
+      <div class="campus-block surrounding-building bg-purple-100 hover:bg-purple-200 rounded-full shadow-lg text-center cursor-pointer" style="--rotation: 216deg;">
+        <img src="https://img.icons8.com/ios-filled/50/000000/gym.png" class="mx-auto mb-2" alt="Gym">
+        <p class="font-semibold">Gym</p>
+      </div>
+
+      <div class="campus-block surrounding-building bg-pink-100 hover:bg-pink-200 rounded-full shadow-lg text-center cursor-pointer" style="--rotation: 288deg;">
+        <img src="https://img.icons8.com/ios-filled/50/000000/admin-settings-male.png" class="mx-auto mb-2" alt="Admin Office">
+        <p class="font-semibold">Admin Office</p>
+      </div>
     </div>
   </div>
 
-  <!-- Rewards Store Modal (Bootstrap Modal) 
-  <div class="modal fade" id="storeModal" tabindex="-1" aria-labelledby="storeModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title fs-5" id="storeModalLabel">Rewards Store</h3>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" title="Close Rewards Store"></button>
-        </div>
-        <div class="modal-body">
-          <ul class="list-group">
-            <li class="list-group-item">Water Bottle – 5 points</li>
-            <li class="list-group-item">T-Shirt – 10 points</li>
-            <li class="list-group-item">Sticker Pack – 2 points</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
   <script src="script.js"></script>
-  <!-- Add Bootstrap JS at the end of body -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Show Bootstrap modal when Dorm Room is clicked
+    // Modal trigger
     document.getElementById('dorm-building').addEventListener('click', function() {
-      var storeModal = new bootstrap.Modal(document.getElementById('storeModal'));
-      storeModal.show();
-    });
-    document.getElementById('dorm-building').addEventListener('keydown', function(e) {
-      if (e.key === "Enter" || e.key === " ") {
-        var storeModal = new bootstrap.Modal(document.getElementById('storeModal'));
-        storeModal.show();
-      }
+      alert("You clicked the Dormitory!");
     });
   </script>
 </body>
