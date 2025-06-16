@@ -28,7 +28,9 @@ document.getElementById('enter-button').onclick = function() {
       clearInterval(interval);
       document.getElementById('splash-screen').classList.add('hidden');
       document.getElementById('fun-fact-modal').classList.add('hidden');
-      document.getElementById('game-screen').classList.remove('hidden');
+      // Show the new game screen and hide the old one
+      document.getElementById('gameScreen').classList.remove('hidden');
+      document.getElementById('game-screen').classList.add('hidden');
     }
   }, 1000);
 };
@@ -181,3 +183,40 @@ function updatePoints(points) {
   document.getElementById('user-points').textContent = 'Points: ' + points;
 }
 // Example usage: updatePoints(10);
+
+// Replace 'yourSplashButtonId' with the actual ID of your splash screen button
+document.getElementById('yourSplashButtonId').onclick = function() {
+  document.getElementById('splash').style.display = 'none'; // or your splash hide logic
+  document.getElementById('gameScreen').classList.remove('hidden');
+};
+
+// Expand menu on hover
+const menu = document.getElementById('menu');
+menu.addEventListener('mouseenter', () => {
+  menu.classList.add('w-64');
+  menu.classList.remove('w-16');
+  document.querySelectorAll('.menu-label').forEach(el => el.classList.remove('hidden'));
+});
+menu.addEventListener('mouseleave', () => {
+  menu.classList.remove('w-64');
+  menu.classList.add('w-16');
+  document.querySelectorAll('.menu-label').forEach(el => el.classList.add('hidden'));
+});
+
+// Random color generator
+function randomColor() {
+  const colors = [
+    'bg-red-200', 'bg-green-200', 'bg-blue-200', 'bg-yellow-200',
+    'bg-purple-200', 'bg-pink-200', 'bg-indigo-200', 'bg-teal-200'
+  ];
+  return colors[Math.floor(Math.random() * colors.length)];
+}
+
+// Menu item click logic
+document.querySelectorAll('.menu-item').forEach(btn => {
+  btn.onclick = function() {
+    const area = document.getElementById('gameArea');
+    area.className = 'flex-1 flex items-center justify-center text-4xl font-bold transition-colors duration-300 ' + randomColor();
+    area.textContent = this.getAttribute('data-menu');
+  };
+});
