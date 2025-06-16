@@ -77,15 +77,16 @@ h1 img {
 
 .game-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
   margin: 0 auto;
-  max-width: 500px;
+  max-width: 450px;
+  padding: 10px;
 }
 
 .grid-cell {
   background-color: #e8e8e8;
-  border-radius: 8px;
+  border-radius: 6px;
   aspect-ratio: 1;
   display: flex;
   align-items: center;
@@ -94,6 +95,8 @@ h1 img {
   transition: background-color 0.3s;
   position: relative;
   overflow: hidden;
+  min-height: 60px;
+  max-height: 70px;
 }
 
 .water-can-wrapper {
@@ -101,8 +104,8 @@ h1 img {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 70px;
-  height: 70px;
+  width: 45px;
+  height: 45px;
   /* Ensure the wrapper is properly centered */
 }
 
