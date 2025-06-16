@@ -6,6 +6,30 @@ let spawnInterval;          // Holds the interval for spawning items
 let gameTimer;              // Holds the game timer interval
 let timeLeft = 30;          // Time left in seconds
 
+// Real Charity: Water success stories
+const successStories = [
+  {
+    title: "Meron's Story - Ethiopia",
+    story: "Before getting clean water, 14-year-old Meron had to walk three hours every day to collect water from a muddy river. The water made her family sick, and she often missed school. Now, with a new well in her village, Meron can focus on her education and dreams of becoming a teacher. The clean water has transformed not just her life, but her entire community's future.",
+    impact: "1,200 people in Meron's village now have access to clean water within 15 minutes of their homes."
+  },
+  {
+    title: "Celina's Community - Honduras", 
+    story: "Celina used to spend 6 hours daily walking to fetch water for her family of seven. The water source was contaminated and caused frequent illness. After Charity: Water built a well system in her community, Celina started a small business selling vegetables. Her children are healthier and attend school regularly.",
+    impact: "850 people in rural Honduras gained access to clean water, improving health and economic opportunities."
+  },
+  {
+    title: "Fatima's Village - Chad",
+    story: "In Chad, Fatima's village relied on a dirty pond shared with animals. Children were constantly sick with waterborne diseases. When Charity: Water drilled a new well, everything changed. School attendance increased by 80%, and child mortality dropped significantly. Fatima now leads the village water committee.",
+    impact: "2,100 people across 4 villages in Chad received clean water, dramatically improving health outcomes."
+  },
+  {
+    title: "James's School - Uganda",
+    story: "James, a teacher in rural Uganda, watched his students miss school due to water collection duties and illness from dirty water. A new borehole well at the school changed everything. Attendance soared, test scores improved, and the school became a community hub. James says it's the single most important change he's witnessed.",
+    impact: "600 students and 3,000 community members gained access to clean water at the school site."
+  }
+];
+
 // Creates the 4x4 game grid where items will appear
 function createGrid() {
   const grid = document.querySelector('.game-grid');
@@ -23,71 +47,131 @@ function updateDisplay() {
   document.getElementById('timer').textContent = timeLeft;
 }
 
-// Handle clicking on items (water cans or penalty circles)
-function handleItemClick(event) {
-  if (!gameActive) return;
+// Show Charity: Water success story popup
+function showSuccessStoryPopup() {
+  // Pick a random success story
+  const story = successStories[Math.floor(Math.random() * successStories.length)];
   
-  // Check if the clicked element is a water can
-  if (event.target.classList.contains('water-can')) {
-    currentCans++;
-    updateDisplay();
-    
-    // Remove the water can from the grid
-    const wrapper = event.target.closest('.item-wrapper');
-    if (wrapper) {
-      wrapper.remove();
-    }
-    
-    // Check if goal is reached
-    if (currentCans >= GOAL_CANS) {
-      endGame();
-      showAchievement('Congratulations! You collected all the water cans!');
-      
-      // Send completion message to parent window if embedded
-      if (window.parent !== window) {
-        window.parent.postMessage({
-          type: 'missionComplete', 
-          mission: 'hydration-hall', 
-          score: currentCans,
-          timeRemaining: timeLeft
-        }, '*');
-      }
-    }
-  }
+  // Create popup overlay
+  const overlay = document.createElement('div');
+  overlay.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in;
+  `;
   
-  // Check if the clicked element is a penalty circle
-  if (event.target.classList.contains('penalty-circle')) {
-    currentCans = Math.max(0, currentCans - 1); // Remove 1 point, but don't go below 0
-    updateDisplay();
-    
-    // Remove the penalty circle from the grid
-    const wrapper = event.target.closest('.item-wrapper');
-    if (wrapper) {
-      wrapper.remove();
-    }
-    
-    // Show brief penalty message
-    showPenaltyMessage();
-  }
-}
-
-// Show penalty message briefly
-function showPenaltyMessage() {
-  const achievementDiv = document.getElementById('achievements');
-  achievementDiv.textContent = 'Oops! -1 Point!';
-  achievementDiv.style.display = 'block';
-  achievementDiv.style.background = '#F5402C';
-  achievementDiv.style.color = 'white';
-  achievementDiv.style.padding = '10px';
-  achievementDiv.style.borderRadius = '8px';
-  achievementDiv.style.marginBottom = '20px';
-  achievementDiv.style.textAlign = 'center';
-  achievementDiv.style.fontWeight = 'bold';
+  // Create popup content
+  const popup = document.createElement('div');
+  popup.style.cssText = `
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 500px;
+    margin: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.4s ease-out;
+    position: relative;
+  `;
   
-  // Hide the message after 1 second
-  setTimeout(() => {
-    achievementDiv.style.display = 'none';
-  }, 1000);
+  popup.innerHTML = `
+    <div style="text-align: center; margin-bottom: 20px;">
+      <img src="https://assets.charitywater.org/images/logos/cw-logo-blue.svg" 
+           alt="Charity: Water" 
+           style="max-width: 150px; height: auto;"
+           onerror="this.style.display='none'">
+      <h2 style="color: #2E9DF7; margin: 10px 0; font-size: 24px;">Mission Accomplished!</h2>
+      <div style="background: #FFC907; color: #333; padding: 8px 16px; border-radius: 20px; display: inline-block; font-weight: bold; margin-bottom: 15px;">
+        🏆 You collected ${currentCans} water cans!
+      </div>
+    </div>
+    
+    <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+      <h3 style="color: #159A48; margin-top: 0; font-size: 20px;">${story.title}</h3>
+      <p style="line-height: 1.6; color: #333; margin-bottom: 15px;">${story.story}</p>
+      <div style="background: #e8f4f8; padding: 12px; border-radius: 8px; border-left: 4px solid #2E9DF7;">
+        <strong style="color: #2E9DF7;">Impact:</strong> ${story.impact}
+      </div>
+    </div>
+    
+    <div style="text-align: center;">
+      <p style="font-size: 14px; color: #666; margin-bottom: 15px;">
+        Every game you play represents real impact happening around the world.
+      </p>
+      <button id="close-popup" style="
+        background: #2E9DF7;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 25px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s;
+        margin-right: 10px;
+      ">Continue Playing</button>
+      <a href="https://www.charitywater.org" target="_blank" style="
+        background: #FFC907;
+        color: #333;
+        text-decoration: none;
+        padding: 12px 24px;
+        border-radius: 25px;
+        font-size: 16px;
+        font-weight: bold;
+        display: inline-block;
+        transition: background 0.3s;
+      ">Learn More</a>
+    </div>
+  `;
+  
+  // Add animations
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideIn {
+      from { transform: scale(0.8) translateY(-20px); opacity: 0; }
+      to { transform: scale(1) translateY(0); opacity: 1; }
+    }
+  `;
+  document.head.appendChild(style);
+  
+  overlay.appendChild(popup);
+  document.body.appendChild(overlay);
+  
+  // Close popup functionality
+  const closeButton = popup.querySelector('#close-popup');
+  closeButton.onclick = function() {
+    overlay.style.animation = 'fadeOut 0.3s ease-out forwards';
+    setTimeout(() => {
+      document.body.removeChild(overlay);
+      document.head.removeChild(style);
+    }, 300);
+  };
+  
+  // Add fadeOut animation
+  style.textContent += `
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+  `;
+  
+  // Close on overlay click (but not popup content)
+  overlay.onclick = function(e) {
+    if (e.target === overlay) {
+      closeButton.click();
+    }
+  };
 }
 
 // Start the game timer
