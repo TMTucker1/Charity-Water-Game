@@ -192,8 +192,8 @@ body {
 /* Campus Circular Layout */
 .campus-circle-container {
   position: relative;
-  width: 500px;
-  height: 500px;
+  width: 700px;
+  height: 700px;
   margin: 2rem auto;
   display: flex;
   justify-content: center;
@@ -209,12 +209,14 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: all 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.2s ease;
   border: 2px solid rgba(255, 255, 255, 0.3);
+  transform-origin: center center;
 }
 
 .campus-block:hover {
-  transform: scale(1.1);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
@@ -243,6 +245,10 @@ body {
   z-index: 10;
 }
 
+.center-building:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
 .center-building img {
   width: 50px;
   height: 50px;
@@ -254,7 +260,7 @@ body {
 
 /* Surrounding buildings positioned in a circle */
 .surrounding-building {
-  --circle-radius: 180px;
+  --circle-radius: 250px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) 
@@ -263,15 +269,23 @@ body {
              rotate(calc(-1 * var(--rotation)));
 }
 
+.surrounding-building:hover {
+  transform: translate(-50%, -50%) 
+             rotate(var(--rotation)) 
+             translateY(calc(-1 * var(--circle-radius))) 
+             rotate(calc(-1 * var(--rotation)))
+             scale(1.05);
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .campus-circle-container {
-    width: 350px;
-    height: 350px;
+    width: 450px;
+    height: 450px;
   }
   
   .surrounding-building {
-    --circle-radius: 120px;
+    --circle-radius: 160px;
   }
   
   .campus-block {
@@ -306,12 +320,12 @@ body {
 
 @media (max-width: 480px) {
   .campus-circle-container {
-    width: 280px;
-    height: 280px;
+    width: 350px;
+    height: 350px;
   }
   
   .surrounding-building {
-    --circle-radius: 100px;
+    --circle-radius: 130px;
   }
   
   .campus-block {
