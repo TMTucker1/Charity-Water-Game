@@ -9,31 +9,218 @@ const funFacts = [
 ];
 
 // Splash screen logic
-document.getElementById('enter-button').onclick = function() {
-  document.getElementById('fun-fact-modal').classList.remove('hidden');
-  document.getElementById('splash-content').style.visibility = 'hidden';
+document.addEventListener('DOMContentLoaded', function() {
+  // Splash screen logic
+  const enterButton = document.getElementById('enter-button');
+  if (enterButton) {
+    enterButton.onclick = function() {
+      document.getElementById('fun-fact-modal').classList.remove('hidden');
+      document.getElementById('splash-content').style.visibility = 'hidden';
 
-  // Pick a random fun fact
-  const fact = funFacts[Math.floor(Math.random() * funFacts.length)];
-  document.querySelector('#fun-fact-modal p').textContent = fact;
+      // Pick a random fun fact
+      const fact = funFacts[Math.floor(Math.random() * funFacts.length)];
+      document.querySelector('#fun-fact-modal p').textContent = fact;
 
-  // 30 second countdown
-  let seconds = 1;
-  const timer = document.getElementById('fun-fact-timer');
-  timer.textContent = `Continuing in ${seconds} seconds...`;
-  const interval = setInterval(() => {
-    seconds--;
-    timer.textContent = `Continuing in ${seconds} seconds...`;
-    if (seconds <= 0) {
-      clearInterval(interval);
-      document.getElementById('splash-screen').classList.add('hidden');
-      document.getElementById('fun-fact-modal').classList.add('hidden');
-      // Show the new game screen and hide the old one
-      document.getElementById('gameScreen').classList.remove('hidden');
-      document.getElementById('game-screen').classList.add('hidden');
-    }
-  }, 1000);
-};
+      // 30 second countdown
+      let seconds = 1;
+      const timer = document.getElementById('fun-fact-timer');
+      timer.textContent = `Continuing in ${seconds} seconds...`;
+      const interval = setInterval(() => {
+        seconds--;
+        timer.textContent = `Continuing in ${seconds} seconds...`;
+        if (seconds <= 0) {
+          clearInterval(interval);
+          document.getElementById('splash-screen').classList.add('hidden');
+          document.getElementById('fun-fact-modal').classList.add('hidden');
+          // Show the new game screen
+          document.getElementById('gameScreen').classList.remove('hidden');
+        }
+      }, 1000);
+    };
+  }
+
+  // Menu item click logic - wrapped in DOMContentLoaded
+  document.querySelectorAll('.menu-item').forEach(btn => {
+    btn.onclick = function() {
+      const area = document.getElementById('gameArea');
+      const menuType = this.getAttribute('data-menu');
+      
+      // Clear existing content and reset classes
+      area.className = 'flex-1 flex items-center justify-center text-xl font-semibold p-8 transition-colors duration-300 text-center relative overflow-hidden';
+      
+      // Create screen content based on menu selection
+      switch(menuType) {
+        case 'Home':
+          area.innerHTML = `
+            <!-- Background image layer -->
+            <div style="position:absolute; inset:0; background: url('assets/images/jerry-cans.jpg') center center / cover no-repeat; opacity:0.75; z-index:0;"></div>
+            <!-- Foreground content -->
+            <div style="background: rgba(255,255,255,0.85); border-radius: 1rem; padding: 2rem; z-index: 1; position: relative;">
+              <h2 class="text-3xl font-bold mb-4">Welcome to Water Warrior!</h2>
+              <p>
+                This game is aimed to raise awareness about the global water crisis in a way that's interactive, engaging, and accessible.<br><br>
+                By turning learning into gameplay, it empowers players—especially students and young changemakers—to understand the real-world impact of clean water access.<br><br>
+                All facts and stories shared are real life items from Charity:Water's work.
+              </p>
+            </div>
+          `;
+          break;
+          
+        case 'Game Rules':
+          area.innerHTML = `
+            <div style="background: rgba(255,255,255,0.95); border-radius: 1rem; padding: 2rem; z-index: 1; position: relative; max-width: 800px;">
+              <h2 class="text-3xl font-bold mb-6 text-blue-600">Game Rules</h2>
+              <div class="text-left space-y-4">
+                <p class="text-lg"><strong>How to Play Water Warrior:</strong></p>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                  <li>Complete missions to earn points</li>
+                  <li>Use points to purchase items in the store</li>
+                  <li>Learn about the global water crisis through interactive gameplay</li>
+                  <li>Unlock new areas as you progress</li>
+                </ul>
+                <p class="text-sm text-gray-600 mt-4">Navigate using the menu on the left to access different game features.</p>
+              </div>
+            </div>
+          `;
+          break;
+          
+        case 'Missions':
+          area.innerHTML = `
+            <div style="background: rgba(255,255,255,0.95); border-radius: 1rem; padding: 2rem; z-index: 1; position: relative; max-width: 800px;">
+              <h2 class="text-3xl font-bold mb-6 text-green-600">Missions</h2>
+              <div class="text-left space-y-4">
+                <p class="text-lg">Available Missions:</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                  <div class="bg-blue-100 p-4 rounded-lg">
+                    <h3 class="font-bold">Library - Logic Puzzle</h3>
+                    <p class="text-sm">Solve water-related logic challenges</p>
+                  </div>
+                  <div class="bg-green-100 p-4 rounded-lg">
+                    <h3 class="font-bold">Science Hall - Trivia</h3>
+                    <p class="text-sm">Test your water knowledge</p>
+                  </div>
+                  <div class="bg-yellow-100 p-4 rounded-lg">
+                    <h3 class="font-bold">Student Center - Action Game</h3>
+                    <p class="text-sm">Fast-paced water drop challenges</p>
+                  </div>
+                  <div class="bg-purple-100 p-4 rounded-lg">
+                    <h3 class="font-bold">Dorm Rooms - Store</h3>
+                    <p class="text-sm">Purchase helpful items</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+          break;
+          
+        case 'Inventory':
+          area.innerHTML = `
+            <div style="background: rgba(255,255,255,0.95); border-radius: 1rem; padding: 2rem; z-index: 1; position: relative; max-width: 800px;">
+              <h2 class="text-3xl font-bold mb-6 text-purple-600">Inventory</h2>
+              <div class="text-left space-y-4">
+                <p class="text-lg">Your Items:</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+                  <div class="bg-gray-100 p-4 rounded-lg text-center">
+                    <div class="text-2xl mb-2">🪣</div>
+                    <p class="text-sm">Water Bucket</p>
+                    <p class="text-xs text-gray-600">Qty: 0</p>
+                  </div>
+                  <div class="bg-gray-100 p-4 rounded-lg text-center">
+                    <div class="text-2xl mb-2">🚰</div>
+                    <p class="text-sm">Water Filter</p>
+                    <p class="text-xs text-gray-600">Qty: 0</p>
+                  </div>
+                  <div class="bg-gray-100 p-4 rounded-lg text-center">
+                    <div class="text-2xl mb-2">💧</div>
+                    <p class="text-sm">Clean Water</p>
+                    <p class="text-xs text-gray-600">Qty: 0</p>
+                  </div>
+                </div>
+                <p class="text-sm text-gray-600 mt-4">Complete missions and visit the store to acquire items!</p>
+              </div>
+            </div>
+          `;
+          break;
+          
+        case 'Rewards':
+          area.innerHTML = `
+            <div style="background: rgba(255,255,255,0.95); border-radius: 1rem; padding: 2rem; z-index: 1; position: relative; max-width: 800px;">
+              <h2 class="text-3xl font-bold mb-6 text-yellow-600">Rewards & Achievements</h2>
+              <div class="text-left space-y-4">
+                <p class="text-lg">Your Progress:</p>
+                <div class="space-y-3 mt-4">
+                  <div class="bg-yellow-100 p-3 rounded-lg flex items-center">
+                    <span class="text-2xl mr-3">🏆</span>
+                    <div>
+                      <h3 class="font-bold">Water Warrior Beginner</h3>
+                      <p class="text-sm text-gray-600">Complete your first mission</p>
+                    </div>
+                  </div>
+                  <div class="bg-gray-100 p-3 rounded-lg flex items-center opacity-50">
+                    <span class="text-2xl mr-3">🎯</span>
+                    <div>
+                      <h3 class="font-bold">Mission Master</h3>
+                      <p class="text-sm text-gray-600">Complete all missions</p>
+                    </div>
+                  </div>
+                  <div class="bg-gray-100 p-3 rounded-lg flex items-center opacity-50">
+                    <span class="text-2xl mr-3">💎</span>
+                    <div>
+                      <h3 class="font-bold">Water Expert</h3>
+                      <p class="text-sm text-gray-600">Score 100% on all trivia</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-6 p-4 bg-blue-50 rounded-lg">
+                  <p class="font-bold text-blue-800">Current Points: <span id="user-points">0</span></p>
+                </div>
+              </div>
+            </div>
+          `;
+          break;
+          
+        case 'About Charity:Water':
+          area.innerHTML = `
+            <div style="background: rgba(255,255,255,0.95); border-radius: 1rem; padding: 2rem; z-index: 1; position: relative; max-width: 800px;">
+              <h2 class="text-3xl font-bold mb-6 text-blue-600">About Charity: Water</h2>
+              <div class="text-left space-y-4">
+                <p class="text-lg">Our Mission:</p>
+                <p>Charity: water is a nonprofit organization bringing clean and safe drinking water to people in developing countries.</p>
+                
+                <div class="mt-6 space-y-3">
+                  <div class="bg-blue-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-blue-800">100% Model</h3>
+                    <p class="text-sm">100% of public donations go directly to funding water projects.</p>
+                  </div>
+                  <div class="bg-green-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-green-800">Transparency</h3>
+                    <p class="text-sm">Every project is tracked and verified using GPS coordinates and photos.</p>
+                  </div>
+                  <div class="bg-yellow-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-yellow-800">Impact</h3>
+                    <p class="text-sm">Over 18 million people have been served with clean water since 2006.</p>
+                  </div>
+                </div>
+                
+                <div class="mt-6 text-center">
+                  <p class="text-sm text-gray-600">Learn more at <a href="https://www.charitywater.org" class="text-blue-600 underline" target="_blank">charitywater.org</a></p>
+                </div>
+              </div>
+            </div>
+          `;
+          break;
+          
+        default:
+          area.innerHTML = `
+            <div style="background: rgba(255,255,255,0.95); border-radius: 1rem; padding: 2rem; z-index: 1; position: relative;">
+              <h2 class="text-3xl font-bold mb-4">Page Not Found</h2>
+              <p>This page is under construction.</p>
+            </div>
+          `;
+      }
+    };
+  });
+});
 
 // Game state
 const missions = [
@@ -216,7 +403,180 @@ function randomColor() {
 document.querySelectorAll('.menu-item').forEach(btn => {
   btn.onclick = function() {
     const area = document.getElementById('gameArea');
-    area.className = 'flex-1 flex items-center justify-center text-4xl font-bold transition-colors duration-300 ' + randomColor();
-    area.textContent = this.getAttribute('data-menu');
+    const menuType = this.getAttribute('data-menu');
+    
+    // Clear existing content and reset classes
+    area.className = 'flex-1 flex items-center justify-center text-xl font-semibold p-8 transition-colors duration-300 text-center relative overflow-hidden';
+    
+    // Create screen content based on menu selection
+    switch(menuType) {
+      case 'Home':
+        area.innerHTML = `
+          <!-- Background image layer -->
+          <div style="position:absolute; inset:0; background: url('assets/images/jerry-cans.jpg') center center / cover no-repeat; opacity:0.75; z-index:0;"></div>
+          <!-- Foreground content -->
+          <div style="background: rgba(255,255,255,0.85); border-radius: 1rem; padding: 2rem; z-index: 1; position: relative;">
+            <h2 class="text-3xl font-bold mb-4">Welcome to Water Warrior!</h2>
+            <p>
+              This game is aimed to raise awareness about the global water crisis in a way that's interactive, engaging, and accessible.<br><br>
+              By turning learning into gameplay, it empowers players—especially students and young changemakers—to understand the real-world impact of clean water access.<br><br>
+              All facts and stories shared are real life items from Charity:Water's work.
+            </p>
+          </div>
+        `;
+        break;
+        
+      case 'Game Rules':
+        area.innerHTML = `
+          <div style="background: rgba(255,255,255,0.95); border-radius: 1rem; padding: 2rem; z-index: 1; position: relative; max-width: 800px;">
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">Game Rules</h2>
+            <div class="text-left space-y-4">
+              <p class="text-lg"><strong>How to Play Water Warrior:</strong></p>
+              <ul class="list-disc list-inside space-y-2 ml-4">
+                <li>Complete missions to earn points</li>
+                <li>Use points to purchase items in the store</li>
+                <li>Learn about the global water crisis through interactive gameplay</li>
+                <li>Unlock new areas as you progress</li>
+              </ul>
+              <p class="text-sm text-gray-600 mt-4">Navigate using the menu on the left to access different game features.</p>
+            </div>
+          </div>
+        `;
+        break;
+        
+      case 'Missions':
+        area.innerHTML = `
+          <div style="background: rgba(255,255,255,0.95); border-radius: 1rem; padding: 2rem; z-index: 1; position: relative; max-width: 800px;">
+            <h2 class="text-3xl font-bold mb-6 text-green-600">Missions</h2>
+            <div class="text-left space-y-4">
+              <p class="text-lg">Available Missions:</p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                <div class="bg-blue-100 p-4 rounded-lg">
+                  <h3 class="font-bold">Library - Logic Puzzle</h3>
+                  <p class="text-sm">Solve water-related logic challenges</p>
+                </div>
+                <div class="bg-green-100 p-4 rounded-lg">
+                  <h3 class="font-bold">Science Hall - Trivia</h3>
+                  <p class="text-sm">Test your water knowledge</p>
+                </div>
+                <div class="bg-yellow-100 p-4 rounded-lg">
+                  <h3 class="font-bold">Student Center - Action Game</h3>
+                  <p class="text-sm">Fast-paced water drop challenges</p>
+                </div>
+                <div class="bg-purple-100 p-4 rounded-lg">
+                  <h3 class="font-bold">Dorm Rooms - Store</h3>
+                  <p class="text-sm">Purchase helpful items</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        break;
+        
+      case 'Inventory':
+        area.innerHTML = `
+          <div style="background: rgba(255,255,255,0.95); border-radius: 1rem; padding: 2rem; z-index: 1; position: relative; max-width: 800px;">
+            <h2 class="text-3xl font-bold mb-6 text-purple-600">Inventory</h2>
+            <div class="text-left space-y-4">
+              <p class="text-lg">Your Items:</p>
+              <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+                <div class="bg-gray-100 p-4 rounded-lg text-center">
+                  <div class="text-2xl mb-2">🪣</div>
+                  <p class="text-sm">Water Bucket</p>
+                  <p class="text-xs text-gray-600">Qty: 0</p>
+                </div>
+                <div class="bg-gray-100 p-4 rounded-lg text-center">
+                  <div class="text-2xl mb-2">🚰</div>
+                  <p class="text-sm">Water Filter</p>
+                  <p class="text-xs text-gray-600">Qty: 0</p>
+                </div>
+                <div class="bg-gray-100 p-4 rounded-lg text-center">
+                  <div class="text-2xl mb-2">💧</div>
+                  <p class="text-sm">Clean Water</p>
+                  <p class="text-xs text-gray-600">Qty: 0</p>
+                </div>
+              </div>
+              <p class="text-sm text-gray-600 mt-4">Complete missions and visit the store to acquire items!</p>
+            </div>
+          </div>
+        `;
+        break;
+        
+      case 'Rewards':
+        area.innerHTML = `
+          <div style="background: rgba(255,255,255,0.95); border-radius: 1rem; padding: 2rem; z-index: 1; position: relative; max-width: 800px;">
+            <h2 class="text-3xl font-bold mb-6 text-yellow-600">Rewards & Achievements</h2>
+            <div class="text-left space-y-4">
+              <p class="text-lg">Your Progress:</p>
+              <div class="space-y-3 mt-4">
+                <div class="bg-yellow-100 p-3 rounded-lg flex items-center">
+                  <span class="text-2xl mr-3">🏆</span>
+                  <div>
+                    <h3 class="font-bold">Water Warrior Beginner</h3>
+                    <p class="text-sm text-gray-600">Complete your first mission</p>
+                  </div>
+                </div>
+                <div class="bg-gray-100 p-3 rounded-lg flex items-center opacity-50">
+                  <span class="text-2xl mr-3">🎯</span>
+                  <div>
+                    <h3 class="font-bold">Mission Master</h3>
+                    <p class="text-sm text-gray-600">Complete all missions</p>
+                  </div>
+                </div>
+                <div class="bg-gray-100 p-3 rounded-lg flex items-center opacity-50">
+                  <span class="text-2xl mr-3">💎</span>
+                  <div>
+                    <h3 class="font-bold">Water Expert</h3>
+                    <p class="text-sm text-gray-600">Score 100% on all trivia</p>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-6 p-4 bg-blue-50 rounded-lg">
+                <p class="font-bold text-blue-800">Current Points: <span id="user-points">0</span></p>
+              </div>
+            </div>
+          </div>
+        `;
+        break;
+        
+      case 'About Charity:Water':
+        area.innerHTML = `
+          <div style="background: rgba(255,255,255,0.95); border-radius: 1rem; padding: 2rem; z-index: 1; position: relative; max-width: 800px;">
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">About Charity: Water</h2>
+            <div class="text-left space-y-4">
+              <p class="text-lg">Our Mission:</p>
+              <p>Charity: water is a nonprofit organization bringing clean and safe drinking water to people in developing countries.</p>
+              
+              <div class="mt-6 space-y-3">
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <h3 class="font-bold text-blue-800">100% Model</h3>
+                  <p class="text-sm">100% of public donations go directly to funding water projects.</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg">
+                  <h3 class="font-bold text-green-800">Transparency</h3>
+                  <p class="text-sm">Every project is tracked and verified using GPS coordinates and photos.</p>
+                </div>
+                <div class="bg-yellow-50 p-4 rounded-lg">
+                  <h3 class="font-bold text-yellow-800">Impact</h3>
+                  <p class="text-sm">Over 18 million people have been served with clean water since 2006.</p>
+                </div>
+              </div>
+              
+              <div class="mt-6 text-center">
+                <p class="text-sm text-gray-600">Learn more at <a href="https://www.charitywater.org" class="text-blue-600 underline" target="_blank">charitywater.org</a></p>
+              </div>
+            </div>
+          </div>
+        `;
+        break;
+        
+      default:
+        area.innerHTML = `
+          <div style="background: rgba(255,255,255,0.95); border-radius: 1rem; padding: 2rem; z-index: 1; position: relative;">
+            <h2 class="text-3xl font-bold mb-4">Page Not Found</h2>
+            <p>This page is under construction.</p>
+          </div>
+        `;
+    }
   };
 });
