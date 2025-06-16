@@ -195,7 +195,7 @@ body {
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
               box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
               background-color 0.2s ease;
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(3px); /* You can adjust the blur radius */
 }
 .campus-block {
   position: absolute;
@@ -245,6 +245,11 @@ body {
              translateY(calc(-1 * var(--circle-radius))) 
              rotate(calc(-1 * var(--rotation)));
   z-index: 2;
+  backdrop-filter: blur(4px); /* You can adjust the blur radius */
+  background: rgba(255,255,255,0.15); /* Optional: subtle frosted glass effect */
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
 }
 .surrounding-building:hover {
   transform: translate(-50%, -50%) 
@@ -253,10 +258,7 @@ body {
              rotate(calc(-1 * var(--rotation)))
              scale(1.05);
 }
-.surrounding-building.bg-blue-100 { background: rgba(135, 206, 235, 0.85) !important; }
-.surrounding-building.bg-yellow-100 { background: rgba(255, 215, 0, 0.85) !important; }
-.surrounding-building.bg-red-100 { background: rgba(250, 128, 114, 0.85) !important; }
-.surrounding-building.bg-purple-100 { background: rgba(221, 160, 221, 0.85) !important; }
+
 
 /* Triangle background elements */
 .background-triangle {
