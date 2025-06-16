@@ -1,0 +1,259 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: white;
+}
+
+#level-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 3rem;
+  margin:  5%;
+  color: #FEF2BF;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.btn {
+  margin: 25px;
+  display: inline-block;
+  height: 200px;
+  width: 200px;
+  border: 10px solid black;
+  border-radius: 20%;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    color: #4fc3f7;
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+}
+
+.score-board {
+    display: flex;
+    justify-content: space-between;
+    background: rgba(255,255,255,0.1);
+    padding: 15px 25px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.score, .moves, .timer {
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.mission-button {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.btn-mission {
+    background: linear-gradient(45deg, #4fc3f7, #29b6f6);
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    font-size: 1.3rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(79,195,247,0.3);
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.btn-mission:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(79,195,247,0.4);
+    background: linear-gradient(45deg, #29b6f6, #4fc3f7);
+}
+
+.game-container {
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+}
+
+.memory-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.memory-card {
+    aspect-ratio: 1;
+    background: linear-gradient(45deg, #e3f2fd, #bbdefb);
+    border: 3px solid rgba(255,255,255,0.3);
+    border-radius: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    transition: all 0.3s ease;
+    perspective: 1000px;
+    position: relative;
+    min-height: 120px;
+}
+
+.memory-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.memory-card.flipped {
+    background: linear-gradient(45deg, #4fc3f7, #29b6f6);
+    color: white;
+    border-color: #4fc3f7;
+}
+
+.memory-card.matched {
+    background: linear-gradient(45deg, #4caf50, #45a049);
+    border-color: #4caf50;
+    cursor: default;
+    transform: scale(0.95);
+}
+
+.memory-card.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.card-content {
+    display: none;
+}
+
+.memory-card.flipped .card-content,
+.memory-card.matched .card-content {
+    display: block;
+}
+
+.result-screen {
+    text-align: center;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+}
+
+.result-screen h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #4caf50;
+}
+
+.result-screen p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.final-stats {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.final-stats p {
+    font-size: 1.1rem;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.btn-play-again {
+    background: linear-gradient(45deg, #4fc3f7, #29b6f6);
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-play-again:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(79,195,247,0.3);
+}
+
+.hidden {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .score-board {
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .memory-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    
+    .memory-card {
+        font-size: 2rem;
+        min-height: 100px;
+    }
+    
+    .game-container {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .memory-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .memory-card {
+        font-size: 1.8rem;
+        min-height: 80px;
+    }
+}

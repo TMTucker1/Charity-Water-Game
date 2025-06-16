@@ -596,7 +596,9 @@ function launchMission(missionIndex) {
   if (mission.name === "Hydration Hall" && mission.type === "Collect") {
     loadHydrationHallCollect();
   } else if (mission.name === "Aqua Archives" && mission.type === "Trivia") {
-    loadAquaArchivesTrivia(); // Use the same pattern as collect game
+    loadAquaArchivesTrivia();
+  } else if (mission.name === "Ripple Recall" && mission.type === "Memory Match") {
+    loadRippleRecallMemory();
   } else {
     console.log(`Launching mission: ${mission.name}`);
   }
@@ -639,6 +641,27 @@ function loadAquaArchivesTrivia() {
         src="2Aqua-Archives-Trivia/index.html" 
         style="width: 100%; height: 100%; border: none;"
         title="Aqua Archives Trivia Game">
+      </iframe>
+    </div>
+  `;
+}
+
+// Add this new function for Ripple Recall
+function loadRippleRecallMemory() {
+  const gameArea = document.getElementById('gameArea');
+  
+  // Load the memory game in iframe with back button (same pattern as other games)
+  gameArea.innerHTML = `
+    <div style="width: 100%; height: 100%; position: relative;">
+      <div style="position: absolute; top: 10px; left: 10px; z-index: 100;">
+        <button onclick="returnToMissions()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+          ← Back to Missions
+        </button>
+      </div>
+      <iframe 
+        src="4Ripple-Recall-Memory/index.html" 
+        style="width: 100%; height: 100%; border: none;"
+        title="Ripple Recall Memory Game">
       </iframe>
     </div>
   `;

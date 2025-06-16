@@ -30,6 +30,51 @@ const successStories = [
   }
 ];
 
+// ADD THIS MISSING FUNCTION
+function handleItemClick(event) {
+  if (!gameActive) return;
+  
+  const target = event.target;
+  
+  // Check if clicked on a water can
+  if (target.classList.contains('water-can')) {
+    currentCans++;
+    updateDisplay();
+    
+    // Remove the item wrapper
+    const itemWrapper = target.closest('.item-wrapper');
+    if (itemWrapper) {
+      itemWrapper.remove();
+    }
+    
+    // Check if goal reached
+    if (currentCans >= GOAL_CANS) {
+      endGame();
+      showSuccessStoryPopup();
+      showAchievement('🎉 Mission Complete! You collected all ' + GOAL_CANS + ' water cans!');
+    }
+  }
+  
+  // Check if clicked on penalty circle
+  else if (target.classList.contains('penalty-circle')) {
+    // Penalty: lose 2 seconds
+    timeLeft = Math.max(0, timeLeft - 2);
+    updateDisplay();
+    
+    // Remove the item wrapper
+    const itemWrapper = target.closest('.item-wrapper');
+    if (itemWrapper) {
+      itemWrapper.remove();
+    }
+    
+    // Show penalty feedback
+    showAchievement('⚠️ Penalty! -2 seconds');
+    setTimeout(() => {
+      document.getElementById('achievements').style.display = 'none';
+    }, 1500);
+  }
+}
+
 // Creates the 4x4 game grid where items will appear
 function createGrid() {
   const grid = document.querySelector('.game-grid');
@@ -248,7 +293,51 @@ function startGame() {
   
   // Reset game state
   gameActive = true;
-  currentCans = 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+updateDisplay();// Initialize displaydocument.getElementById('start-game').addEventListener('click', startGame);// Set up click handler for the start button}  document.getElementById('start-game').disabled = false;  document.getElementById('start-game').textContent = 'Start New Game';  // Reset button    grid.removeEventListener('click', handleItemClick);  const grid = document.querySelector('.game-grid');  // Remove click event listener    clearInterval(gameTimer); // Stop the timer  clearInterval(spawnInterval); // Stop spawning items  gameActive = false; // Mark the game as inactivefunction endGame() {}  document.getElementById('start-game').disabled = true;  document.getElementById('start-game').textContent = 'Game Running...';  // Change button text    startTimer();  spawnInterval = setInterval(spawnItem, 800); // Spawn items every 0.8 seconds (faster)  // Start spawning items faster and timer    grid.addEventListener('click', handleItemClick);  const grid = document.querySelector('.game-grid');  // Add click event listener to the grid for item clicks    createGrid();  // Set up the game grid    updateDisplay();  // Update display    document.getElementById('achievements').style.display = 'none';  // Clear achievements    timeLeft = 30;  currentCans = 0;  currentCans = 0;
   timeLeft = 30;
   
   // Clear achievements
