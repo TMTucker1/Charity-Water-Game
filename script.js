@@ -596,8 +596,7 @@ function launchMission(missionIndex) {
   if (mission.name === "Hydration Hall" && mission.type === "Collect") {
     loadHydrationHallCollect();
   } else if (mission.name === "Aqua Archives" && mission.type === "Trivia") {
-    // Navigate directly to the Aqua Archives trivia game
-    window.location.href = './2Aqua-Archives-Trivia/index.html';
+    loadAquaArchivesTrivia(); // Use the same pattern as collect game
   } else {
     console.log(`Launching mission: ${mission.name}`);
   }
@@ -619,6 +618,27 @@ function loadHydrationHallCollect() {
         src="1Hydration-Hall-Collect/index.html" 
         style="width: 100%; height: 100%; border: none;"
         title="Hydration Hall Collect Game">
+      </iframe>
+    </div>
+  `;
+}
+
+// Add this new function (same pattern as loadHydrationHallCollect)
+function loadAquaArchivesTrivia() {
+  const gameArea = document.getElementById('gameArea');
+  
+  // Load the trivia game in iframe with back button (same as collect game)
+  gameArea.innerHTML = `
+    <div style="width: 100%; height: 100%; position: relative;">
+      <div style="position: absolute; top: 10px; left: 10px; z-index: 100;">
+        <button onclick="returnToMissions()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+          ← Back to Missions
+        </button>
+      </div>
+      <iframe 
+        src="2Aqua-Archives-Trivia/index.html" 
+        style="width: 100%; height: 100%; border: none;"
+        title="Aqua Archives Trivia Game">
       </iframe>
     </div>
   `;

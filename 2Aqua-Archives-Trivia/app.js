@@ -1,5 +1,3 @@
-
-
 class WaterCrisisTrivia {
     constructor() {
         this.score = 0;
