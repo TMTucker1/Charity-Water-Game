@@ -191,30 +191,27 @@ body {
 
 /* Desert Campus Layout */
 .desert-campus-container {
-  position: relative;
-  width: 700px;
-  height: 700px;
+  position: relative; /* Crucial for positioning the triangles inside */
+  width: 100%;
+  max-width: 800px; /* Or your desired size */
+  height: 600px;    /* Or your desired size */
   margin: 2rem auto;
-  background: url('../assets/images/desert.jpg') center/cover;
   border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15), 
+              inset 0 0 15px rgba(0,0,0,0.05);
+  overflow: hidden; /* Important for clip-path to work as expected */
+  /* REMOVE any existing background-image or background color from this container itself,
+     as the triangles will form the new background. */
+  /* e.g., comment out: background: radial-gradient(...); */
 }
 
-/* Add desert overlay for better contrast */
+/* Remove or comment out any ::before or ::after pseudo-elements on .desert-campus-container
+   that were previously used for background effects if they conflict. */
+/*
 .desert-campus-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, 
-    rgba(218, 165, 32, 0.1) 0%, 
-    rgba(160, 82, 45, 0.1) 50%, 
-    rgba(205, 133, 63, 0.1) 100%);
-  pointer-events: none;
+  ...
 }
+*/
 
 /* Center Campus Area - Green Oasis */
 .campus-center-area {
@@ -238,12 +235,12 @@ body {
 
 /* Walkways */
 .walkway {
-  position: absolute;
+  position: absolute; /* Walkways are typically absolutely positioned */
   background: linear-gradient(to right, 
     rgba(139, 128, 102, 0.8) 0%, 
     rgba(205, 192, 176, 0.9) 50%, 
     rgba(139, 128, 102, 0.8) 100%);
-  z-index: 2;
+  z-index: 1; /* Higher than triangles (0) */
 }
 
 .walkway-north {
@@ -258,8 +255,11 @@ body {
   top: 50%;
   right: 0;
   transform: translateY(-50%);
-  width: 250px;
-  height: 40px;
+  width: 50%; /* Changed from fixed pixel value to 50% */
+  height: 40px; /* Adjust height as needed */
+  /* Ensure other styles like background and z-index are correct */
+  /* background: linear-gradient(...); */
+  /* z-index: 1; */
 }
 
 .walkway-south {
@@ -274,12 +274,15 @@ body {
   top: 50%;
   left: 0;
   transform: translateY(-50%);
-  width: 250px;
-  height: 40px;
+  width: 50%; /* Changed from fixed pixel value to 50% */
+  height: 40px; /* Adjust height as needed */
+  /* Ensure other styles like background and z-index are correct */
+  /* background: linear-gradient(...); */
+  /* z-index: 1; */
 }
 
 .campus-block {
-  position: absolute;
+  position: absolute; /* Already absolute */
   width: 120px;
   height: 120px;
   padding: 16px;
@@ -290,9 +293,18 @@ body {
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
               box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
               background-color 0.2s ease;
-  border: 3px solid rgba(139, 69, 19, 0.4);
+  border-width: 10px; /* Your current border thickness */
+  border-style: solid;
+  border-color: transparent; 
+  border-image-source: url('../assets/images/cracked-mud.jpg'); 
+  /* Using two values: <top_bottom_slice> <left_right_slice> */
+  /* Keep 250 for top/bottom, experiment with the second value for left/right */
+  border-image-slice: 250 35; /* Start with 30 for left/right, then try other values */
+  border-image-repeat: stretch; 
   transform-origin: center center;
   backdrop-filter: blur(2px);
+  overflow: hidden; /* Add this to clip content that goes outside the block's bounds */
+  z-index: 2; /* Higher than walkways (1) and triangles (0) */
 }
 
 .campus-block:hover {
@@ -300,10 +312,12 @@ body {
 }
 
 .campus-block img {
-  width: 40px;
-  height: 40px;
+  max-width: 60%; /* This helps keep the image size relative to the container */
+  height: auto;
   margin-bottom: 8px;
-  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3));
+  /* Ensure there isn't a 'position: absolute;' here or from a more specific rule
+     that might be taking the image out of the flex flow.
+     If there is, you might need to adjust its positioning context or remove it. */
 }
 
 .campus-block p {
@@ -351,7 +365,7 @@ body {
              rotate(var(--rotation)) 
              translateY(calc(-1 * var(--circle-radius))) 
              rotate(calc(-1 * var(--rotation)));
-  z-index: 8;
+  z-index: 2;
 }
 
 .surrounding-building:hover {
@@ -488,4 +502,87 @@ body {
   .center-building p {
     font-size: 0.75rem;
   }
+}
+
+/* Styles for the new triangle background elements */
+.background-triangle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* TEMPORARILY use a solid color to test visibility and clipping */
+  background-color: red; /* Or any bright, obvious color */
+  /* background-image: url('../assets/images/cracked-mud.jpg'); */ /* Comment out image for now */
+  background-repeat: repeat;
+  z-index: 0; /* Base layer for the background */
+}
+
+#triangle-top {
+  clip-path: polygon(0 0, 100% 0, 50% 50%);
+  background-color: blue; /* Different color for testing if needed */
+}
+
+#triangle-right {
+  clip-path: polygon(100% 0, 100% 100%, 50% 50%);
+  background-color: green; /* Different color for testing if needed */
+}
+
+#triangle-bottom {
+  clip-path: polygon(100% 100%, 0 100%, 50% 50%);
+  background-color: yellow; /* Different color for testing if needed */
+}
+
+#triangle-left {
+  clip-path: polygon(0 100%, 0 0, 50% 50%);
+  background-color: purple; /* Different color for testing if needed */
+}
+
+/* Ensure the main container is set up correctly */
+.desert-campus-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: 600px;
+  margin: 2rem auto;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15), 
+              inset 0 0 15px rgba(0,0,0,0.05);
+  overflow: hidden;
+  /* Ensure NO other background is set on the container itself */
+}
+
+/*
+  Z-INDEXING FOR OTHER ELEMENTS:
+  These MUST have a z-index higher than 0 to appear above the triangles.
+  They also need a 'position' property (relative, absolute, fixed) for z-index to work.
+*/
+
+.walkway {
+  position: absolute; /* Walkways are typically absolutely positioned */
+  /* ... your existing walkway styles for background, width, height, transform ... */
+  z-index: 1; /* Higher than triangles (0) */
+}
+
+/* Specific walkway positioning (ensure these are correct) */
+.walkway-north { /* top: 0; left: 50%; transform: translateX(-50%); width: 40px; height: 250px; */ }
+.walkway-east { /* top: 50%; right: 0; transform: translateY(-50%); width: 250px; height: 40px; */ }
+.walkway-south { /* bottom: 0; left: 50%; transform: translateX(-50%); width: 40px; height: 250px; */ }
+.walkway-west { /* top: 50%; left: 0; transform: translateY(-50%); width: 250px; height: 40px; */ }
+
+
+.campus-block {
+  position: absolute; /* Already absolute */
+  /* ... your existing campus-block styles ... */
+  z-index: 2; /* Higher than walkways (1) and triangles (0) */
+}
+
+.center-building {
+  /* ... your existing center-building styles ... */
+  z-index: 2; /* Or higher if it needs to be above other campus-blocks */
+}
+
+.surrounding-building {
+  /* ... your existing surrounding-building styles ... */
+  z-index: 2;
 }
