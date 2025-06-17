@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
           `;
           break;
-          
+          /*
         case 'Game Rules':
           area.innerHTML = `
             <div style="background: rgba(255,255,255,0.95); border-radius: 1rem; padding: 2rem; z-index: 1; position: relative; max-width: 800px;">
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
           `;
           break;
-          
+          */
         case 'Missions':
           area.innerHTML = `
             <div class="mission-screen flex h-screen w-screen">
@@ -120,14 +120,14 @@ document.addEventListener('DOMContentLoaded', function() {
           break;
           
           
-        case 'Rewards':
+       /* case 'Rewards':
           area.innerHTML = `
             <div style="background: rgba(255,255,255,0.95); border-radius: 1rem; padding: 2rem; z-index: 1; position: relative; max-width: 800px;">
               <h2 class="text-3xl font-bold mb-6 text-yellow-600">Rewards & Achievements</h2>
               <div class="text-left space-y-4">
                 <p class="text-lg">Your Progress:</p>
                 <div class="space-y-3 mt-4">
-                  <div class="bg-yellow-100 p-3 rounded-lg flex items-center">
+                  <div class="bg-yellow-100 p-3 rounded-lg flex items-center"> 
                     <span class="text-2xl mr-3">🏆</span>
                     <div>
                       <h3 class="font-bold">Water Warrior Beginner</h3>
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
           `;
           break;
-          
+          */
         case 'About Charity:Water':
           area.innerHTML = `
             <div style="background: rgba(255,255,255,0.95); border-radius: 1rem; padding: 2rem; z-index: 1; position: relative; max-width: 800px;">
@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
           `;
           break;
-          
+          /*
         case 'Game Rules':
           area.innerHTML = `
             <div style="background: rgba(255,255,255,0.95); border-radius: 1rem; padding: 2rem; z-index: 1; position: relative; max-width: 800px;">
@@ -243,7 +243,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
           `;
           break;
-          
+          */
         case 'Missions':
           area.innerHTML = `
             <div class="mission-screen flex h-screen w-screen">
@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function() {
           break;
           
       
-        case 'Rewards':
+       /* case 'Rewards':
           area.innerHTML = `
             <div style="background: rgba(255,255,255,0.95); border-radius: 1rem; padding: 2rem; z-index: 1; position: relative; max-width: 800px;">
               <h2 class="text-3xl font-bold mb-6 text-yellow-600">Rewards & Achievements</h2>
@@ -316,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
           `;
           break;
-          
+          */
         case 'About Charity:Water':
           area.innerHTML = `
             <div style="background: rgba(255,255,255,0.95); border-radius: 1rem; padding: 2rem; z-index: 1; position: relative; max-width: 800px;">
