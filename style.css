@@ -115,13 +115,18 @@
     flex-direction: column !important;
   }
   #menu {
-    flex-direction: row !important;
-    width: 100vw !important;
-    height: 56px !important;
-    min-height: 56px !important;
-    max-height: 56px !important;
-    position: relative;
-    z-index: 10;
+    flex-direction: row;
+    width: 100vw;
+    height: 56px;
+    min-width: 0;
+    min-height: 56px;
+    max-height: 56px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
   }
   #menu .menu-item {
     flex: 1 1 0;
@@ -133,9 +138,14 @@
     font-size: 1rem;
     padding: 0.5em 0.2em;
   }
+  #menu .menu-item:last-child {
+    border-right: none;
+  }
   #gameArea {
     padding: 0.5em !important;
     font-size: 1rem !important;
+    margin-left: 0;
+    margin-top: 56px;
   }
 }
 
@@ -227,4 +237,73 @@
 .fun-fact-modal-content p {
   color: #000;
   margin: 1em 0 1.5em 0;
+}
+
+/* Desktop: vertical menu, no margin on gameArea */
+#gameScreen {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+#menu {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 180px !important;
+  min-width: 120px;
+  height: 100vh;
+  position: relative;
+  z-index: 10;
+  gap: 1.5em; /* Add vertical space between buttons */
+  margin-top: 3em; /* Move menu items down */
+}
+
+#menu .menu-item {
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  border-right: none;
+  justify-content: flex-start;
+  padding: 1.2em 1em; /* Increase vertical padding */
+  font-size: 1.1rem;
+}
+
+#menu .menu-item:last-child {
+  border-bottom: none;
+}
+
+/* Mobile: horizontal menu at top, content below */
+@media (max-width: 900px) {
+  #gameScreen {
+    flex-direction: column !important;
+    height: 100vh;
+  }
+  #menu {
+    flex-direction: row !important;
+    width: 100vw !important;
+    height: 56px !important;
+    min-width: 0;
+    min-height: 56px;
+    max-height: 56px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    margin-top: 0 !important;
+  }
+  #menu .menu-item {
+    flex: 1 1 0;
+    width: auto;
+    border-bottom: none;
+    border-right: 1px solid #eee;
+    justify-content: center;
+    padding: 1em 0.2em;
+  }
+  #menu .menu-item:last-child {
+    border-right: none;
+  }
+  #gameArea {
+    margin-top: 56px;
+    padding: 1em;
+  }
 }
