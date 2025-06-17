@@ -11,7 +11,7 @@
 </head>
 <body>
   <!-- Splash Screen -->
-  <div id="splash-screen" style="background: url('assets/images/charity-water-splash.jpg') center center / cover no-repeat; min-height: 100vh;">
+  <div id="splash-screen" class="flex flex-col justify-center items-center w-full h-full" style="background: url('assets/images/charity-water-splash.jpg') center center / cover no-repeat; min-height: 100vh;">
     <h1 class="splash-title">Water Warrior</h1>
     <h2 class="splash-subtitle">
       A <span class="cw-highlight">Charity:Water</span> Adventure
@@ -32,34 +32,25 @@
 
 
   <!-- New Game Screen Markup -->
-  <div id="gameScreen" class="hidden fixed inset-0 w-full h-full flex flex-row">
+  <div id="gameScreen" class="hidden fixed inset-0 w-full h-full flex flex-col md:flex-row">
     <!-- Vertical left menu -->
-    <div id="menu" class="bg-white shadow-lg h-full w-56 flex flex-col items-stretch">
-      <button class="menu-item flex items-center px-6 py-4 hover:bg-gray-100 border-b" data-menu="Home">
-        <span class="material-icons mr-4">home</span>
+    <div id="menu" class="bg-white shadow-lg h-16 md:h-full w-full md:w-56 flex md:flex-col flex-row items-stretch">
+      <button class="menu-item flex items-center px-4 py-2 md:px-6 md:py-4 hover:bg-gray-100 border-b md:border-b-0 md:border-r" data-menu="Home">
+        <span class="material-icons mr-2 md:mr-4">home</span>
         <span class="menu-label">Home</span>
       </button>
-      <!-- <button class="menu-item flex items-center px-6 py-4 hover:bg-gray-100 border-b" data-menu="Game Rules">
-        <span class="material-icons mr-4">rule</span>
-        <span class="menu-label">Game Rules</span>
-      </button> -->
-      <button class="menu-item flex items-center px-6 py-4 hover:bg-gray-100 border-b" data-menu="Missions">
-        <span class="material-icons mr-4">flag</span>
+      <button class="menu-item flex items-center px-4 py-2 md:px-6 md:py-4 hover:bg-gray-100 border-b md:border-b-0 md:border-r" data-menu="Missions">
+        <span class="material-icons mr-2 md:mr-4">flag</span>
         <span class="menu-label">Missions</span>
       </button>
-  
-      <!-- <button class="menu-item flex items-center px-6 py-4 hover:bg-gray-100 border-b" data-menu="Rewards">
-        <span class="material-icons mr-4">emoji_events</span>
-        <span class="menu-label">Rewards</span>
-      </button>-->
-      <button class="menu-item flex items-center px-6 py-4 hover:bg-gray-100" data-menu="About Charity:Water">
-        <span class="material-icons mr-4">info</span>
+      <button class="menu-item flex items-center px-4 py-2 md:px-6 md:py-4 hover:bg-gray-100" data-menu="About Charity:Water">
+        <span class="material-icons mr-2 md:mr-4">info</span>
         <span class="menu-label">About Charity:Water</span>
-      </button> 
+      </button>
     </div>
     <!-- Game area -->
     <div id="gameArea"
-         class="flex-1 flex items-center justify-center text-xl font-semibold p-8 transition-colors duration-300 text-center relative overflow-hidden">
+         class="flex-1 flex items-center justify-center text-base md:text-xl font-semibold p-2 md:p-8 transition-colors duration-300 text-center relative overflow-hidden">
       <!-- Background image layer -->
       <div style="position:absolute; inset:0; background: url('assets/images/jerry-cans.jpg') center center / cover no-repeat; opacity:0.75; z-index:0;"></div>
       <!-- Foreground content -->

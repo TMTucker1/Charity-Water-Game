@@ -67,30 +67,76 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
 .splash-title {
-  position: absolute;
-  top: 7%;
-  
-  left: 50%;
-  transform: translateX(-50%);
+  font-size: clamp(2rem, 6vw, 4rem);
   font-family: 'Montserrat', Arial, sans-serif;
-  font-size: 2.8rem;
-  color: #3d2ff8;
-  letter-spacing: 2px;
+  font-weight: bold;
+  color: #fff;
   text-shadow: 2px 4px 12px rgba(0,0,0,0.25);
-  z-index: 2;
+  margin-bottom: 0.5em;
+  text-align: center;
+  word-break: break-word;
+  line-height: 1.1;
+  padding: 0 0.5em;
 }
 
 .splash-subtitle {
-  position: absolute;
-  top: 19%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Montserrat', Arial, sans-serif;
-  font-size: 1.4rem;
-  color: #000102;
-  letter-spacing: 1px;
-  text-shadow: 1px 2px 8px rgba(0,0,0,0.18);
-  z-index: 2;
+  font-size: clamp(1.1rem, 4vw, 2rem);
+  color: #fff;
+  margin-bottom: 1.5em;
+  text-align: center;
+  word-break: break-word;
+  line-height: 1.2;
+  padding: 0.5em 1em;
+  background: rgba(0, 0, 0, 0.315);
+  border-radius: 0.5em;
+  display: inline-block;
+}
+
+/* Extra mobile tweaks */
+@media (max-width: 600px) {
+  .splash-title,
+  .splash-subtitle {
+    padding: 0 0.2em;
+    font-size: 1.1rem;
+    width: 100vw;
+    box-sizing: border-box;
+    margin-bottom: 0.5em;
+  }
+  .splash-title {
+    font-size: 1.5rem;
+  }
+  .splash-subtitle {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 900px) {
+  #gameScreen {
+    flex-direction: column !important;
+  }
+  #menu {
+    flex-direction: row !important;
+    width: 100vw !important;
+    height: 56px !important;
+    min-height: 56px !important;
+    max-height: 56px !important;
+    position: relative;
+    z-index: 10;
+  }
+  #menu .menu-item {
+    flex: 1 1 0;
+    justify-content: center;
+    border-bottom: none;
+    border-right: 1px solid #eee;
+    border-radius: 0;
+    min-width: 0;
+    font-size: 1rem;
+    padding: 0.5em 0.2em;
+  }
+  #gameArea {
+    padding: 0.5em !important;
+    font-size: 1rem !important;
+  }
 }
 
 @media (max-width: 600px) {
@@ -103,48 +149,48 @@
 
   .splash-title,
   .splash-subtitle {
-    font-size: 1.1rem;
-    padding: 0 0.5em;
+    font-size: 1.2rem !important;
+    padding: 0 0.2em;
     width: 100vw;
     box-sizing: border-box;
+    top: 5% !important;
   }
-
-  .splash-content,
-  .fun-fact-modal-content {
+  .splash-content {
     max-width: 98vw;
     padding: 1em 0.5em;
     font-size: 1rem;
   }
-
-  .logo {
-    max-width: 90vw;
-    height: auto;
+  #gameArea > div {
+    padding: 1em !important;
+    font-size: 1rem !important;
   }
-
-  .fun-fact-modal-content h3 {
-    font-size: 1rem;
-    padding: 0.2em 0.4em;
+  .mission-screen {
+    flex-direction: column !important;
   }
-
-  .fun-fact-modal-content p {
-    font-size: 0.95rem;
+  .missions-image-side, .mission-content-side {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+    min-height: 180px !important;
   }
-
-  #fun-fact-timer {
-    font-size: 0.95rem;
+  .missions-image-side img {
+    max-width: 90vw !important;
+    max-height: 180px !important;
   }
-
-  #enter-button,
-  #continue-button {
-    font-size: 1rem;
-    padding: 0.6rem 1rem;
+  .mission-content {
+    padding: 1em !important;
+    max-width: 98vw !important;
+  }
+  iframe {
+    min-height: 350px !important;
+    height: 60vh !important;
   }
 }
 
 .cw-highlight {
-  font-weight: bold;
-  font-family: fantasy;
+  font-style: italic;
   text-decoration: underline;
+  font-weight: normal;
 }
 #fun-fact-modal {
   position: fixed;

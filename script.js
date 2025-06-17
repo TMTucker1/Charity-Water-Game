@@ -541,8 +541,6 @@ function launchMission(missionIndex) {
 // Function to load the Hydration Hall Collect game
 function loadHydrationHallCollect() {
   const gameArea = document.getElementById('gameArea');
-  
-  // Load the content from the correct folder name
   gameArea.innerHTML = `
     <div style="width: 100%; height: 100%; position: relative;">
       <div style="position: absolute; top: 10px; left: 10px; z-index: 100;">
@@ -552,7 +550,7 @@ function loadHydrationHallCollect() {
       </div>
       <iframe 
         src="1Hydration-Hall-Collect/index.html" 
-        style="width: 100%; height: 100%; border: none;"
+        style="width: 100vw; max-width: 100%; height: 60vh; min-height: 320px; border: none; border-radius: 10px; margin-top: 2em;"
         title="Hydration Hall Collect Game">
       </iframe>
     </div>
@@ -573,7 +571,7 @@ function loadAquaArchivesTrivia() {
       </div>
       <iframe 
         src="2Aqua-Archives-Trivia/index.html" 
-        style="width: 100%; height: 100%; border: none;"
+        style="width: 100vw; max-width: 100%; height: 60vh; min-height: 320px; border: none; border-radius: 10px; margin-top: 2em;"
         title="Aqua Archives Trivia Game">
       </iframe>
     </div>
@@ -594,7 +592,7 @@ function loadRippleRecallMemory() {
       </div>
       <iframe 
         src="4Ripple-Recall-Memory/index.html" 
-        style="width: 100%; height: 100%; border: none;"
+        style="width: 100vw; max-width: 100%; height: 60vh; min-height: 320px; border: none; border-radius: 10px; margin-top: 2em;"
         title="Ripple Recall Memory Game">
       </iframe>
     </div>
