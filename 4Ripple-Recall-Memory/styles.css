@@ -6,9 +6,9 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #FED8C1 0%, #BF6C46 100%); /* Updated background color */
     min-height: 100vh;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 #level-title {
@@ -22,6 +22,7 @@ body {
     max-width: 900px;
     margin: 0 auto;
     padding: 20px;
+   
 }
 
 .btn {
@@ -61,7 +62,8 @@ header p {
 .score-board {
     display: flex;
     justify-content: space-between;
-    background: rgba(255,255,255,0.1);
+    background: #FFC907;
+    opacity: 75%;
     padding: 15px 25px;
     border-radius: 10px;
     margin-bottom: 30px;
