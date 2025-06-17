@@ -26,14 +26,14 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 30px;
-  background-color: #f0f0f0;
+  background-color: #CBCCD1; /* Updated background behind the game container */
   color: #333;
 }
 
 .container {
   max-width: 750px;
   margin: 50px auto;
-  background-color: #fff;
+  background-color: #FFF7E1; /* Updated background for the game container */
   padding: 40px;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
