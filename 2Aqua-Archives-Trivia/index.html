@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aqua Archives - Water Crisis Trivia</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Remove the back button container - it's provided by the main game -->
+        
+        <header>
+            <h1>Aqua Archives</h1>
+            <p>Test your knowledge about the global water crisis</p>
+        </header>
+
+        <div id="game-screen" class="screen active">
+            <div class="score-board">
+                <div class="score">Correct: <span id="score">0</span>/10</div>
+                <div class="question-counter">Question: <span id="question-number">1</span>/10</div>
+            </div>
+
+            <div class="mission-button">
+                <button id="start-mission" class="btn-mission">Start Aqua Archives Mission</button>
+            </div>
+
+            <div id="quiz-container" class="quiz-container hidden">
+                <div class="question-card">
+                    <h2 id="question-text"></h2>
+                    <div id="answers-container" class="answers"></div>
+                    <div id="feedback" class="feedback hidden"></div>
+                    <button id="next-question" class="btn-next hidden">Next Question</button>
+                </div>
+            </div>
+
+            <div id="result-screen" class="result-screen hidden">
+                <h2 id="result-title"></h2>
+                <p id="result-message"></p>
+                <button id="play-again" class="btn-play-again">Play Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

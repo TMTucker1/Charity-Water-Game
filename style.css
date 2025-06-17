@@ -1,16 +1,10 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #eaf6fb;
-  margin: 0;
-  color: #222;
-}
 .hidden { display: none !important; }
 
 /* Splash Screen */
 #splash-screen {
   position: fixed;
   top: 0; left: 0; width: 100vw; height: 100vh;
-  background: #1AABFF;
+  background: #95d8ffb7;
   background-image: url('../assets/images/charity-water-splash.jpg');
   background-size: cover;
   background-position: center;
