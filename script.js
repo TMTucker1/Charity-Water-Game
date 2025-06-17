@@ -86,25 +86,32 @@ document.addEventListener('DOMContentLoaded', function() {
           
         case 'Missions':
           area.innerHTML = `
-            <div style="background: rgba(255,255,255,0.95); border-radius: 1rem; padding: 2rem; z-index: 1; position: relative; max-width: 800px;">
-              <h2 class="text-3xl font-bold mb-6 text-green-600">Missions</h2>
-              <div class="text-left space-y-4">
-                <p class="text-lg">Available Missions:</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                  <div class="bg-blue-100 p-4 rounded-lg cursor-pointer hover:bg-blue-200 transition-colors" onclick="launchMission(0)">
-                    <h3 class="font-bold">Hydration Hall - Collect</h3>
-                    <p class="text-sm">Collect water drops and learn about hydration</p>
-                    <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Start Mission</button>
-                  </div>
-                  <div class="bg-green-100 p-4 rounded-lg cursor-pointer hover:bg-green-200 transition-colors" onclick="launchMission(1)">
-                    <h3 class="font-bold">Aqua Archives - Trivia</h3>
-                    <p class="text-sm">Test your water knowledge</p>
-                    <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Start Mission</button>
-                  </div>
-                  <div class="bg-purple-100 p-4 rounded-lg cursor-pointer hover:bg-purple-200 transition-colors" onclick="launchMission(2)">
-                    <h3 class="font-bold">Ripple Recall - Memory Match</h3>
-                    <p class="text-sm">Memory matching with water themes</p>
-                    <button class="mt-2 bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">Start Mission</button>
+            <div class="mission-screen flex h-screen w-screen">
+              <div class="missions-image-side flex items-center justify-center w-1/2 bg-gradient-to-b from-gray-100 to-gray-200">
+                <img src="assets/images/world.jpg" alt="World" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-lg" />
+              </div>
+              <div class="mission-content-side flex items-center justify-center w-1/2">
+                <div class="mission-content bg-white bg-opacity-95 rounded-xl p-8 shadow-xl max-w-lg w-full">
+                  <h2 class="text-3xl font-bold mb-6 text-green-600">Missions</h2>
+                  <div class="text-left space-y-4">
+                    <p class="text-lg">Available Missions:</p>
+                    <div class="grid grid-cols-1 gap-4 mt-4">
+                      <div class="bg-blue-100 p-4 rounded-lg cursor-pointer hover:bg-blue-200 transition-colors" onclick="launchMission(0)">
+                        <h3 class="font-bold">Hydration Hall - Collect</h3>
+                        <p class="text-sm">Collect water drops and learn about hydration</p>
+                        <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Start Mission</button>
+                      </div>
+                      <div class="bg-green-100 p-4 rounded-lg cursor-pointer hover:bg-green-200 transition-colors" onclick="launchMission(1)">
+                        <h3 class="font-bold">Aqua Archives - Trivia</h3>
+                        <p class="text-sm">Test your water knowledge</p>
+                        <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Start Mission</button>
+                      </div>
+                      <div class="bg-purple-100 p-4 rounded-lg cursor-pointer hover:bg-purple-200 transition-colors" onclick="launchMission(2)">
+                        <h3 class="font-bold">Ripple Recall - Memory Match</h3>
+                        <p class="text-sm">Memory matching with water themes</p>
+                        <button class="mt-2 bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">Start Mission</button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -239,25 +246,32 @@ document.addEventListener('DOMContentLoaded', function() {
           
         case 'Missions':
           area.innerHTML = `
-            <div style="background: rgba(255,255,255,0.95); border-radius: 1rem; padding: 2rem; z-index: 1; position: relative; max-width: 800px;">
-              <h2 class="text-3xl font-bold mb-6 text-green-600">Missions</h2>
-              <div class="text-left space-y-4">
-                <p class="text-lg">Available Missions:</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                  <div class="bg-blue-100 p-4 rounded-lg cursor-pointer hover:bg-blue-200 transition-colors" onclick="launchMission(0)">
-                    <h3 class="font-bold">Hydration Hall - Collect</h3>
-                    <p class="text-sm">Collect water drops and learn about hydration</p>
-                    <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Start Mission</button>
-                  </div>
-                  <div class="bg-green-100 p-4 rounded-lg cursor-pointer hover:bg-green-200 transition-colors" onclick="launchMission(1)">
-                    <h3 class="font-bold">Aqua Archives - Trivia</h3>
-                    <p class="text-sm">Test your water knowledge</p>
-                    <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Start Mission</button>
-                  </div>
-                  <div class="bg-purple-100 p-4 rounded-lg cursor-pointer hover:bg-purple-200 transition-colors" onclick="launchMission(2)">
-                    <h3 class="font-bold">Ripple Recall - Memory Match</h3>
-                    <p class="text-sm">Memory matching with water themes</p>
-                    <button class="mt-2 bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">Start Mission</button>
+            <div class="mission-screen flex h-screen w-screen">
+              <div class="missions-image-side flex items-center justify-center w-1/2 bg-gradient-to-b from-gray-100 to-gray-200">
+                <img src="assets/images/world.jpg" alt="World" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-lg" />
+              </div>
+              <div class="mission-content-side flex items-center justify-center w-1/2">
+                <div class="mission-content bg-white bg-opacity-95 rounded-xl p-8 shadow-xl max-w-lg w-full">
+                  <h2 class="text-3xl font-bold mb-6 text-green-600">Missions</h2>
+                  <div class="text-left space-y-4">
+                    <p class="text-lg">Available Missions:</p>
+                    <div class="grid grid-cols-1 gap-4 mt-4">
+                      <div class="bg-blue-100 p-4 rounded-lg cursor-pointer hover:bg-blue-200 transition-colors" onclick="launchMission(0)">
+                        <h3 class="font-bold">Hydration Hall - Collect</h3>
+                        <p class="text-sm">Collect water drops and learn about hydration</p>
+                        <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Start Mission</button>
+                      </div>
+                      <div class="bg-green-100 p-4 rounded-lg cursor-pointer hover:bg-green-200 transition-colors" onclick="launchMission(1)">
+                        <h3 class="font-bold">Aqua Archives - Trivia</h3>
+                        <p class="text-sm">Test your water knowledge</p>
+                        <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Start Mission</button>
+                      </div>
+                      <div class="bg-purple-100 p-4 rounded-lg cursor-pointer hover:bg-purple-200 transition-colors" onclick="launchMission(2)">
+                        <h3 class="font-bold">Ripple Recall - Memory Match</h3>
+                        <p class="text-sm">Memory matching with water themes</p>
+                        <button class="mt-2 bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">Start Mission</button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
