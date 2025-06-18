@@ -62,16 +62,66 @@ body {
     }
 }
 
+header {
+    text-align: center; /* Center the header content */
+    padding: 0 20px; /* Add horizontal padding */
+}
+
 header h1 {
     font-size: 3rem; /* Initial font size */
     margin-bottom: 10px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     color: #00d4ff;
+    text-align: center; /* Center the title */
 }
 
 header p {
     font-size: 1.2rem;
     opacity: 0.9;
+    text-align: center; /* Center the subtitle */
+}
+
+/* Mobile header adjustments to avoid back button overlap */
+@media (max-width: 768px) {
+    header {
+        margin-top: 20px; /* Add top margin to avoid back button overlap */
+        padding: 0 80px; /* Add horizontal padding to avoid button overlap */
+        text-align: center;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+        margin-bottom: 8px;
+    }
+    
+    header p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        margin-top: 30px; /* Increase top margin on smaller screens */
+        padding: 0 60px; /* Reduce horizontal padding */
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        margin-top: 35px;
+        padding: 0 50px;
+    }
+    
+    .back-button-container {
+        top: 15px; /* Adjust back button position on very small screens */
+        left: 15px;
+    }
+    
+    .back-button {
+        padding: 8px 15px; /* Smaller back button on mobile */
+        font-size: 0.9rem;
+    }
 }
 
 .screen {
