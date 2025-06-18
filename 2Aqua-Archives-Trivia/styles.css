@@ -4,10 +4,18 @@
     box-sizing: border-box;
 }
 
+/* Resetting styles to ensure full-screen */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Make sure body takes up full height */
+    overflow: hidden; /* Prevent scrollbars */
+}
+
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    min-height: 100vh;
+    min-height: 90vh; /* Ensure body covers the full height */
     color: white;
 }
 
@@ -15,18 +23,72 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-}
-
-header {
-    text-align: center;
-    margin-bottom: 30px;
+    height: 100%; /* Ensure container takes up full height */
 }
 
 header h1 {
-    font-size: 3rem;
+    font-size: 3rem; /* Initial font size */
     margin-bottom: 10px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     color: #00d4ff;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        width: 100%; /* Make container full-width on smaller screens */
+        padding: 10px; /* Reduce padding on smaller screens */
+        margin: 0; /* Remove margins */
+        height: auto; /* Allow height to adjust to content */
+    }
+
+    header h1 {
+        font-size: 2rem; /* Reduce font size on smaller screens */
+    }
+}
+
+/* Additional media query for even smaller screens */
+@media (max-width: 600px) {
+    .container {
+        padding: 5px !important; /* Further reduce padding on very small screens */
+    }
+
+    header h1 {
+        font-size: 1.5rem; /* Further reduce font size on very small screens */
+    }
+}
+
+/* Additional media query for even smaller screens */
+@media (max-width: 480px) {
+    .container {
+        padding: 5px; /* Further reduce padding on very small screens */
+    }
+
+    header h1 {
+        font-size: 1.5rem; /* Further reduce font size on very small screens */
+    }
+}
+
+/* Additional media query for even smaller screens */
+@media (max-width: 320px) {
+    .container {
+        padding: 5px; /* Further reduce padding on very small screens */
+    }
+
+    header h1 {
+        font-size: 1.5rem; /* Further reduce font size on very small screens */
+    }
+}
+
+/* Additional media query for even smaller screens */
+@media (max-width: 240px) {
+    .container {
+        padding: 5px; /* Further reduce padding on very small screens */
+    }
+
+    header h1 {
+        font-size: 1.5rem; /* Further reduce font size on very small screens */
+    }
 }
 
 header p {
@@ -289,4 +351,34 @@ header p {
     font-size: 1rem !important;
     padding: 8px 12px !important;
   }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 5px !important; /* Further reduce padding on very small screens */
+    }
+
+    header h1 {
+        font-size: 1.5rem !important; /* Further reduce font size on very small screens */
+    }
+}
+
+@media (max-width: 320px) {
+    .container {
+        padding: 5px !important; /* Further reduce padding on very small screens */
+    }
+
+    header h1 {
+        font-size: 1.5rem !important; /* Further reduce font size on very small screens */
+    }
+}
+
+@media (max-width: 240px) {
+    .container {
+        padding: 5px !important; /* Further reduce padding on very small screens */
+    }
+
+    header h1 {
+        font-size: 1.5rem !important; /* Further reduce font size on very small screens */
+    }
 }

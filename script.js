@@ -559,18 +559,18 @@ function loadHydrationHallCollect() {
 // Add this new function (same pattern as loadHydrationHallCollect)
 function loadAquaArchivesTrivia() {
   const gameArea = document.getElementById('gameArea');
-  
-  // Load the trivia game in iframe with back button (same as collect game)
+
+  // Load the trivia game in iframe with back button
   gameArea.innerHTML = `
-    <div style="width: 100%; height: 100%; position: absolute;">
-      <div style="position: absolute; top: 10px; left: 10px; z-index: 100;">
-        <button onclick="returnToMissions()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
-          ← Back to Missions
-        </button>
-      </div>
+    <div style="position: absolute; top: 10px; left: 10px; z-index: 100;">
+      <button onclick="returnToMissions()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+        ← Back to Missions
+      </button>
+    </div>
+    <div class="collect-iframe-parent">
       <iframe 
         src="2Aqua-Archives-Trivia/index.html" 
-        style="width: 100vw; height: 100vh; border: none; border-radius: 0; margin: 0; position: absolute; top: 0; left: 0;"
+        class="collect-iframe"
         title="Aqua Archives Trivia Game">
       </iframe>
     </div>
