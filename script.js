@@ -266,11 +266,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         <p class="text-sm">Test your water knowledge</p>
                         <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Start Mission</button>
                       </div>
-                      <div class="bg-purple-100 p-4 rounded-lg cursor-pointer hover:bg-purple-200 transition-colors" onclick="launchMission(2)">
-                        <h3 class="font-bold">Ripple Recall - Memory Match</h3>
-                        <p class="text-sm">Memory matching with water themes</p>
-                        <button class="mt-2 bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">Start Mission</button>
-                      </div>
+                      
+                  
                     </div>
                   </div>
                 </div>
@@ -364,7 +361,7 @@ document.addEventListener('DOMContentLoaded', function() {
 const missions = [
   { name: "Hydration Hall", type: "Collect", path: "1Hydration-Hall-Collect" },
   { name: "Aqua Archives", type: "Trivia", path: "aqua-archives" },
-  { name: "Ripple Recall", type: "Memory Match", path: "ripple-recall" }
+  /* { name: "Ripple Recall", type: "Memory Match", path: "ripple-recall" } */
 ];
 let currentMission = 0;
 let points = 0;
@@ -542,8 +539,8 @@ function launchMission(missionIndex) {
 function loadHydrationHallCollect() {
   const gameArea = document.getElementById('gameArea');
   gameArea.innerHTML = `
-    <div style="width: 100vw; height: 100vh; position: relative;">
-      <div style="position: absolute; top: 10px; left: 10px; z-index: 100;">
+    <div style="width: 100vw; height: 100vh; position: absolute;">
+      <div style="position: absolute; top: 10px; left: 100px; z-index: 100;">
         <button onclick="returnToMissions()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
           ← Back to Missions
         </button>
@@ -565,7 +562,7 @@ function loadAquaArchivesTrivia() {
   
   // Load the trivia game in iframe with back button (same as collect game)
   gameArea.innerHTML = `
-    <div style="width: 100%; height: 100%; position: relative;">
+    <div style="width: 100%; height: 100%; position: absolute;">
       <div style="position: absolute; top: 10px; left: 10px; z-index: 100;">
         <button onclick="returnToMissions()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
           ← Back to Missions
@@ -580,7 +577,7 @@ function loadAquaArchivesTrivia() {
   `;
 }
 
-// Add this new function for Ripple Recall
+/* / Add this new function for Ripple Recall
 function loadRippleRecallMemory() {
   const gameArea = document.getElementById('gameArea');
   
@@ -599,7 +596,7 @@ function loadRippleRecallMemory() {
       </iframe>
     </div>
   `;
-}
+} */
 
 // Function to return to missions screen
 function returnToMissions() {

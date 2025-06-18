@@ -59,9 +59,8 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  gap: 2vw;
-  width: 60vmin;
-  height: 60vmin;
+  gap: 1vw;
+  
   max-width: 90vw;
   max-height: 90vh;
   min-width: 300px;
@@ -112,19 +111,12 @@ h1 img {
   color: #333;
 }
 
-.game-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin: 0 auto;
-  max-width: 320px;
-  padding: 10px;
-}
+
 
 .grid-cell {
   background-color: #e8e8e8;
   border-radius: 8px;
-  aspect-ratio: 1;
+  aspect-ratio: 1.5;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -206,16 +198,16 @@ button {
 @media (max-width: 600px) {
   .container {
     min-width: 100vw !important;
-    min-height: 100vh !important;
+    min-height: 90vh !important;
     width: 100vw !important;
-    height: 100vh !important;
-    padding: 0 !important;
+    height: 90vh !important;
+    padding: 10px !important;
   }
   .game-grid {
     width: 96vw !important;
     height: 96vw !important;
-    max-width: 100vw !important;
-    max-height: 100vw !important;
+    max-width: 90vw !important;
+    max-height: 85vw !important;
     min-width: 0 !important;
     min-height: 0 !important;
     gap: 2vw !important;
