@@ -17,6 +17,10 @@ body {
     background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
     min-height: 90vh; /* Ensure body covers the full height */
     color: white;
+    display: flex; /* Use flexbox to control vertical alignment */
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: flex-start; /* Align content to the top */
+    padding-top: 80px; /* Add padding to the top of the body */
 }
 
 .container {
