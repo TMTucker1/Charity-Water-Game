@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
       document.querySelector('#fun-fact-modal p').textContent = fact;
 
       // 30 second countdown
-      let seconds = 1;
+      let seconds = 10;
       const timer = document.getElementById('fun-fact-timer');
       timer.textContent = `Continuing in ${seconds} seconds...`;
       const interval = setInterval(() => {
