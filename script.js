@@ -542,17 +542,19 @@ function launchMission(missionIndex) {
 function loadHydrationHallCollect() {
   const gameArea = document.getElementById('gameArea');
   gameArea.innerHTML = `
-    <div style="width: 100%; height: 100%; position: relative;">
+    <div style="width: 100vw; height: 100vh; position: relative;">
       <div style="position: absolute; top: 10px; left: 10px; z-index: 100;">
         <button onclick="returnToMissions()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
           ← Back to Missions
         </button>
       </div>
-      <iframe 
-        src="1Hydration-Hall-Collect/index.html" 
-        style="width: 100vw; max-width: 100%; height: 60vh; min-height: 320px; border: none; border-radius: 10px; margin-top: 2em;"
-        title="Hydration Hall Collect Game">
-      </iframe>
+      <div class="collect-iframe-parent">
+        <iframe 
+          src="1Hydration-Hall-Collect/index.html" 
+          class="collect-iframe"
+          title="Hydration Hall Collect Game">
+        </iframe>
+      </div>
     </div>
   `;
 }
@@ -571,7 +573,7 @@ function loadAquaArchivesTrivia() {
       </div>
       <iframe 
         src="2Aqua-Archives-Trivia/index.html" 
-        style="width: 100vw; max-width: 100%; height: 60vh; min-height: 320px; border: none; border-radius: 10px; margin-top: 2em;"
+        style="width: 100vw; height: 100vh; border: none; border-radius: 0; margin: 0; position: absolute; top: 0; left: 0;"
         title="Aqua Archives Trivia Game">
       </iframe>
     </div>
@@ -592,7 +594,7 @@ function loadRippleRecallMemory() {
       </div>
       <iframe 
         src="4Ripple-Recall-Memory/index.html" 
-        style="width: 100vw; max-width: 100%; height: 60vh; min-height: 320px; border: none; border-radius: 10px; margin-top: 2em;"
+        style="width: 100vw; height: 100vh; border: none; border-radius: 0; margin: 0; position: absolute; top: 0; left: 0;"
         title="Ripple Recall Memory Game">
       </iframe>
     </div>
