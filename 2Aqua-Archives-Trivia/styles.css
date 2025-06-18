@@ -12,10 +12,20 @@ html, body {
     overflow: hidden; /* Prevent scrollbars */
 }
 
+/* Allow scrolling on mobile devices */
+@media (max-width: 768px) {
+    html, body {
+        height: auto;
+        min-height: 100vh;
+        overflow-y: auto; /* Allow vertical scrolling on mobile */
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+}
+
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    min-height: 90vh; /* Ensure body covers the full height */
+    min-height: 100vh; /* Ensure body covers the full height */
     color: white;
     display: flex; /* Use flexbox to control vertical alignment */
     flex-direction: column; /* Stack elements vertically */
@@ -23,11 +33,33 @@ body {
     padding-top: 80px; /* Add padding to the top of the body */
 }
 
+/* Mobile body adjustments */
+@media (max-width: 768px) {
+    body {
+        min-height: 100vh;
+        padding-top: 60px; /* Reduce top padding on mobile */
+        padding-bottom: 20px; /* Add bottom padding for mobile */
+    }
+}
+
 .container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     height: 100%; /* Ensure container takes up full height */
+    flex: 1; /* Allow container to grow and shrink */
+}
+
+/* Mobile container adjustments */
+@media (max-width: 768px) {
+    .container {
+        width: 100%; /* Make container full-width on smaller screens */
+        padding: 10px; /* Reduce padding on smaller screens */
+        margin: 0; /* Remove margins */
+        height: auto; /* Allow height to adjust to content on mobile */
+        min-height: calc(100vh - 80px); /* Ensure minimum height minus top padding */
+        flex: none; /* Remove flex behavior on mobile */
+    }
 }
 
 header h1 {
@@ -35,64 +67,6 @@ header h1 {
     margin-bottom: 10px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     color: #00d4ff;
-}
-
-/* Media query for smaller screens */
-@media (max-width: 768px) {
-    .container {
-        width: 100%; /* Make container full-width on smaller screens */
-        padding: 10px; /* Reduce padding on smaller screens */
-        margin: 0; /* Remove margins */
-        height: auto; /* Allow height to adjust to content */
-    }
-
-    header h1 {
-        font-size: 2rem; /* Reduce font size on smaller screens */
-    }
-}
-
-/* Additional media query for even smaller screens */
-@media (max-width: 600px) {
-    .container {
-        padding: 5px !important; /* Further reduce padding on very small screens */
-    }
-
-    header h1 {
-        font-size: 1.5rem; /* Further reduce font size on very small screens */
-    }
-}
-
-/* Additional media query for even smaller screens */
-@media (max-width: 480px) {
-    .container {
-        padding: 5px; /* Further reduce padding on very small screens */
-    }
-
-    header h1 {
-        font-size: 1.5rem; /* Further reduce font size on very small screens */
-    }
-}
-
-/* Additional media query for even smaller screens */
-@media (max-width: 320px) {
-    .container {
-        padding: 5px; /* Further reduce padding on very small screens */
-    }
-
-    header h1 {
-        font-size: 1.5rem; /* Further reduce font size on very small screens */
-    }
-}
-
-/* Additional media query for even smaller screens */
-@media (max-width: 240px) {
-    .container {
-        padding: 5px; /* Further reduce padding on very small screens */
-    }
-
-    header h1 {
-        font-size: 1.5rem; /* Further reduce font size on very small screens */
-    }
 }
 
 header p {
@@ -305,10 +279,6 @@ header p {
 }
 
 @media (max-width: 768px) {
-    .container {
-        padding: 15px;
-    }
-    
     header h1 {
         font-size: 2.5rem;
     }
@@ -321,68 +291,106 @@ header p {
     
     .quiz-container {
         padding: 20px;
+        margin-bottom: 20px; /* Add bottom margin for mobile spacing */
     }
     
     .question-card h2 {
         font-size: 1.2rem;
     }
+    
+    /* Ensure proper spacing for next button on mobile */
+    .btn-next {
+        margin: 20px auto;
+        padding: 15px 35px;
+        font-size: 1.1rem;
+    }
 }
 
+/* Additional mobile responsive styles for better scrolling */
 @media (max-width: 600px) {
-  .container {
-    padding: 10px !important;
-    margin: 10px auto !important;
-    max-width: 98vw !important;
-  }
-  .game-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    max-width: 180px !important;
-    gap: 5px !important;
-  }
-  .grid-cell {
-    min-height: 40px !important;
-    max-height: 50px !important;
-  }
-  .item-wrapper {
-    width: 30px !important;
-    height: 30px !important;
-  }
-  .water-can, .penalty-circle {
-    width: 100% !important;
-    height: 100% !important;
-  }
-  button {
-    font-size: 1rem !important;
-    padding: 8px 12px !important;
-  }
+    .container {
+        padding: 5px !important;
+        margin: 5px auto !important;
+        max-width: 98vw !important;
+    }
+    
+    header h1 {
+        font-size: 1.8rem !important;
+        margin-bottom: 15px;
+    }
+    
+    .quiz-container {
+        padding: 15px !important;
+        margin-bottom: 30px !important;
+    }
+    
+    .question-card h2 {
+        font-size: 1.1rem !important;
+        margin-bottom: 20px;
+    }
+    
+    .answer-btn {
+        padding: 12px 15px !important;
+        font-size: 0.95rem !important;
+        margin-bottom: 8px;
+    }
+    
+    .feedback {
+        margin: 15px 0 !important;
+        padding: 12px !important;
+        font-size: 0.95rem;
+    }
+    
+    .btn-next {
+        margin: 25px auto !important;
+        padding: 12px 25px !important;
+        font-size: 1rem !important;
+    }
+    
+    .score-board {
+        padding: 12px 20px !important;
+        margin-bottom: 20px !important;
+    }
 }
 
 @media (max-width: 480px) {
-    .container {
-        padding: 5px !important; /* Further reduce padding on very small screens */
-    }
-
     header h1 {
-        font-size: 1.5rem !important; /* Further reduce font size on very small screens */
+        font-size: 1.6rem !important;
+    }
+    
+    .quiz-container {
+        padding: 12px !important;
+    }
+    
+    .question-card h2 {
+        font-size: 1rem !important;
+    }
+    
+    .answer-btn {
+        padding: 10px 12px !important;
+        font-size: 0.9rem !important;
     }
 }
 
 @media (max-width: 320px) {
     .container {
-        padding: 5px !important; /* Further reduce padding on very small screens */
+        padding: 3px !important;
     }
-
+    
     header h1 {
-        font-size: 1.5rem !important; /* Further reduce font size on very small screens */
+        font-size: 1.4rem !important;
     }
-}
-
-@media (max-width: 240px) {
-    .container {
-        padding: 5px !important; /* Further reduce padding on very small screens */
+    
+    .quiz-container {
+        padding: 10px !important;
     }
-
-    header h1 {
-        font-size: 1.5rem !important; /* Further reduce font size on very small screens */
+    
+    .question-card h2 {
+        font-size: 0.95rem !important;
+    }
+    
+    .answer-btn {
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
     }
 }
