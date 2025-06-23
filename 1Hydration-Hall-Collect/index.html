@@ -8,16 +8,32 @@
 </head>
 <body>
   <div class="container">
-    <h1>Water Quest</h1>
-    <p class="game-instructions">Collect as many water cans as possible before time runs out!</p>
-    <div class="stats">
-      <p>Current Score: <span id="current-cans">0</span></p>
-      <p>Highest Score: <span id="highest-score">0</span></p>
-      <p>Time Left: <span id="timer">30</span>s</p>
+    <!-- Left Panel for Difficulty Selection -->
+    <div class="left-panel">
+      <div class="difficulty-selection">
+        <h3>Choose Difficulty:</h3>
+        <div class="difficulty-buttons">
+          <button class="difficulty-btn" data-level="easy">Easy (45s)</button>
+          <button class="difficulty-btn active" data-level="medium">Medium (30s)</button>
+          <button class="difficulty-btn" data-level="hard">Hard (20s)</button>
+        </div>
+      </div>
     </div>
-    <div id="achievements" class="achievement"></div>
-    <div class="game-grid"></div>
-    <button id="start-game">Start Game</button>
+    
+    <!-- Main Game Area -->
+    <div class="game-area">
+      <h1>Water Quest</h1>
+      <p class="game-instructions">Collect as many water cans as possible before time runs out!</p>
+      
+      <div class="stats">
+        <p>Current Score: <span id="current-cans">0</span></p>
+        <p>Highest Score: <span id="highest-score">0</span></p>
+        <p>Time Left: <span id="timer">30</span>s</p>
+      </div>
+      <div id="achievements" class="achievement"></div>
+      <div class="game-grid"></div>
+      <button id="start-game">Start Game</button>
+    </div>
   </div>
   <script src="script.js"></script>
 </body>

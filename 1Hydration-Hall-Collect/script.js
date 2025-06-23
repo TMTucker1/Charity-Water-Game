@@ -5,6 +5,26 @@ let gameActive = false;      // Tracks if game is currently running
 let spawnInterval;          // Holds the interval for spawning items
 let gameTimer;              // Holds the game timer interval
 let timeLeft = 30;          // Time left in seconds
+let currentDifficulty = 'medium'; // Current difficulty level
+
+// Difficulty settings
+const difficultySettings = {
+  easy: {
+    time: 45,
+    spawnRate: 1000, // Spawn every 1 second (slower)
+    name: 'Easy'
+  },
+  medium: {
+    time: 30,
+    spawnRate: 800, // Spawn every 0.8 seconds
+    name: 'Medium'
+  },
+  hard: {
+    time: 20,
+    spawnRate: 600, // Spawn every 0.6 seconds (faster)
+    name: 'Hard'
+  }
+};
 
 // Real Charity: Water success stories
 const successStories = [
@@ -38,11 +58,49 @@ function updateHighestScore(newScore) {
       highestScore = newScore;
       // Show achievement for new high score
       if (newScore > 0) {
-        showAchievement(`🏆 NEW HIGH SCORE: ${newScore} water cans!`);
+        showAchievement(`🏆 NEW HIGH SCORE: ${newScore} water cans! (${difficultySettings[currentDifficulty].name} Mode)`);
       }
       break; // Exit loop once comparison is made
     }
   }
+}
+
+// Handle difficulty button clicks
+function handleDifficultySelection() {
+  const difficultyButtons = document.querySelectorAll('.difficulty-btn');
+  
+  if (difficultyButtons.length === 0) {
+    console.log('No difficulty buttons found!');
+    return;
+  }
+  
+  difficultyButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      if (gameActive) return; // Don't allow difficulty change during game
+      
+      // Remove active class from all buttons
+      difficultyButtons.forEach(btn => btn.classList.remove('active'));
+      
+      // Add active class to clicked button
+      button.classList.add('active');
+      
+      // Update current difficulty
+      currentDifficulty = button.dataset.level;
+      
+      // Update timer display
+      timeLeft = difficultySettings[currentDifficulty].time;
+      updateDisplay();
+      
+      // Show feedback
+      showAchievement(`Difficulty set to ${difficultySettings[currentDifficulty].name} mode!`);
+      setTimeout(() => {
+        const achievementDiv = document.getElementById('achievements');
+        if (achievementDiv) {
+          achievementDiv.style.display = 'none';
+        }
+      }, 2000);
+    });
+  });
 }
 
 function handleItemClick(event) {
@@ -243,7 +301,7 @@ function startTimer() {
     
     if (timeLeft <= 0) {
       endGame();
-      showAchievement('Time\'s up! Final Score: ' + currentCans + ' water cans.');
+      showAchievement(`Time's up! Final Score: ${currentCans} water cans (${difficultySettings[currentDifficulty].name} Mode)`);
     }
   }, 1000);
 }
@@ -310,7 +368,7 @@ function startGame() {
   // Reset game state
   gameActive = true;
   currentCans = 0;
-  timeLeft = 30;
+  timeLeft = difficultySettings[currentDifficulty].time; // Set time based on difficulty
   
   // Clear achievements
   document.getElementById('achievements').style.display = 'none';
@@ -325,13 +383,17 @@ function startGame() {
   const grid = document.querySelector('.game-grid');
   grid.addEventListener('click', handleItemClick);
   
-  // Start spawning items faster and timer
-  spawnInterval = setInterval(spawnItem, 800); // Spawn items every 0.8 seconds (faster)
+  // Start spawning items based on difficulty and timer
+  spawnInterval = setInterval(spawnItem, difficultySettings[currentDifficulty].spawnRate);
   startTimer();
   
-  // Change button text
-  document.getElementById('start-game').textContent = 'Game Running...';
+  // Change button text and disable difficulty buttons
+  document.getElementById('start-game').textContent = `Game Running... (${difficultySettings[currentDifficulty].name})`;
   document.getElementById('start-game').disabled = true;
+  
+  // Disable difficulty buttons during game
+  const difficultyButtons = document.querySelectorAll('.difficulty-btn');
+  difficultyButtons.forEach(btn => btn.disabled = true);
 }
 
 function endGame() {
@@ -347,13 +409,26 @@ function endGame() {
   const grid = document.querySelector('.game-grid');
   grid.removeEventListener('click', handleItemClick);
   
-  // Reset button
+  // Reset button and re-enable difficulty buttons
   document.getElementById('start-game').textContent = 'Start New Game';
   document.getElementById('start-game').disabled = false;
+  
+  // Re-enable difficulty buttons
+  const difficultyButtons = document.querySelectorAll('.difficulty-btn');
+  difficultyButtons.forEach(btn => btn.disabled = false);
 }
+
+// Make sure to call handleDifficultySelection after DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Set up difficulty selection handlers
+  handleDifficultySelection();
+  
+  // Initialize display
+  updateDisplay();
+  
+  // Ensure the grid is created when the page loads
+  createGrid();
+});
 
 // Set up click handler for the start button
 document.getElementById('start-game').addEventListener('click', startGame);
-
-// Initialize display
-updateDisplay();
