@@ -1,6 +1,6 @@
 // Game configuration and state variables
-const GOAL_CANS = 20;        // Total items needed to collect (matching your HTML)
 let currentCans = 0;         // Current number of items collected
+let highestScore = 0;        // Highest score achieved in this session
 let gameActive = false;      // Tracks if game is currently running
 let spawnInterval;          // Holds the interval for spawning items
 let gameTimer;              // Holds the game timer interval
@@ -30,7 +30,21 @@ const successStories = [
   }
 ];
 
-// ADD THIS MISSING FUNCTION
+// Function to update highest score with a loop check
+function updateHighestScore(newScore) {
+  // Use a loop to check if the new score is higher
+  for (let i = 0; i < 1; i++) { // Simple loop structure as requested
+    if (newScore > highestScore) {
+      highestScore = newScore;
+      // Show achievement for new high score
+      if (newScore > 0) {
+        showAchievement(`🏆 NEW HIGH SCORE: ${newScore} water cans!`);
+      }
+      break; // Exit loop once comparison is made
+    }
+  }
+}
+
 function handleItemClick(event) {
   if (!gameActive) return;
   
@@ -47,11 +61,12 @@ function handleItemClick(event) {
       itemWrapper.remove();
     }
     
-    // Check if goal reached
-    if (currentCans >= GOAL_CANS) {
-      endGame();
+    // Check for milestone achievements (but don't end game)
+    if (currentCans === 20) {
       showSuccessStoryPopup();
-      showAchievement('🎉 Mission Complete! You collected all ' + GOAL_CANS + ' water cans!');
+      showAchievement('🎉 Amazing! You reached 20 water cans! Keep going for an even higher score!');
+    } else if (currentCans % 10 === 0 && currentCans > 20) {
+      showAchievement(`🌟 Outstanding! ${currentCans} water cans collected!`);
     }
   }
   
@@ -89,6 +104,7 @@ function createGrid() {
 // Update the display elements
 function updateDisplay() {
   document.getElementById('current-cans').textContent = currentCans;
+  document.getElementById('highest-score').textContent = highestScore;
   document.getElementById('timer').textContent = timeLeft;
 }
 
@@ -132,7 +148,7 @@ function showSuccessStoryPopup() {
            alt="Charity: Water" 
            style="max-width: 150px; height: auto;"
            onerror="this.style.display='none'">
-      <h2 style="color: #2E9DF7; margin: 10px 0; font-size: 24px;">Mission Accomplished!</h2>
+      <h2 style="color: #2E9DF7; margin: 10px 0; font-size: 24px;">Milestone Reached!</h2>
       <div style="background: #FFC907; color: #333; padding: 8px 16px; border-radius: 20px; display: inline-block; font-weight: bold; margin-bottom: 15px;">
         🏆 You collected ${currentCans} water cans!
       </div>
@@ -148,7 +164,7 @@ function showSuccessStoryPopup() {
     
     <div style="text-align: center;">
       <p style="font-size: 14px; color: #666; margin-bottom: 15px;">
-        Every game you play represents real impact happening around the world.
+        Keep playing to set an even higher score!
       </p>
       <button id="close-popup" style="
         background: #2E9DF7;
@@ -227,7 +243,7 @@ function startTimer() {
     
     if (timeLeft <= 0) {
       endGame();
-      showAchievement('Time\'s up! You collected ' + currentCans + ' water cans.');
+      showAchievement('Time\'s up! Final Score: ' + currentCans + ' water cans.');
     }
   }, 1000);
 }
@@ -293,51 +309,7 @@ function startGame() {
   
   // Reset game state
   gameActive = true;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-updateDisplay();// Initialize displaydocument.getElementById('start-game').addEventListener('click', startGame);// Set up click handler for the start button}  document.getElementById('start-game').disabled = false;  document.getElementById('start-game').textContent = 'Start New Game';  // Reset button    grid.removeEventListener('click', handleItemClick);  const grid = document.querySelector('.game-grid');  // Remove click event listener    clearInterval(gameTimer); // Stop the timer  clearInterval(spawnInterval); // Stop spawning items  gameActive = false; // Mark the game as inactivefunction endGame() {}  document.getElementById('start-game').disabled = true;  document.getElementById('start-game').textContent = 'Game Running...';  // Change button text    startTimer();  spawnInterval = setInterval(spawnItem, 800); // Spawn items every 0.8 seconds (faster)  // Start spawning items faster and timer    grid.addEventListener('click', handleItemClick);  const grid = document.querySelector('.game-grid');  // Add click event listener to the grid for item clicks    createGrid();  // Set up the game grid    updateDisplay();  // Update display    document.getElementById('achievements').style.display = 'none';  // Clear achievements    timeLeft = 30;  currentCans = 0;  currentCans = 0;
+  currentCans = 0;
   timeLeft = 30;
   
   // Clear achievements
@@ -366,6 +338,10 @@ function endGame() {
   gameActive = false; // Mark the game as inactive
   clearInterval(spawnInterval); // Stop spawning items
   clearInterval(gameTimer); // Stop the timer
+  
+  // Update highest score when game ends
+  updateHighestScore(currentCans);
+  updateDisplay();
   
   // Remove click event listener
   const grid = document.querySelector('.game-grid');
