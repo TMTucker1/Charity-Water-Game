@@ -401,6 +401,16 @@ function endGame() {
   clearInterval(spawnInterval); // Stop spawning items
   clearInterval(gameTimer); // Stop the timer
   
+  // Check if player beat their high score
+  if (currentCans > highestScore) {
+    // Play win sound when player beats high score
+    playWinSound();
+  } else if (highestScore > 0) {
+    // Play lost sound when player doesn't beat high score
+    // Only play if there was a previous high score
+    playLostSound();
+  }
+  
   // Update highest score when game ends
   updateHighestScore(currentCans);
   updateDisplay();
@@ -416,6 +426,23 @@ function endGame() {
   // Re-enable difficulty buttons
   const difficultyButtons = document.querySelectorAll('.difficulty-btn');
   difficultyButtons.forEach(btn => btn.disabled = false);
+}
+
+// Add sound functions for the Hydration Hall game
+function playWinSound() {
+  const winSound = new Audio('../assets/sounds/win.wav');
+  winSound.volume = 0.7;
+  winSound.play().catch(error => {
+    console.log('Error playing win sound:', error);
+  });
+}
+
+function playLostSound() {
+  const lostSound = new Audio('../assets/sounds/lost.wav');
+  lostSound.volume = 0.7;
+  lostSound.play().catch(error => {
+    console.log('Error playing lost sound:', error);
+  });
 }
 
 // Make sure to call handleDifficultySelection after DOM is loaded

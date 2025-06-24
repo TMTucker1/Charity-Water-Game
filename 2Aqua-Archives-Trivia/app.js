@@ -157,6 +157,8 @@ class WaterCrisisTrivia {
                 You're now a certified water crisis expert. Your knowledge can help spread awareness about this critical global issue.<br><br>
                 <strong>Remember:</strong> Every person deserves access to clean, safe water. Consider supporting charity: water's mission to bring clean water to everyone, everywhere.
             `;
+            // Play win sound for perfect score
+            this.playWinSound();
         } else {
             this.resultTitle.textContent = "Mission Incomplete";
             this.resultTitle.style.color = "#f44336";
@@ -165,6 +167,8 @@ class WaterCrisisTrivia {
                 To complete the Aqua Archives mission, you need to answer all 10 questions correctly.<br><br>
                 Don't give up! Try again to learn more about the global water crisis and how we can help solve it.
             `;
+            // Play lost sound for imperfect score
+            this.playLostSound();
         }
         
         // Show "Did You Know?" popup after a short delay

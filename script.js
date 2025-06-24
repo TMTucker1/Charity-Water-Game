@@ -594,3 +594,20 @@ function returnToMissions() {
     missionsButton.click();
   }
 }
+
+// Sound functions for game success/failure
+function playWinSound() {
+  const winSound = new Audio('assets/sounds/win.wav');
+  winSound.volume = 0.7;
+  winSound.play().catch(error => {
+    console.log('Error playing win sound:', error);
+  });
+}
+
+function playLostSound() {
+  const lostSound = new Audio('assets/sounds/lost.wav');
+  lostSound.volume = 0.7;
+  lostSound.play().catch(error => {
+    console.log('Error playing lost sound:', error);
+  });
+}
